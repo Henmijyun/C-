@@ -438,20 +438,24 @@ int main()
 
 // EOF - end of file - 文件结束标志= -1
 
-#include<stdio.h>
-int max(int x, int y)
-{
-	if (x > y)
-		return x;
-	else
-		return y;
-}
-int main()
-{
-	int a = 10;
-	int b = 20;
-	int c = 0;
-	c = max(a, b);
-	printf("c=%d\n", c);
-	return 0;
-}
+//#include<stdio.h>
+//int max(int x, int y)
+//{
+//	if (x > y)
+//		return x;
+//	else
+//		return y;
+//}
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	int c = 0;
+//	c = max(a, b);
+//	printf("c=%d\n", c);
+//	int arr[] = { 1,2,3,4,5,6 };// 6*4=24   （1个int，4个字节-->6个数，6个int）
+//	printf("%d\n", sizeof(arr));//计算数组大小，单位是字节
+//	printf("%d\n", sizeof(arr) / sizeof(arr[0])); //arr的总大小除于（arr[0]）一个元素的大小= 元素个数-->6
+//
+//	return 0;
+//}
