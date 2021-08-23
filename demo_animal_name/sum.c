@@ -89,15 +89,60 @@
 //	printf("g=%d\n", g);//g=1   e和f都为假（0），g才为假
 //	return 0;
 //}
-
+#include<stdio.h>
+void test()
+{
+	int a = 1;
+	a++;
+	printf("a=%d\n", a);
+}
 int main()
 {
-	int a = 10;
-	int b = 20;
-	int max = 0;
-	if (a > b)
-		max = a;
-	else
-		max = b;
+	int i = 0;
+	while (i < 5)
+	{
+		test();
+		i++;
+	}
+
 	return 0;
 }
+
+
+
+
+
+
+
+//int Add(int x, int y)
+//{
+//	int z = 0;
+//	z = x + y;
+//	return z;
+//}
+//int main()
+//{
+//	//int arr[10] = { 0 };
+//	//arr[4];// [] - 下标引用操作符
+//	int a = 10;
+//	int b = 20;
+//	int sum = Add(a, b);// () - 函数调用操作符
+//	printf("sum=%d\n", sum);
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int a = 10; //exp1?exp2:exp3;    表达式1为真，结果为表达式2；表达式1为假，则为表达式3。
+//	int b = 20;
+//	int max = 0;
+//
+//	max = (a > b ? a : b);//a>b为真，max得a；a>b为假，max则得b。
+//	//if (a > b)
+//	//	max = a;
+//	//else
+//	//	max = b;
+//	printf("max=%d\n", max);
+//	return 0;
+//}
