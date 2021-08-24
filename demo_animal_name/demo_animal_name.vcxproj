@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="add.c" />
     <ClCompile Include="mani.c" />
     <ClCompile Include="sum.c" />
   </ItemGroup>

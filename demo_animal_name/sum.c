@@ -89,24 +89,42 @@
 //	printf("g=%d\n", g);//g=1   e和f都为假（0），g才为假
 //	return 0;
 //}
-#include<stdio.h>
-void test()
-{
-	int a = 1;
-	a++;
-	printf("a=%d\n", a);
-}
-int main()
-{
-	int i = 0;
-	while (i < 5)
-	{
-		test();
-		i++;
-	}
-
-	return 0;
-}
+//#include<stdio.h>
+////1. static 修饰局部变量
+////使局部变量的生命周期变长
+////2. static 修饰全局变量       另一个源文件里static int g_val = 2020;//全局变量
+////改变了全局变量的作用域    让静态的全局变量只能在自己所在的源文件内部使用，出了源文件就无法再使用了
+////3. static 修饰函数
+////也是改变了函数的作用域-不准确
+////static 修饰函数改变了函数的链接属性
+////外部链接属性-->内部链接属性
+//void test()
+//{
+//	static int a = 1;//a是一个静态的局部变量
+//	a++;
+//	printf("a=%d\n", a);//2 3 4 5 6
+//}
+////声明外部函数
+//extern int Add(int, int);
+//int main()
+//{
+//	int i = 0;
+//	while (i < 5)
+//	{
+//		test();
+//		i++;
+//	}
+//
+//	//extern - 声明外部符号的
+//	extern int g_val;
+//	printf("g_val=%d\n", g_val);//error  另一个源文件里的全局变量static int g_val出了源文件就无法再使用
+//
+//	int a = 10;
+//	int b = 20;
+//	int sum = Add(a, b);
+//	printf("sum=%d\n", sum);//error 另一个源文件里的Add函数被static了
+//	return 0;
+//}
 
 
 
@@ -146,3 +164,17 @@ int main()
 //	printf("max=%d\n", max);
 //	return 0;
 //}
+
+//#define 定义标识符常量
+//#define MAX 100
+//#define 可以定义宏 - 带参数
+int main()
+{
+	//int a = MAX;
+	int a = 10;
+	int b = 20;
+	//函数
+	int max = Max(a, b);
+	printf("max=%d\n", max);
+	return 0;
+}
