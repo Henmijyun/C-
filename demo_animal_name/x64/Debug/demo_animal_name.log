@@ -1,0 +1,7 @@
+﻿  add.c
+  mani.c
+  sum.c
+C:\Users\11066\source\repos\lianxiyong\demo_animal_name\sum.c(217,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+C:\Users\11066\source\repos\lianxiyong\demo_animal_name\sum.c(217,9): message : 请考虑在格式字符串中使用“%zd”
+  正在生成代码...
+  demo_animal_name.vcxproj -> C:\Users\11066\source\repos\lianxiyong\demo_animal_name\x64\Debug\demo_animal_name.exe
