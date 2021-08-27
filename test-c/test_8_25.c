@@ -31,17 +31,90 @@
 //	return 0;
 //}
 
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	if (a == 0)   //这里为假，后面的都不执行了。后面的else跟第二个if匹配，所以跟这里没有关系
+//	{
+//		if (b == 20)
+//			printf("hehe\n");
+//	}
+//	else
+//			printf("haha\n"); //else是跟离它最近的，未匹配的if，进行匹配。所以这里匹配的是第二个if
+//	return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//	int num = 4;
+//	if (5 == num)     //判断相等时，反过来写可以确保不会出错
+//	{
+//		printf("hehe\n");
+//	}
+//
+//	//if (num = 5)    // = 是赋值，== 判断相等
+//	//{
+//	//	printf("呵呵\n");
+//	//}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	//int b = 0;
+//	//while (b <= 100)
+//	//{
+//	//	if (1 == b % 2)
+//	//	printf("%d\n", b);
+//	//		b++;
+//	//}
+//	int a = 1;
+//	while (a <= 100)
+//	{
+//		printf("%d ", a);
+//		a += 2;        //这种方式int a要=1，才能循环出奇数
+//	}
+//	if (1 == a % 2)
+//	{
+//		printf("奇数\n");
+//	}
+//
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int day = 0;
+//	int n = 1;
+//	scanf("%d", &day);
+//	switch (day)
+//	{
+//	case 1:
+//		if(n==1)
+//			printf("hehe\n");
+//	case 2:
+//	case 3:	
+//	case 4:
+//		printf("工作日\n");//输入1~4都会显示工作日，语句项可以为空白
+//		break;
+//	case 5:
+//	case 6:
+//		printf("休息日\n");
+//		break;
+//	default:          //默认，输入没有的选项时，尽量每次case语句项都加default和break
+//		printf("输入错误\n");
+//		break;
+//	}
+//	return 0;
+//}
 #include<stdio.h>
 int main()
 {
-	int a = 10;
-	int b = 20;
-	if (a == 0)   //这里为假，后面的都不执行了。后面的else跟第二个if匹配，所以跟这里没有关系
-	{
-		if (b == 20)
-			printf("hehe\n");
-	}
-	else
-			printf("haha\n"); //else是跟离它最近的，未匹配的if，进行匹配。所以这里匹配的是第二个if
+	while (1)           //这里把if语句的if换成while，变成死循环
+		printf("hehe\n");
 	return 0;
 }
