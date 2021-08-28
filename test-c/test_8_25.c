@@ -111,10 +111,31 @@
 //	}
 //	return 0;
 //}
+//#include<stdio.h>
+//int main()
+//{
+//	int i = 1;
+//	while (i <= 10)
+//	{
+//		if (i == 9)
+//			break;  //break用于永久中止循环。i循环到5时，停止循环，直接跳到 } ，所以没有经过printf，就没有打印出来
+//		if (i == 5)
+//			continue;//continue用于中止本次循环，（后面的printf本次不打印）回到上面while重新开始循环
+//		printf("%d ",i);
+//		i++;
+//	}
+//	return 0;
+//}
 #include<stdio.h>
 int main()
 {
-	while (1)           //这里把if语句的if换成while，变成死循环
-		printf("hehe\n");
+	int ch = 0;                    //ctrl + z
+	while ((ch = getchar()) !=EOF) //EOF - end of file -> 值为-1  （文件结束标志）
+	{
+		putchar(ch);
+	}
+	//int ch = getchar();    //输入
+	//putchar(ch);           //输出，与printf函数一样
+
 	return 0;
 }
