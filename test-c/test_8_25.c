@@ -130,12 +130,25 @@
 int main()
 {
 	int ch = 0;                    //ctrl + z
-	while ((ch = getchar()) !=EOF) //EOF - end of file -> 值为-1  （文件结束标志）
-	{
-		putchar(ch);
-	}
+	//while ((ch = getchar()) !=EOF) //EOF - end of file -> 值为-1  （文件结束标志）
+	//{
+	//	putchar(ch);
+	//}
 	//int ch = getchar();    //输入
 	//putchar(ch);           //输出，与printf函数一样
+	// 
+	//while((ch=getchar()) !='\n')    //当我们用printf打印之后，会在输入缓冲区剩下东西，这个代码可以帮助我们清空
+	//{                            //循环读取缓冲区的数，直到不等于'/n'，这时缓冲区被清空，跳出循环
+	//    ;
+	//}
+
+	while((ch=getchar()) !=EOF) //创建循环输入
+	{
+	   if(ch<'0' || ch>'9')      //ch小于0并且大于9的值，全部跳过本次循环
+		 continue;            //所以这里只有0~9可以被输出
+	   putchar(ch);
+	}
+
 
 	return 0;
 }
