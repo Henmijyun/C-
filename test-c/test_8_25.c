@@ -126,10 +126,10 @@
 //	}
 //	return 0;
 //}
-#include<stdio.h>
-int main()
-{
-	int ch = 0;                    //ctrl + z
+//#include<stdio.h>
+//int main()
+//{
+//	int ch = 0;                    //ctrl + z
 	//while ((ch = getchar()) !=EOF) //EOF - end of file -> 值为-1  （文件结束标志）
 	//{
 	//	putchar(ch);
@@ -142,13 +142,120 @@ int main()
 	//    ;
 	//}
 
-	while((ch=getchar()) !=EOF) //创建循环输入
+//	while((ch=getchar()) !=EOF) //创建循环输入
+//	{
+//	   if(ch<'0' || ch>'9')      //ch小于0并且大于9的值，全部跳过本次循环
+//		 continue;            //所以这里只有0~9可以被输出
+//	   putchar(ch);
+//	}
+//
+//
+//	return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//	int i = 0;
+//	//  初始化  判断   调整   三要素一起合在for循环中
+//	for (i = 0;i <= 10;i++)
+//	{
+//		//if (i == 5)
+//		//	break;        //这里break也是中止整个循环，跳到}
+//		if (i == 5)
+//			continue;     //这里continue也是中止本次循环，跳到} ,但不会死循环
+//		printf("%d ", i);
+//	}
+//	return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//	//for(;;)
+//	int a = 0;
+//	int b = 0;
+//	for (a=0;a<10;a++)  //得出的结果为：100次hehe
+//	{                     //但是，如果省略a=0和b=0的话，只会打出10个hehe。
+//		for(b=0;b<10;b++) //因为当第2个for结束循环时，b=10，第1个for循环进去，b为假，又跳出来，所以不会发生改变
+//		printf("hehe\n");
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int x, y;
+//	for (x = 0, y = 0; x < 2 && y < 5; ++x, y++) //++不管前置还是后置都是加一
+//	{
+//		printf("hehe\n");      //得两个hehe，第三次x=2，为假，跳出循环
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int i = 1;
+//	do
+//	{
+//		//if (i == 5)
+//		//	break;   //结果为：1 2 3 4，中止整个循环
+//		//if (i == 5)  
+//		//	continue;  //结果为：1 2 3 4 死循环
+//
+//		printf("%d ", i);
+//		i++;
+//	}
+//	while (i <= 10);
+//	return 0;
+//}
+
+#include<stdio.h>
+int main()
+{
+	int a = 0;
+	int b = 0;
+	int ret = 1;
+	int sum = 0;
+	for (b = 1; b <= 10; b++)
 	{
-	   if(ch<'0' || ch>'9')      //ch小于0并且大于9的值，全部跳过本次循环
-		 continue;            //所以这里只有0~9可以被输出
-	   putchar(ch);
+		ret = ret * b;        
+		//b的阶乘
+		sum = sum + ret;
 	}
-
-
+	printf("sum=%d\n", sum);
 	return 0;
 }
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	int ret = 1;
+//	int sum = 0;
+//	for (b = 1; b <= 3; b++)
+//	{
+//		ret = 1;
+//		for (a = 1; a <= b; a++)
+//		{
+//			ret = ret * a;        //b的阶乘
+//		}
+//		sum = sum + ret;
+//		
+//	}
+//
+//	printf("sum=%d\n", sum);
+//	return 0;
+//}
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	int ret = 1;
+//	scanf("%d", &b);       //输入b的值
+//	for (a = 1; a<=b; a++)
+//	{
+//		ret = ret * a;      //这个循环从1开始乘，一直乘到b+1的值才跳出循环
+//	}
+//	printf("ret=%d\n",ret);
+//	return 0;
+//}
