@@ -210,22 +210,22 @@
 //	return 0;
 //}
 
-#include<stdio.h>
-int main()
-{
-	int a = 0;
-	int b = 0;
-	int ret = 1;
-	int sum = 0;
-	for (b = 1; b <= 10; b++)
-	{
-		ret = ret * b;        
-		//b的阶乘
-		sum = sum + ret;
-	}
-	printf("sum=%d\n", sum);
-	return 0;
-}
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	int ret = 1;
+//	int sum = 0;
+//	for (b = 1; b <= 10; b++)
+//	{
+//		ret = ret * b;        
+//		//b的阶乘
+//		sum = sum + ret;
+//	}
+//	printf("sum=%d\n", sum);
+//	return 0;
+//}
 //int main()
 //{
 //	int a = 0;
@@ -259,3 +259,24 @@ int main()
 //	printf("ret=%d\n",ret);
 //	return 0;
 //}
+
+#include<stdio.h>
+int main()
+{
+	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+	int k = 7;
+	//写一个代码，在arr数组（有序的）中找到7
+	int i = 0;
+	int sz = sizeof(arr) / sizeof(arr[0]); //个数 = 数组总大小 / 每个元素的大小
+	for (i = 0; i < sz; i++)
+	{
+		if (k == arr[i])
+		{
+			printf("找到了，下标是：%d \n", i);
+			break;
+		}
+	}
+	if (i == sz)
+		printf("找不到\n");
+	return 0;
+}
