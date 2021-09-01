@@ -260,23 +260,114 @@
 //	return 0;
 //}
 
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int k = 7;
+//	//写一个代码，在arr数组（有序的）中找到7
+//	int i = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]); //计算元素个数 = 数组总大小 / 每个元素的大小
+//	for (i = 0; i < sz; i++)
+//	{
+//		if (k == arr[i])
+//		{
+//			printf("找到了，下标是：%d \n", i);
+//			break;
+//		}
+//	}
+//	if (i == sz)
+//		printf("找不到\n");
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,8,9,10 };
+//	int k = 7;                              //要找的数
+//
+//	int sz = sizeof(arr) / sizeof(arr[0]);//计算元素个数
+//	int left = 0;                //左下标
+//	int right = sz - 1;          //右下标
+//
+//	while (left <= right)         //条件: 左 <= 右
+//	{
+//		int mid = (left + right) / 2;  //中点
+//		if (arr[mid] > k)
+//		{
+//			right = mid - 1;       //折中后的右下标
+//		}
+//		else if (arr[mid] < k)
+//		{
+//			left = mid + 1;        //折中后的左下标
+//		}
+//		else
+//		{
+//			printf("找到了,下标是: %d\n", mid);    //折中后的中点
+//			break;
+//		}
+//	}
+//	if (left > right)              //条件:左 > 右 (增加稳定性)
+//	{
+//		printf("找不到\n");
+//	}
+//	return 0;
+//}\
+
+
 #include<stdio.h>
+#include<string.h>
+#include<windows.h> //Sleep 停止函数的头文件
+#include<stdlib.h>  //system 执行系统命令函数的头文件
 int main()
 {
-	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
-	int k = 7;
-	//写一个代码，在arr数组（有序的）中找到7
-	int i = 0;
-	int sz = sizeof(arr) / sizeof(arr[0]); //个数 = 数组总大小 / 每个元素的大小
-	for (i = 0; i < sz; i++)
+	char arr1[] = "welcome to bit!!!!!";
+	char arr2[] = "###################";
+	int left = 0;
+	//int right = sizeof(arr1) / sizeof(arr1[0]) - 2;//这里-1是errer，因为还有个隐藏的\n,所以要-2
+	int right = strlen(arr1) - 1;             //函数strlen计算数组长度,-1是因为隐藏的\n
+
+	do
 	{
-		if (k == arr[i])
-		{
-			printf("找到了，下标是：%d \n", i);
+		arr2[left] = arr1[left];
+		arr2[right] = arr1[right];
+		printf("%s\n", arr2);
+		
+		Sleep(200);   
+		//system("cls"); 
+		left++;
+		right--;
+
+	} 
+	while (left <= right);
+	right++;
+	char arr3[]= "###################";
+	do
+	{
+		arr2[left] = arr3[left];
+		arr2[right] = arr3[right];
+		printf("%s\n", arr2);
+		Sleep(200);   
+		//system("cls"); 
+		left++;
+		right--;
+		if (right < 0)
 			break;
-		}
-	}
-	if (i == sz)
-		printf("找不到\n");
+	} 
+	while (left > right);
+	do
+	{
+		arr2[left] = arr1[left];
+		arr2[right] = arr1[right];
+		printf("%s\n", arr2);
+
+		Sleep(200);
+		//system("cls"); 
+		left++;
+		right--;
+
+	} while (left <= right);
+	printf("%s\n", arr2);
 	return 0;
 }
