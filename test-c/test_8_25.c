@@ -316,58 +316,84 @@
 //}\
 
 
-#include<stdio.h>
-#include<string.h>
-#include<windows.h> //Sleep 停止函数的头文件
-#include<stdlib.h>  //system 执行系统命令函数的头文件
-int main()
-{
-	char arr1[] = "welcome to bit!!!!!";
-	char arr2[] = "###################";
-	int left = 0;
-	//int right = sizeof(arr1) / sizeof(arr1[0]) - 2;//这里-1是errer，因为还有个隐藏的\n,所以要-2
-	int right = strlen(arr1) - 1;             //函数strlen计算数组长度,-1是因为隐藏的\n
+//#include<stdio.h>
+//#include<string.h>
+//#include<windows.h> //Sleep 停止函数的头文件
+//#include<stdlib.h>  //system 执行系统命令函数的头文件
+//int main()
+//{
+//	char arr1[] = "welcome to bit!!!!!";
+//	char arr2[] = "###################";
+//	int left = 0;
+//	//int right = sizeof(arr1) / sizeof(arr1[0]) - 2;//这里-1是errer，因为还有个隐藏的\n,所以要-2
+//	int right = strlen(arr1) - 1;             //函数strlen计算数组长度,-1是因为隐藏的\n
+//
+//	do
+//	{
+//		arr2[left] = arr1[left];
+//		arr2[right] = arr1[right];
+//		printf("%s\n", arr2);
+//		
+//		Sleep(200);   
+//		//system("cls"); 
+//		left++;
+//		right--;
+//
+//	} 
+//	while (left <= right);
+//	right++;
+//	char arr3[]= "###################";
+//	do
+//	{
+//		arr2[left] = arr3[left];
+//		arr2[right] = arr3[right];
+//		printf("%s\n", arr2);
+//		Sleep(200);   
+//		//system("cls"); 
+//		left++;
+//		right--;
+//		if (right < 0)
+//			break;
+//	} 
+//	while (left > right);
+//	do
+//	{
+//		arr2[left] = arr1[left];
+//		arr2[right] = arr1[right];
+//		printf("%s\n", arr2);
+//
+//		Sleep(200);
+//		//system("cls"); 
+//		left++;
+//		right--;
+//
+//	} while (left <= right);
+//	printf("%s\n", arr2);
+//	return 0;
+//}
+//
+//#include<stdio.h>
+//#include<string.h>  //库函数strcmp:比较两个字符串是否相等;当两个字符串相等时,返回一个0,所以用==0来判断  
+//int main()
+//{
+//	int i = 0;
+//	char password[20] = { 0 };
+//	for (i = 0; i < 3; i++)
+//	{
+//		printf("请输入密码:>");
+//		scanf("%s", password);
+//		if (strcmp(password,"123456")==0)  // == 不能用来比较两个字符串是否相等,应该使用一个库函数- strcmp
+//		{
+//			printf("登录成功!\n");
+//			break;
+//		}
+//		else
+//		{
+//			printf("密码错误,登录失败\n");
+//		}
+//	}
+//	if (i == 3)
+//		printf("三次密码均错误,退出程序\n");
+//	return 0;
+//}
 
-	do
-	{
-		arr2[left] = arr1[left];
-		arr2[right] = arr1[right];
-		printf("%s\n", arr2);
-		
-		Sleep(200);   
-		//system("cls"); 
-		left++;
-		right--;
-
-	} 
-	while (left <= right);
-	right++;
-	char arr3[]= "###################";
-	do
-	{
-		arr2[left] = arr3[left];
-		arr2[right] = arr3[right];
-		printf("%s\n", arr2);
-		Sleep(200);   
-		//system("cls"); 
-		left++;
-		right--;
-		if (right < 0)
-			break;
-	} 
-	while (left > right);
-	do
-	{
-		arr2[left] = arr1[left];
-		arr2[right] = arr1[right];
-		printf("%s\n", arr2);
-
-		Sleep(200);
-		//system("cls"); 
-		left++;
-		right--;
-
-	} while (left <= right);
-	printf("%s\n", arr2);
-	return 0;
-}
