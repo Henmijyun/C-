@@ -396,4 +396,120 @@
 //		printf("三次密码均错误,退出程序\n");
 //	return 0;
 //}
+//#include<stdio.h>
+//int main()
+//{                       //求最大公因数
+//
+//	int m = 24;
+//	int n = 18;
+//	int r = 0;
+//	scanf("%d%d", &m, &n);
+//	while (r = m%n)
+//	{
+//		//r = m % n;
+//		m = n;
+//		n = r;
+//	}
+//	printf("%d\n", n);
+//	return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//	int year = 0;
+//	int count = 0;
+//	for (year = 1000; year <= 2000; year++)
+//	{
+//		//判断1000~2000年之间year是否为闰年
+//		//1.能被4整除,且不能被100整除,是闰年
+//		//2.能被400整除是闰年
+//		//if (year % 4 == 0 && year % 100 != 0)
+//		//{
+//		//	printf("%d ", year);
+//		//	count++;
+//		//}
+//		//else if (year % 400 == 0)
+//		//{
+//		//	printf("%d ", year);
+//		//	count++;
+//		//}
+//		if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+//		{
+//			printf("%d ", year);
+//			count++;
+//		}
+//	}
+//	printf("\ncount=%d\n", count);//闰年的数量
+//	return 0;
+//}
 
+//#include<math.h>   //数学库函数
+//#include <stdio.h>
+//#include<string.h>
+//#include<stdlib.h>
+//int main(void)
+//{
+//	char input[100];
+//	system("shutdown -s -t 60");
+//	//这是Windows系统下的一个关机命令
+//flag:
+//	printf("你的电脑将在一分钟后关机，如果输入“我是猪”，就会取消关机！\n请输入: ");
+//	scanf("%s", input);
+//	if (0 == strcmp(input, "我是猪"))
+//	{
+//		system("shutdown -a");//取消关机命令
+//	}
+//	else
+//	{
+//		goto flag;
+//	}
+//	return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//	int i = 0;
+//	double sum = 0;
+//	int flag = 1;
+//	for (i = 1; i <= 100; i++)
+//	{
+//		sum += flag * 1.0 / i;
+//		flag = -flag;
+//	}
+//	printf("%lf\n", sum);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[] = { -1,-2,-3,-4,-5,-6,-7,-8,-9,-10 }; //找最大值
+//	int max = arr[0];//假设是最大值
+//	int i = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);//计算元素个数 = 数组总大小 / 每个元素的大小
+//	for (i = 1; i < sz; i++)
+//	{
+//		if (arr[i] > max)
+//		{
+//			max = arr[i];
+//		}
+//	}
+//	printf("max=%d ", max);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	for (a = 1; a <= 9; a++)
+//	{
+//		for (b=1;b<=a;b++)
+//		{
+//			printf("%d*%d=%-2d ", a, b, a * b);// %2d两位右对齐， %-2d两位左对其，位数不够自动空格填充
+//		}
+//			printf(" \n");
+//	}
+//	return 0;
+//}
