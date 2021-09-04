@@ -513,3 +513,28 @@
 //	}
 //	return 0;
 //}
+
+//#include<stdlib.h>   //system()的头文件
+//#include<stdio.h>
+//#include<string.h>   //strcmp()的头文件
+//int main()
+//{
+//	char input[20] = { 0 };
+//	//shutdown -s -t 60    电脑在1分钟后关机     shutdown -a  取消关机
+//	//cmd - command - 命令行
+//	//system() - 执行系统命令的函数  
+//
+//	system("shutdown -s -t 60");
+//again:
+//	printf("请注意，你的电脑在1分钟后关机，如果输入：我是猪，就取消关机\n请输入>:");
+//	scanf("%s", input);
+//	if (strcmp(input, "我是猪") == 0)//比较两个字符串 - strcmp() 比较字符串的函数
+//		{
+//			system("shutdown -a");
+//		}
+//	else
+//	{
+//		goto again;   //可以用while循环代替，尽量不用goto
+//	}
+//	return 0;
+//}
