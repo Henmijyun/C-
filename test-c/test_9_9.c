@@ -17,21 +17,21 @@
 //} 吧
 
 
-#include<stdio.h>
-#include<string.h>
-int main()
-{
-	char arr1[] = "bit";  //隐藏的/0也会被拷贝
-	char arr2[] = "#######";
-	char arr3[20];
-	strcpy(arr2, arr1);    //strcpy()函数 后面的值 拷贝到 前面的值 里:arr1-->arr2
-	strcpy(arr3, "11111111111");
-	printf("%s\n%s\n", arr2,arr3);
-	//strcpy - string copy - 字符串拷贝
-	//strlen - string length - 字符串长度有关
-	//memset
-	//memory - 内存  set - 设置
-	memset(arr3, '0', 5);   //memset()函数修改内存中的信息,memset( 修改的目标, 修改的内容, 修改的数量)
-	printf("%s\n", arr3);
-	return 0;
-}
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	char arr1[] = "bit";  //隐藏的/0也会被拷贝
+//	char arr2[] = "#######";
+//	char arr3[20];
+//	strcpy(arr2, arr1);    //strcpy()函数 后面的值 拷贝到 前面的值 里:arr1-->arr2
+//	strcpy(arr3, "11111111111");
+//	printf("%s\n%s\n", arr2,arr3);
+//	//strcpy - string copy - 字符串拷贝
+//	//strlen - string length - 字符串长度有关
+//	//memset
+//	//memory - 内存  set - 设置
+//	memset(arr3, '0', 5);   //memset()函数修改内存中的信息,memset( 修改的目标, 修改的内容, 修改的数量)
+//	printf("%s\n", arr3);
+//	return 0;
+//}
