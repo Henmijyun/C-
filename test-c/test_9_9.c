@@ -67,3 +67,5 @@ int main()
 	printf("a=%d b=%d",a,b);  //打印改变后
 	return 0;
 }
+
+//他
