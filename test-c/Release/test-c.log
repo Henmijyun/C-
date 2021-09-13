@@ -1,8 +1,10 @@
 ﻿  test_9_9.c
+C:\Users\11066\source\repos\lianxiyong\test-c\test_9_9.c(157,35): warning C4474: printf: 格式字符串中传递的参数太多
+C:\Users\11066\source\repos\lianxiyong\test-c\test_9_9.c(157,35): message : 占位符和其参数预计 0 可变参数，但提供的却是 1 参数
 LINK : warning LNK4098: 默认库“LIBCMT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
   正在生成代码
-  1 of 5 functions (20.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
+  5 of 5 functions (100.0%) were compiled.
+    1 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   test-c.vcxproj -> C:\Users\11066\source\repos\lianxiyong\test-c\Release\test-c.exe
