@@ -68,38 +68,94 @@
 //	printf("len=%d\n", len);  
 //	return 0;
 //}
+//
+//#include<stdio.h>
+//int Fac1(int n)
+//{
+//	int i = 0;
+//	int ret = 1;
+//	for (i = 1; i <= n; i++)
+//	{
+//		ret *= i;
+//	}
+//	return ret;
+//}
+//int Fac2(int n)
+//{
+//	if (n <= 1)
+//		return 1;        //例如5，5>1,进去5*Fac2,进去5-1=4，4>1,再进去4*Fac2，如此类推5-4-3-2-1，
+//	else
+//		return n * Fac2(n - 1);  //当1=1返回1，跳出递归，不断返回值,使1*2*3*4*5，最好返回计算结果
+//}
+//int main()
+//{
+//	//求n的阶乘
+//	int n = 0;
+//	int ret1 = 0;
+//	int ret2 = 0;
+//	scanf("%d", &n);
+//
+//	ret1 = Fac1(n);//循环的方式
+//	printf("%d\n", ret1);
+//
+//	ret2 = Fac2(n);//递归的方式
+//	printf("%d\n", ret2);
+//	return 0;
+//}
 
-#include<stdio.h>
-int Fac1(int n)
+
+
+////斐波那契数列：1 1 2 3 5 8 13 21 34 55... 前面两个数之和等于第三个数。
+////int count = 0;
+////int Fid(int n)
+////{
+////	if (n == 3)//测试第三个斐波那契数的计算次数
+////	{
+////		count++;
+////	}
+////	if (n <= 2)
+////		return 1;
+////	else
+////		return Fid(n - 1) + Fid(n - 2);//这时用递归就不是便利的方法了
+////		
+////}
+//int Fid(int n)
+//{
+//	int a = 1;
+//	int b = 1;
+//	int c = 1;
+//	while (n > 2)
+//	{
+//		c = a + b;
+//		a = b;
+//		b = c;
+//		n--;
+//	}
+//	return c;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//	int n = 0;
+//	int ret = 0;
+//	scanf("%d", &n);
+//
+//	//TDD--测试驱动开发
+//	ret = Fid(n);
+//	printf("ret = %d\n", ret);
+//	//printf("count=%d\n", count);
+//	return 0;
+//}
+
+void test(int n)
 {
-	int i = 0;
-	int ret = 1;
-	for (i = 1; i <= n; i++)
+	if (n < 10000)
 	{
-		ret *= i;
+		test(n + 1);
 	}
-	return ret;
-}
-int Fac2(int n)
-{
-	if (n <= 1)
-		return 1;        //例如5，5>1,进去5*Fac2,进去5-1=4，4>1,再进去4*Fac2，如此类推5-4-3-2-1，
-	else
-		return n * Fac2(n - 1);  //当1=1返回1，跳出递归，不断返回值,使1*2*3*4*5，最好返回计算结果
 }
 int main()
 {
-	//求n的阶乘
-	int n = 0;
-	int ret1 = 0;
-	int ret2 = 0;
-	scanf("%d", &n);
-
-	ret1 = Fac1(n);//循环的方式
-	printf("%d\n", ret1);
-
-	ret2 = Fac2(n);//递归的方式
-	printf("%d\n", ret2);
+	test(1);
 	return 0;
 }
-//请假一天
