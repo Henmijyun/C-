@@ -146,16 +146,17 @@
 //	//printf("count=%d\n", count);
 //	return 0;
 //}
+//
+//void test(int n)
+//{
+//	if (n < 10000)
+//	{
+//		test(n + 1);
+//	}
+//}
+//int main()
+//{
+//	test(1);
+//	return 0;
+//}
 
-void test(int n)
-{
-	if (n < 10000)
-	{
-		test(n + 1);
-	}
-}
-int main()
-{
-	test(1);
-	return 0;
-}
