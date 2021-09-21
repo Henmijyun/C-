@@ -160,4 +160,18 @@
 //	return 0;
 //}
 
-//停更一天，写奖学金论文
+int Fan()
+{
+	printf("########こ#######\n");
+	printf("########ん#######\n");
+	printf("########ち#######\n");
+	printf("########は#######\n");
+	printf("########你好吗#######\n");
+}
+#include<stdio.h>
+int main()
+{
+	int a = 0;
+	Fan();
+	return 0;
+}
