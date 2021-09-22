@@ -1,4 +1,2 @@
 ﻿  test.c
-C:\Users\11066\source\repos\lianxiyong\test_9_14\test.c(165,8): warning C4013: “printf”未定义；假设外部返回 int
-C:\Users\11066\source\repos\lianxiyong\test_9_14\test.c(170): warning C4716: “Fan”: 必须返回一个值
   test_9_14.vcxproj -> C:\Users\11066\source\repos\lianxiyong\test_9_14\Debug\test_9_14.exe
