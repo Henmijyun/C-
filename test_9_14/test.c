@@ -160,29 +160,29 @@
 //	return 0;
 //}
 
-//int Fan()
-//{
-//	printf("########¤³#######\n");
-//	printf("########¤ó#######\n");
-//	printf("########¤Á#######\n");
-//	printf("########¤Ï#######\n");
-//	printf("########ÄãºÃÂð#######\n");
-//}
-//#include<stdio.h>
-//int main()
-//{
-//	int a = 0;
-//	Fan();
-//	return 0;
-//}
-
+int Fan()
+{
+	printf("########¤³#######\n");
+	printf("########¤ó#######\n");
+	printf("########¤Á#######\n");
+	printf("########¤Ï#######\n");
+	printf("########¡£#######\n");
+}
 #include<stdio.h>
 int main()
 {
-	int a = 100;
-	int b = 30;
-	int c = a - b;
-	int d = a % b;
-	printf("a¤Î‚Ž¤Ï%d¤Ç¤¹¡£\nb¤Î‚Ž¤Ï%d¤Ç¤¹¡£\nc¤Î‚Ž¤Ï%d¤Ç¤¹¡£\nd¤Î‚Ž¤Ï%d¤Ç¤¹¡£\n", a, b, c, d);
+	int a = 0;
+	Fan();
 	return 0;
 }
+
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 100;
+//	int b = 30;
+//	int c = a - b;
+//	int d = a % b;
+//	printf("a¤Î‚Ž¤Ï%d¤Ç¤¹¡£\nb¤Î‚Ž¤Ï%d¤Ç¤¹¡£\nc¤Î‚Ž¤Ï%d¤Ç¤¹¡£\nd¤Î‚Ž¤Ï%d¤Ç¤¹¡£\n", a, b, c, d);
+//	return 0;
+//}
