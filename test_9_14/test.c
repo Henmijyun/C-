@@ -162,17 +162,55 @@
 
 int Fan()
 {
-	printf("########こ#######\n");
-	printf("########ん#######\n");
-	printf("########ち#######\n");
-	printf("########は#######\n");
-	printf("########。#######\n");
+	printf("############こ###########\n");
+	printf("############ん###########\n");
+	printf("############ち###########\n");
+	printf("############は###########\n");
+	printf("####1.開始　　2.終わり###\n\n");
+	printf("番号1と2を選んでください\n");
 }
 #include<stdio.h>
 int main()
 {
 	int a = 0;
+	int a1 = 0;
 	Fan();
+	scanf("%d", &a);
+	switch (a)
+	{
+	case 1:
+		printf("ゲーム開始\n\n好きな性別を選んでください:\n##1.男　　2.女##\n");
+		while (a ==1 )
+		{
+			if (a1 == 1)
+			{
+				printf("#111111111\n");
+				break;
+			}
+			else if (a1 == 2)
+			{
+				printf("##122222\n");
+				break;
+			}
+			else
+			{
+				printf("性別もう一回入力してください。\n##1.男　　2.女##\n");
+				goto again;
+
+			}
+
+		}
+
+		break;
+	case 2:
+		printf("終わり");
+		break;
+	default:
+		printf("誤りが発生した、もう一回入力してください。");
+		break;
+
+	}
+
 	return 0;
 }
 
