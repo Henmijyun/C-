@@ -160,59 +160,59 @@
 //	return 0;
 //}
 
-int Fan()
-{
-	printf("############こ###########\n");
-	printf("############ん###########\n");
-	printf("############ち###########\n");
-	printf("############は###########\n");
-	printf("####1.開始　　2.終わり###\n\n");
-	printf("番号1と2を選んでください\n");
-}
-#include<stdio.h>
-int main()
-{
-	int a = 0;
-	int a1 = 0;
-	Fan();
-	scanf("%d", &a);
-	switch (a)
-	{
-	case 1:
-		printf("ゲーム開始\n\n好きな性別を選んでください:\n##1.男　　2.女##\n");
-		while (a ==1 )
-		{
-			if (a1 == 1)
-			{
-				printf("#111111111\n");
-				break;
-			}
-			else if (a1 == 2)
-			{
-				printf("##122222\n");
-				break;
-			}
-			else
-			{
-				printf("性別もう一回入力してください。\n##1.男　　2.女##\n");
-				goto again;
-
-			}
-
-		}
-
-		break;
-	case 2:
-		printf("終わり");
-		break;
-	default:
-		printf("誤りが発生した、もう一回入力してください。");
-		break;
-
-	}
-
-	return 0;
-}
+//int Fan()
+//{
+//	printf("############こ###########\n");
+//	printf("############ん###########\n");
+//	printf("############ち###########\n");
+//	printf("############は###########\n");
+//	printf("####1.開始　　2.終わり###\n\n");
+//	printf("番号1と2を選んでください\n");
+//}
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 0;
+//	int a1 = 0;
+//	Fan();
+//	scanf("%d", &a);
+//	switch (a)
+//	{
+//	case 1:
+//		printf("ゲーム開始\n\n好きな性別を選んでください:\n##1.男　　2.女##\n");
+//		while (a ==1 )
+//		{
+//			if (a1 == 1)
+//			{
+//				printf("#111111111\n");
+//				break;
+//			}
+//			else if (a1 == 2)
+//			{
+//				printf("##122222\n");
+//				break;
+//			}
+//			else
+//			{
+//				printf("性別もう一回入力してください。\n##1.男　　2.女##\n");
+//				goto again;
+//
+//			}
+//
+//		}
+//
+//		break;
+//	case 2:
+//		printf("終わり");
+//		break;
+//	default:
+//		printf("誤りが発生した、もう一回入力してください。");
+//		break;
+//
+//	}
+//
+//	return 0;
+//}
 
 //#include<stdio.h>
 //int main()
@@ -226,4 +226,55 @@ int main()
 //}
 
 
-123454
+////汉诺塔问题
+//#include<stdio.h>
+//void move(int n, char x, char y, char z)
+//{
+//	if (n == 1)
+//	{
+//		printf("圆盘编号%d：从%c移动到%c。\n", n, x, z);
+//	}
+//	else
+//	{
+//		move(n - 1, x, z, y);
+//		printf("圆盘编号%d：从%c移动到%c。\n", n, x, z);
+//		move(n - 1, y, x, z);
+//	}
+//}
+//
+//int main()
+//{
+//	char ch1 = 'a';//abc三个柱子
+//	char ch2 = 'b';
+//	char ch3 = 'c';
+//	int n = 0;    //n是盘子数
+//	printf("请输入盘子个数:\n");
+//	scanf("%d", &n);
+//	move(n, ch1, ch2, ch3);
+//
+//	return 0;
+//}
+
+//青蛙跳台阶问题
+#include<stdio.h>
+int frog(int n)
+{
+    if (n == 1)
+    {
+        return 1;
+    }
+    if (n == 2)
+    {
+        return 2;
+    }
+    return frog(n - 1) + frog(n - 2);
+}
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    int ways = frog(n);
+    printf("%d\n", ways);
+    return 0;
+}
+
