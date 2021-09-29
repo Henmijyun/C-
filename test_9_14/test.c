@@ -277,11 +277,23 @@
 //    printf("%d\n", ways);
 //    return 0;
 //}
+//
+////数组
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 25;
+//	int b = 3;
+//	float c;
+//	//printf("一つ目の数字を入力して下さい\n");
+//	//scanf("%d", &a);
+//
+//	//printf("二つ目の数字を入力して下さい\n");
+//	//scanf("%d", &b);
+//
+//	c = (float)a / b;//这种形式不省略，显示小数点后面的数
+//	printf("%d/%d=%.3f\n", a, b, c);
+//
+//	return 0;
+//}
 
-//数组
-
-int main()
-{
-	int a = ;
-	return 0;
-}
