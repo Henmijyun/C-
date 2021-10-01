@@ -1,6 +1,3 @@
-﻿  2020ｍ146.c
-C:\Users\11066\source\repos\lianxiyong\test_9_14\2020ｍ146.c(23,27): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\11066\source\repos\lianxiyong\test_9_14\2020ｍ146.c(41,27): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\11066\source\repos\lianxiyong\test_9_14\2020ｍ146.c(59,26): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\11066\source\repos\lianxiyong\test_9_14\2020ｍ146.c(77,27): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+﻿  test.c
+C:\Users\11066\source\repos\lianxiyong\test_9_14\test.c(310,23): warning C4013: “strlen”未定义；假设外部返回 int
   test_9_14.vcxproj -> C:\Users\11066\source\repos\lianxiyong\test_9_14\Debug\test_9_14.exe

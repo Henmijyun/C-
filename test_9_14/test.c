@@ -297,7 +297,17 @@
 //	return 0;
 //}
 
+#include<stdio.h>
 main()
 {
+	//创建一个数组-存放整型-10个;   []里面的数量必须是常数，不能是变数
+	int arr[10] = { 1,2,3 };  //不完全初始化,剩下的元素默认初始化为0
+	char arr2[5] = { 'a',98 };  //98这里是b，因为b的ASCII值为98；
+	char arr3[5] = "abc";  //ok，"abc\000"
+	char arr4[] = "abcdef";
+	printf("%d\n", sizeof(arr4));//计算 arr4所占空间的大小-->包括\0共7个元素,char 7*1=结果为 7
+
+	printf("%d\n", strlen(arr4));//strlen 求字符串的长度;[a b c d e f \0];只计算\0之前的字符个数,结果为 6
+
 	return 0;
 }
