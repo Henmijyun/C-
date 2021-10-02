@@ -297,17 +297,80 @@
 //	return 0;
 //}
 
-#include<stdio.h>
-main()
+//#include<stdio.h>
+//main()
+//{
+//	//创建一个数组-存放整型-10个;   []里面的数量必须是常数，不能是变数
+//	int arr[10] = { 1,2,3 };  //不完全初始化,剩下的元素默认初始化为0
+//	char arr2[5] = { 'a',98,'c'};  //98这里是b，因为b的ASCII值为98；
+//	char arr3[5] = "abc";  //ok，"abc\000"
+//	char arr4[] = "abcdef";
+//	printf("%d\n", sizeof(arr4));//计算 arr4所占空间的大小-->包括\0共7个元素,char 7*1=结果为 7
+//
+//	printf("%d\n", strlen(arr4));//strlen 求字符串的长度;[a b c d e f \0];只计算\0之前的字符个数,结果为 6
+//
+//	//1. strlen 和 sizeof没有什么关联
+//	//2. strlen 是求字符串长度的-只能针对字符串求长度 - 库函数 - 使用需要引用头文件
+//	//3. sizeof 计算变量、数组、类型的大小-单位是字节 - 操作符
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	char arr1[] = "abc";           //a b c \0
+//	char arr2[] = { 'a','b','c' }; //a b c 
+//	printf("%d\n", sizeof(arr1));//4
+//	printf("%d\n", sizeof(arr2));//3
+//	printf("%d\n", strlen(arr1));//3
+//	printf("%d\n", strlen(arr2));//arr2后面没有\0，所以结果是随机值
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//int main()
+//{
+//	char arr[] = "abcdef";//[a][b][c][d][e][f][\0] ,下标从0开始
+//	//printf("%c\n", arr[3]);//打印单个字符d，[]里面填要打印的字符下标,d的下标为3
+//	//如果打印整个字符串,建议使用循环函数
+//	int i = 0;
+//	//for (i = 0; i < (int)strlen(arr); i++)  //这里把strlen函数嵌入for函数中,求出arr[]的长度后带入公式
+//	//{                                 //strlen的默认返回值是一个无符号整型值,前面(int)强制类型转换,使它变成有符号整型值
+//	//	printf("%c ", arr[i]);
+//	//}
+//	int len = strlen(arr);  //建议用这种写法,不把strlen放入for
+//	for (i = 0; i < len; i++)
+//	{
+//		printf("%c ", arr[i]);
+//	}
+//
+//	int arr2[] = { 1,2,3,4,5,6,7,8,9,0 };
+//	int sz = sizeof(arr2) / sizeof(arr2[0]);//总大小 - 除于 - 一个元素的大小 - 等于 - 元素个数
+//	int a = 0;
+//	for (a = 0; a < sz; a++)
+//	{
+//		printf("%d ", arr2[a]);//数组用下标来打印,下标从0开始,建议用循环函数来打印
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("&arr[%d] = %p\n", i, &arr[i]);
+//	}
+//	return 0;
+//}
+
+
+int main()
 {
-	//创建一个数组-存放整型-10个;   []里面的数量必须是常数，不能是变数
-	int arr[10] = { 1,2,3 };  //不完全初始化,剩下的元素默认初始化为0
-	char arr2[5] = { 'a',98 };  //98这里是b，因为b的ASCII值为98；
-	char arr3[5] = "abc";  //ok，"abc\000"
-	char arr4[] = "abcdef";
-	printf("%d\n", sizeof(arr4));//计算 arr4所占空间的大小-->包括\0共7个元素,char 7*1=结果为 7
-
-	printf("%d\n", strlen(arr4));//strlen 求字符串的长度;[a b c d e f \0];只计算\0之前的字符个数,结果为 6
-
+	int arr[3][4]; //三行四列 的数组:第一个数表示横向的行数,第二个数表示竖向的列数.
 	return 0;
 }
