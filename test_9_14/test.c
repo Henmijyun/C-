@@ -369,19 +369,70 @@
 //}
 
 //二维数组的'行'可以被忽略，但'列'不能被忽略
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[3][4] = { {1,2,3},{4,5} }; //这里是:三行四列 的数组:第一个数表示横向的行数,第二个数表示竖向的列数.
+//	int i = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 4; j++)
+//		{
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+//
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[3][4] = { {1,2,3},{4,5} };
+//	
+//	int i = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 4; j++)
+//		{
+//			printf("&arr[%d][%d] = %p\n", i, j, &arr[i][j]);
+//		}
+//	}
+//	return 0;
+//}
+
+void bubble_sort(int arr[],int sz)
+{
+	//确定冒泡排序的趟数
+	int i = 0;
+	for (i = 0; i < sz - 1; i++)
+	{
+		int j = 0;
+		for (j = 0; j < sz - 1 - i; j++)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				int tmp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tmp;
+			}
+		}
+	}
+}
 #include<stdio.h>
 int main()
 {
-	int arr[3][4] = { {1,2,3},{4,5} }; //这里是:三行四列 的数组:第一个数表示横向的行数,第二个数表示竖向的列数.
+	int arr[] = { 9,8,7,6,5,4,3,2,1,0 };
 	int i = 0;
-	for (i = 0; i < 3; i++)
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	//对arr进行排序，排成升序
+	//arr是数组，我们对数组arr进行传参，实际上传递过去的是数组arr首元素的地址 &arr[0]
+	bubble_sort(arr, sz);//冒泡排序函数
+	for (i = 0; i < sz; i++)
 	{
-		int j = 0;
-		for (j = 0; j < 4; j++)
-		{
-			printf("%d ", arr[i][j]);
-		}
-		printf("\n");
+		printf("%d ", arr[i]);
 	}
 	return 0;
 }
