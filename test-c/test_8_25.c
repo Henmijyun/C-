@@ -538,3 +538,93 @@
 //	}
 //	return 0;
 //}
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+int main()
+{
+	int a = 0;
+	int b = 0;
+	int c = 1;
+	int d = 0;
+	int j = 0;
+	int i = 0;
+	while (c == 1)
+	{
+		printf("プログラム1：\n2つの数値を1つずつ入力してください。(2つの数値の大きさが違いように)\n");
+		scanf("%d%d", &a, &b);
+		if (a < b)
+		{
+			printf("1つ目の数値：%d\n2つ目の数値：%d\n\n大きい数値から順番は:", a, b);
+			while (a - 1 < b)
+			{
+				printf("%d,", b);
+				b--;
+			}
+			printf("\n\nもう一回入力しませんか。\n１.もう一回　　　　2.プログラム2へ　　 （1または2入力してください。）\n");
+			scanf("%d", &c);
+		}
+		else if (b < a)
+		{
+			printf("1つ目の数値：%d\n2つ目の数値：%d\n\n大きい数値から順番は:", a, b);
+			while (b - 1 < a)
+			{
+				printf("%d,", a);
+				a--;
+			}
+			printf("\n\nもう一回入力しませんか。\n１.もう一回　　　　2.プログラム2へ　　 （1または2入力してください。）\n");
+			scanf("%d", &c);
+		}
+		else
+		{
+			printf("入力した数値が間違っています。もう一回入力してください。\n");
+		}
+	}
+	while (1)
+	{
+		printf("プログラム2：\n2つの数値を1つずつ入力してください。(2つの数値の大きさが違いように)\n");
+		scanf("%d%d", &a, &b);
+		if (a < b)
+		{
+			j = 0;
+			printf("1つ目の数値：%d\n2つ目の数値：%d\n\n小さい数値から順番にプラスすると、\n%d", a, b, a);
+			for (i = 1; i <= (b - a); i++)
+			{
+				d = a + i;
+				j = j + d;
+				printf("+%d", d);
+			}
+			printf(" = %d\n", a + j);
+			printf("\n\nもう一回入力しませんか。\n１.もう一回　　　　2.終わり　　 （1または2入力してください。）\n");
+			scanf("%d", &c);
+			if (c == 2)
+			{
+				break;
+			}
+		}
+		else if (b < a)
+		{
+			j = 0;
+			printf("1つ目の数値：%d\n2つ目の数値：%d\n\n小さい数値から順番にプラスすると、\n%d", a, b, b);
+			for (i = 1; i <= (a - b); i++)
+			{
+				d = b + i;
+				j = j + d;
+				printf("+%d", d);
+			}
+			printf(" = %d\n", b + j);
+			printf("\n\nもう一回入力しませんか。\n１.もう一回　　　　2.終わり　　 （1または2入力してください。）\n");
+			scanf("%d", &c);
+			if (c == 2)
+			{
+				break;
+			}
+		}
+		else
+		{
+			printf("入力した数値が間違っています。もう一回入力してください。\n");
+		}
+	}
+	return 0;
+}

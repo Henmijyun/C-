@@ -256,14 +256,14 @@
 //}
 ////把函数写在int main()前面就可以不用声明
 
-#include<stdio.h>
-#include"add.h"
-int main()
-{
-	int a = 10;
-	int b = 20;
-	int sum = 0;
-	sum = Add(a, b);
-	printf("%d\n", sum);
-	return 0;
-}
+//#include<stdio.h>
+//#include"add.h"
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	int sum = 0;
+//	sum = Add(a, b);
+//	printf("%d\n", sum);
+//	return 0;
+//}
