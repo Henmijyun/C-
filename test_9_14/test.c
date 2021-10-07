@@ -421,18 +421,18 @@
 //		}
 //	}
 //}
-//#include<stdio.h>
-//int main()
-//{
-//	int arr[] = { 9,8,7,6,5,4,3,2,1,0 };
-//	int i = 0;
-//	int sz = sizeof(arr) / sizeof(arr[0]);
-//	//对arr进行排序，排成升序
-//	//arr是数组，我们对数组arr进行传参，实际上传递过去的是数组arr首元素的地址 &arr[0]
-//	bubble_sort(arr, sz);//冒泡排序函数
-//	for (i = 0; i < sz; i++)
-//	{
-//		printf("%d ", arr[i]);
-//	}
-//	return 0;
-//}
+#include<stdio.h>
+int main()
+{
+	int arr[] = { 9,8,7,6,5,4,3,2,1,0 };
+	int i = 0;
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	//对arr进行排序，排成升序
+	//arr是数组，我们对数组arr进行传参，实际上传递过去的是数组arr首元素的地址 &arr[0]
+	bubble_sort(arr, sz);//冒泡排序函数
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	return 0;
+}
