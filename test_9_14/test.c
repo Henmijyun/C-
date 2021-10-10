@@ -481,3 +481,8 @@
 //	return 0;
 //}
 
+int main()
+{
+	toulandeyitian();
+	return 0;
+}
