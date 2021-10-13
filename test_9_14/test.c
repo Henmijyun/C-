@@ -481,13 +481,13 @@
 //	return 0;
 //}
 
-void toulandeyitian(int a)
-{
-
-}
-int main()
-{
-	int a;
-	toulandeyitian(a);
-	return 0;
-}
+//void toulandeyitian(int a)
+//{
+//
+//}
+//int main()
+//{
+//	int a;
+//	toulandeyitian(a);
+//	return 0;
+//}

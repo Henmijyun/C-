@@ -189,3 +189,38 @@
 //	}
 //	return 0;
 //}
+
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+int main()
+{
+	int a = 0;
+	int b = 0;
+	int c = 0;
+	while (1)
+	{
+		printf("数値を入力してください。\n");
+		scanf("%d", &a);
+		if (a >= 0)
+		{
+			printf("入力値（%d）の約数は、以下の通りです。\n", a);
+			for (b = 0; b <= a; b++)
+			{
+				for (c = 0; c <= a; c++)
+				{
+					if (b * c == a)
+					{
+						printf("%d\n", c);
+					}
+				}
+			}
+		}
+		else
+		{
+			break;
+		}
+	}
+	return 0;
+}
