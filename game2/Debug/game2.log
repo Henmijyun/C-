@@ -1,0 +1,4 @@
+﻿  game.c
+C:\Users\11066\source\repos\game2\game.c(152,10): warning C4566: 由通用字符名称“\u266A”表示的字符不能在当前代码页(936)中表示出来
+C:\Users\11066\source\repos\game2\game.c(152,10): warning C4566: 由通用字符名称“\u2207”表示的字符不能在当前代码页(936)中表示出来
+  game2.vcxproj -> C:\Users\11066\source\repos\game2\Debug\game2.exe
