@@ -492,9 +492,10 @@
 //	return 0;
 //}
 
-
+#include<stdio.h>
 int main()
 {
-	int i = 0;
+	int a = 5 / 2;//商2余1
+	printf("a=%d\n", a);
 	return 0;
 }
