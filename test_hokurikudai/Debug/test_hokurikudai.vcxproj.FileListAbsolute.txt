@@ -1,1 +1,2 @@
 C:\Users\11066\source\repos\test_hokurikudai\Debug\test_hokurikudai.exe
+C:\Users\11066\source\repos\lianxiyong\test_hokurikudai\Debug\test_hokurikudai.exe

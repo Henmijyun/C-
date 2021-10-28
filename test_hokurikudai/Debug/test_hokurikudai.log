@@ -1,2 +1,3 @@
 ﻿  tset.c
-  test_hokurikudai.vcxproj -> C:\Users\11066\source\repos\test_hokurikudai\Debug\test_hokurikudai.exe
+C:\Users\11066\source\repos\lianxiyong\test_hokurikudai\tset.c(49,18): warning C4013: “strlen”未定义；假设外部返回 int
+  test_hokurikudai.vcxproj -> C:\Users\11066\source\repos\lianxiyong\test_hokurikudai\Debug\test_hokurikudai.exe
