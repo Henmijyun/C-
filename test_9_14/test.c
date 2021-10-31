@@ -495,7 +495,9 @@
 #include<stdio.h>
 int main()
 {
-	int a = 5 / 2;//商2余1
-	printf("a=%d\n", a);
+	int a = 5 / 2;//商2余1   5%2 得1   
+	double b = 5.0 / 2;
+	printf("a=%d\n", a);//得2
+	printf("b=%lf\n", b);//得2.500000默认6位
 	return 0;
 }
