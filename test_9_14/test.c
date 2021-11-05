@@ -648,26 +648,143 @@
 //}
 
 
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 10;
+//	char c = 'r';
+//	int* p = &c;
+//	int arr[10] = { 0 };
+//	//sizeof 计算的变量所占内存空间的大小,单位是字节
+//	printf("%d\n", sizeof(a));//4
+//	printf("%d\n", sizeof(int));
+//
+//	printf("%d\n", sizeof(c));//1
+//	printf("%d\n", sizeof(char));
+//
+//	printf("%d\n", sizeof(p));//32位平台,所以是4
+//	printf("%d\n", sizeof(char*));
+//
+//	printf("%d\n", sizeof(arr));//40
+//	printf("%d\n", sizeof(int [10]));//数组去掉数组名,就是它的类型
+//
+//	//sizeof后面接类型的时候,不能去掉括号
+//	int b = 10;
+//	short s = 0;//短整型2个字节
+//	printf("%d\n", sizeof(s = a + 5));//结果为2，虽然把整型int放入短整型中，但是sizeof只看容器s，所有为2
+//	printf("%d\n", s);//结果为0，因为在sizeof中的计算式不会被保存下来，也不会赋值，所以不影响原来s的值。
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 0;
+//	// ~ 按（二进制）位取反
+//	//00000000000000000000000000000000
+//	//11111111111111111111111111111111  - 补码
+//	//11111111111111111111111111111110  - 反码  (补码-1)
+//	//10000000000000000000000000000001  - 原码
+//	// 结果为 -1
+//	printf("%d\n", ~a);
+//
+//	int b = 11;
+//	//00000000000000000000000000001011 第三位变1的方法
+//	//00000000000000000000000000000100 （1<<2）
+//	//00000000000000000000000000001111   按位或 |
+//	b = b | (1 << 2);		
+//	printf("%d\n", b);//结果为15
+//	
+//	//返回到原来的1011
+//	//00000000000000000000000000001111 第三位变回0
+//	//00000000000000000000000000000100 (1<<2)
+//	//11111111111111111111111111111011 按位取反 ~
+//	//00000000000000000000000000001011 按位与 &
+//	b = b & (~(1 << 2));
+//	printf("%d\n", b);//结果回到了11
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 10;
+//	printf("%d\n", ++a);//前置++    先++,后使用
+//	printf("%d\n", a++);//后置++    先使用,再++
+//	// -- 的用法跟 ++ 一样
+//	return 0;
+//}
+
+//int main()
+//{
+//	int a = (int)3.14;//int a= int (3.14)这种是错误写法
+//	return 0;
+//}
+//#include <stdio.h> 
+//void test1(int arr[]) //因为数组传过来的是首元素的地址,传送地址相当于是指针,所以指针的大小是:32位平台为4,64位平台为8
+//{
+//	printf("%d\n", sizeof(arr));//(2) 结果为4
+//}
+//void test2(char ch[]) 
+//{
+//	printf("%d\n", sizeof(ch));//(4) 结果为4
+//}
+//int main() 
+//{
+//	int arr[10] = { 0 }; 
+//	char ch[10] = { 0 };
+//	printf("%d\n", sizeof(arr));//(1) 结果为40
+//	printf("%d\n", sizeof(ch));//(3) 结果为10
+//	test1(arr);
+//	test2(ch); 
+//	return 0;
+//}
+//
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 0;
+//	int b = 5;
+//	int c = a && b;//逻辑与 (真真为真,其他都是假)
+//	int d = a || b;//逻辑或 (假假为假,其他都为真)
+//	printf("%d %d\n", c, d);
+//	//c结果为0 ,d结果为1
+//
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int a = 2;
+//	int b = 3;
+//	int max = 0;
+//
+//	if (a < 5)
+//		b = 3;
+//	else
+//		b = -3;
+//	b = (a < 5 ? 3 : -3);
+//
+//	if (a > b)
+//		max = a;
+//	else
+//		max = b;
+//	max = (a > b ? a : b);
+//	return 0;
+//}
+
 #include<stdio.h>
-int main()
+int get_max(int x, int y)  //这里的()是定义函数的语法规则,不是函数调用操作符
+{
+	return x > y ? x : y;
+}
+int main() //函数调用操作符的操作数是:函数名, 传送的数据
 {
 	int a = 10;
-	char c = 'r';
-	int* p = &c;
-	int arr[10] = { 0 };
-	//sizeof 计算的变量所占内存空间的大小,单位是字节
-	printf("%d\n", sizeof(a));//4
-	printf("%d\n", sizeof(int));
-
-	printf("%d\n", sizeof(c));//1
-	printf("%d\n", sizeof(char));
-
-	printf("%d\n", sizeof(p));//32位平台,所以是4
-	printf("%d\n", sizeof(char*));
-
-	printf("%d\n", sizeof(arr));//40
-	printf("%d\n", sizeof(int [10]));//数组去掉数组名,就是它的类型
-
-	//sizeof后面接类型的时候,不能去掉括号
+	int b = 20;
+	//调用函数的时候的()就是函数调用操作符
+	int max = get_max(a, b);  //这里的操作数是:函数名get_max,传送的数据a和b
+	printf("max = %d\n", max);
 	return 0;
 }
