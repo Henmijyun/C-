@@ -154,10 +154,134 @@
 //	return 0;
 //}
 
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	char c[5];
+//	指针和指针相减的前提:
+//	 两个指针要指向同一块空间;
+//	printf("%d\n", &arr[9] - &c[0]);//err;这里两个类型是不同的,不能进行指针相减
+//
+//	printf("%d\n", &arr[9] - &arr[0]); //结果为9 （指针-指针-->结果为两个指针之间的元素个数）
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 0;
+//	int arr[3][3] = { 0 };
+//	int i = 0;
+//	int j = 0;
+//
+//	for (i = 0; i < 3; i++)
+//	{
+//		for (j = 0; j < 3; j++)
+//		{
+//			scanf("%d%d", &i,&j);
+//
+//		}
+//	}
+//	for (i = 0; i < 3; i++)
+//	{
+//		for (j = 0; j < 3; j++)
+//		{
+//			printf("%d\n",arr[i][j]);
+//
+//		}
+//	}
+//	
+//	return 0;
+//}
+
+//#include<string.h>
+//#include<stdio.h>
+////方法有3种:
+//// 
+////计数器
+////int my_strlen(char* str) //strlen()原理是从 首元素 开始找,直到找到 \0 才结束;
+////{
+////	int count = 0;
+////	while (*str != '\0')
+////	{
+////		count++;
+////		str++;
+////	}
+////	return count;
+////}
+//
+////递归
+////int my_strlen(char* str)
+////{
+////
+////	if (*str != '\0')
+////		return 1 + my_strlen(str+1);//这里不能写++,要写+1 ;最后一次返回1+0,第二次返回1+1,第三次返回1+2;
+////	else
+////		return 0;
+////}
+//
+////指针-指针
+//my_strlen(char* str)
+//{
+//	char* start = str;
+//	while (*str != '\0')
+//	{
+//		str++;
+//	}
+//	return str - start;
+//}
+//
+//int main()
+//{
+//	//strlen(); - 求字符串长度
+//	
+//	int len = my_strlen("abc");//这里字符串传给strlen()的时候,传的是首元素a的地址;
+//	printf("%d\n", len);
+//	return 0;
+//}
+
+//for (vp = &values[N_values]; vp > &values[0];)
+//{
+//	*--vp = 0;
+//}
+//
+//for (vp = &values[N_values-1]; vp >= &values[0];vp--)
+//{
+//	*vp = 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	printf("%p\n", arr);//数组名 是否为数组首元素的地址呢?
+//	printf("%p\n", &arr[0]);//第一个元素的地址
+//	//结果一样,证明数组的地址 (数组名) ,就是首元素的地址
+//	//或者说是首元素的首个字节的地址
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int* p = arr;
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		//printf("%p <==> %p\n", &arr[i], p + i); //结果地址都一样,证明了 p+i 的地址就是 arr[i] 的地址
+//		//也就是说: 
+//		*(p + i) = i;
+//	}
+//	for (i = 0; i < 10; i++) //利用这个原理进行打印
+//	{
+//		printf("%d ", *(p + i));//结果为0123456789
+//	}
+//	return 0;
+//}
 
 int main()
 {
-	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
-	printf("%d\n", );
-	return 0;
+	int arr[10]
 }
