@@ -281,7 +281,200 @@
 //	return 0;
 //}
 
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int* p = arr; //数组名
+//	printf("%d\n", arr[2]);
+//	printf("%d\n", p[2]); // p[2] --> *(p+2)
+//
+//	// []是一个操作符  2和arr是两个操作数
+//	// a+b
+//	// b+a
+//	printf("%d\n", 2[arr]);
+//	printf("%d\n", arr[2]); //编译器在编译的时候: arr[2] --> *(arr+2) --> *(2+arr) --> 2[arr]
+//	 
+//	// arr[2] <==> *(arr+2) <==> *(p+2) <==> *(2+p) <==> *(2+arr) == 2[arr]
+//	// 2[arr] <==> *(2+arr) 
+//	return 0;
+//}
+////上面4个打印出来的结果都为3; 因为它们的底层性质都一样: *(arr+2)
+
+//int main()
+//{
+//	int a = 10;
+//	int* pa = &a;//pa是指针变量,是一级指针
+//
+//	int** ppa = &pa;//pa也是个变量,&pa取出pa在内存中的起始地址
+//	//ppa就是一个二级指针变量
+//	// *ppa == pa
+//	// *pa == a
+//	//  所以 **ppa == a
+//
+//	int*** pppa = &ppa;
+//	//同理, pppa是三级指针
+//	//同理可以有4,5,6..级指针,但是除了1,2级以外的,都很少用到
+//	return 0;
+//}
+
+
+//指针数组 - 是个数组
+
+//int main()
+//{
+//	int arr[10];//整型数组 - 存放整型的数组就是整型数组
+//	char ch[5];//字符数组 - 存放的是字符
+//	//指针数组 - 存放指针的数组
+//	int* parr[5]; //整型指针的数组
+//	char* parr[5]; //parr是一个数组,有5个元素,每个元素是一个字符指针
+//	return 0;
+//}
+
+//struct B
+//{
+//	char c;
+//	short s;
+//	double d;
+//};
+//struct Stu  //创建类型
+//{
+//	//成员变量
+//	struct B sb;//结构体的成员可以是另一个结构体
+//	char name[20];//名字
+//	int age;//年龄
+//	char id[20];//学号
+//} s1,s2; //s1和s2也是结构体变量
+////s1和s2是全局变量
+//
+//int main()
+//{
+//	struct Stu s = { {'w',20,3.14},"张三",30,202005034 };//创建对象
+//	//这里的s是局部变量
+//
+//	return 0;
+//}
+
+//
+//#include<stdio.h>
+//struct Point
+//{
+//	int x;
+//	int y;
+//}p1;//创建对象
+//
+//struct Node
+//{
+//	int data;
+//	struct Point P;
+//	struct Node* next;//可以是指针
+//}n1 = { 10,{4,5},NULL };//创建n1，并给n1初始化（全局变量）
+//
+//int main()
+//{
+//	struct Point p2;//创建对象
+//	struct Point p3 = { 5,4 };//初始化（局部变量）
+//	return 0;
+//}
+
+//#include<stdio.h>
+//struct B
+//{
+//	char a;
+//	short b;
+//	double c;
+//};
+//struct Stu
+//{
+//	struct B sb;
+//	char name[20];
+//	int age;
+//	char id[20];
+//};
+//int main()
+//{
+//	struct Stu s = { {'D',55,3.14},"w",20,"2020m1234" };
+//	printf("%c\n", s.sb.a);
+//	printf("%d\n", s.sb.b);
+//	printf("%s\n", s.name);
+//	printf("%.2f\n", s.sb.c);
+//	struct Stu* ps = &s;  //结构体指针
+//	printf("%c\n", (*ps).sb.a); //结构体解引用
+//	printf("%c\n", ps->sb.a);  //ps->sb == (*ps).sb  指针
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//struct B
+//{
+//	char c;
+//	short s;
+//	double d;
+//};
+//struct Stu
+//{
+//	//成员变量
+//	struct B sb;
+//	char name[20];
+//	int age;
+//	char id[20];
+//};
+//void print1(struct Stu t)
+//{
+//	printf("%c %d %lf %s %d %s\n", t.sb.c, t.sb.s, t.sb.d, t.name, t.age, t.id);
+//}
+//void print2(struct Stu* ps)
+//{
+//	printf("%c %d %lf %s %d %s\n", ps->sb.c, ps->sb.s, ps->sb.d, ps->name, ps->age, ps->id);
+//}
+//int main()
+//{
+//	struct Stu s = { {'w',20,3.14},"张三",30,"2020m146" };
+//	//写一个函数打印s的内容
+//	
+//	print1(s);   //传值调用    s有多大，t就要创建多大的空间来接收s，而且在t里面不可以修变s的数据  （浪费时间和空间，不够好）
+//	print2(&s);   //传址调用    只传了一个指针大小的空间，4或者8个字节，可以在ps里面修改s的数据  （效率更高，更好）
+//	//把结构体的参数传给函数的两种写法
+//	//传值-慢，费空间，不能改值，所以安全
+//	//传址-快，省空间，可以改值，所以可能不够安全  （但是这种是建议用的）
+//	return 0;
+//}
+
+
+int Add(int x, int y)
+{
+	int z = 0;
+	z = x + y;
+	return z;
+}
+int main()              
+{
+	int a = 3;
+	int b = 5;
+	int c = 0;
+	c = Add(a, b); //大部分情况下，都是先传b再传a，从右 往 左传； 因为传参的时候会临时创建空间，用于传参，所以也属于压栈操作；
+	return 0;
+};
+//每一个函数调用都会在内存的栈区上开辟一块空间！
+//内存中：栈区、堆区、静态区
+//main（）在栈区中申请一块空间：
+//    依次放入a，b，c（从上往下，串葫芦）
+//    向Add()传参时，再放入b和a的临时空间，也是从上往下（压栈）
+//        Add（）再占用一片空间
+//           在Add()中创建z，定义int x,int y (x和y不在Add()占用的空间里)
+//           Add()在用x和y时，是往前面访问传参时创建的临时空间，
+//           z的值改变
+//    返回z的值到c中
+//    清空Add()和传参时创建的临时空间a，b  （从上往下清空，串葫芦）
+// 
+//因为传参时创建的临时b，a空间压着之前的a，b，c空间，所以这就叫压栈。
+//
+//函数栈帧的创建和销毁
+
+
 int main()
 {
-	int arr[10]
+
+	return 0;
 }
