@@ -441,21 +441,21 @@
 //	return 0;
 //}
 
-
-int Add(int x, int y)
-{
-	int z = 0;
-	z = x + y;
-	return z;
-}
-int main()              
-{
-	int a = 3;
-	int b = 5;
-	int c = 0;
-	c = Add(a, b); //大部分情况下，都是先传b再传a，从右 往 左传； 因为传参的时候会临时创建空间，用于传参，所以也属于压栈操作；
-	return 0;
-};
+//
+//int Add(int x, int y)
+//{
+//	int z = 0;
+//	z = x + y;
+//	return z;
+//}
+//int main()              
+//{
+//	int a = 3;
+//	int b = 5;
+//	int c = 0;
+//	c = Add(a, b); //大部分情况下，都是先传b再传a，从右 往 左传； 因为传参的时候会临时创建空间，用于传参，所以也属于压栈操作；
+//	return 0;
+//};
 //每一个函数调用都会在内存的栈区上开辟一块空间！
 //内存中：栈区、堆区、静态区
 //main（）在栈区中申请一块空间：
@@ -473,8 +473,53 @@ int main()
 //函数栈帧的创建和销毁
 
 
+
+//模拟实现strcpy
+//strcpy - 字符串拷贝
+#include<string.h>
+#include<stdio.h>
+
+//版本1
+//void my_strcpy(char* dest,char* src) //dest目的地，src源头 
+//{
+//	while (*src != '\0')
+//	{
+//		*dest = *src;
+//		dest++;
+//		src++;
+//	}
+//	*dest = *src;
+//	//可以用，但写得不好
+//}
+//版本2
+//void my_strcpy(char* dest, char* src) //dest目的地，src源头 
+//{
+//	while (*src != '\0')
+//	{
+//		*dest++ = *src++; //后置++，先使用再++，所以这里先*解引用，再赋值，最后++
+//	}
+//	*dest = *src;
+//}
+//版本3
+void my_strcpy(char* dest, char* src) //dest目的地，src源头 
+{
+	while (*dest++ = *src++) 
+	{
+		; //既拷贝了'\0'，又使得循环停止（'\0'的ASCII值为0）
+	}
+}
+
 int main()
 {
+	char arr1[20] = "xxxxxxxxxxxx";
+	char arr2[] = "hello";
 
+	//strcpy(arr1, arr2);// 1.目标空间的起始地址  2.源空间的起始地址
+	//后面的数据拷贝到前面里；arr2的\0也会跟着一起拷贝过去 
+	// //需要头文件string.h
+	//printf("%s\n", arr1);//结果为hello
+
+	my_strcpy(arr1, arr2);
+	printf("%s\n", arr1);//结果为hello
 	return 0;
 }
