@@ -476,8 +476,8 @@
 
 //模拟实现strcpy
 //strcpy - 字符串拷贝
-#include<string.h>
-#include<stdio.h>
+//#include<string.h>
+//#include<stdio.h>
 
 //版本1
 //void my_strcpy(char* dest,char* src) //dest目的地，src源头 
@@ -501,25 +501,114 @@
 //	*dest = *src;
 //}
 //版本3
-void my_strcpy(char* dest, char* src) //dest目的地，src源头 
-{
-	while (*dest++ = *src++) 
-	{
-		; //既拷贝了'\0'，又使得循环停止（'\0'的ASCII值为0）
-	}
-}
+//#include<assert.h>
+//void my_strcpy(char* dest, const char* src) //dest目的地，src源头 
+//{
+//	assert(src != NULL);//断言   如果arr2为空指针，则会报错，并提示assert的错误在哪一行
+//	assert(dest != NULL);//很实用！不仅指针可以用，其他都可以用
+//
+//	while (*dest++ = *src++) 
+//	{
+//		; //既拷贝了'\0'，又使得循环停止（'\0'的ASCII值为0）
+//	}
+//}
+//
+//int main()
+//{
+//	char arr1[20] = "xxxxxxxxxxxx";
+//	char arr2[] = "hello";
+//
+//	//strcpy(arr1, arr2);// 1.目标空间的起始地址  2.源空间的起始地址
+//	//后面的数据拷贝到前面里；arr2的\0也会跟着一起拷贝过去 
+//	// //需要头文件string.h
+//	//printf("%s\n", arr1);//结果为hello
+//
+//	my_strcpy(arr1, arr2);
+//	printf("%s\n", arr1);//结果为hello
+//	return 0;
+//}
 
+
+//const 修饰变量，这个变量就会被称为 常变量 ，不能被修改，但本质上还是变量。
+//#include<stdio.h>
+//int main()
+//{
+//	const int num = 10;
+//	//num = 20;//err 报错
+//
+//	int const*  p = &num;
+//	int n = 100;
+//	//const修饰指针变量的时候
+//	//const 如果放在*的右边，修饰的是指针变量p，表示指针变量不能被改变。
+//	//      但是指针指向的内容可以被改变。
+//	// 
+//	*p = 20; //ok
+//	p = &n;//err
+//
+//	//const int* p = &num;
+//	//int n = 100;
+//	////const修饰指针变量的时候
+//	////const 如果放在*的左边，修饰的是*p，表示指针指向的内容，是不能通过指针来改变的。
+//	////      但是指针变量本身是可以被修改的。
+//	//// 
+//	////*p = 20; //err
+//	//p = &n;//ok
+//
+//	printf("%d\n", num);
+//	return 0;
+//}
+
+
+
+
+ //版本3
+
+//strcpy 这个库函数 其实返回的是目标空间的起始地址
+
+
+//#include<stdio.h>
+//#include<assert.h>  
+//char* my_strcpy(char* dest, const char* src) 
+//
+//{
+//	assert(src != NULL);
+//	assert(dest != NULL);
+//	char* ret = dest;
+//	while (*dest++ = *src++)  
+//	{
+//		; 
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	char arr1[20] = "xxxxxxxxxxxx";
+//	char arr2[] = "hello";
+//	printf("%s\n", my_strcpy(arr1, arr2));
+//	return 0;
+//}
+
+//健壮性 
+//鲁棒性
+// size_t - unsigned int  无符号整型类型
+#include<assert.h>
+#include<stdio.h>
+size_t my_strlen(const char* str)
+{
+	//assert(str != NULL);
+	assert(str);
+	int count = 0;
+
+	while (*str != '\0')
+	{
+		count++;
+		str++;
+	}
+	return count;
+}
 int main()
 {
-	char arr1[20] = "xxxxxxxxxxxx";
-	char arr2[] = "hello";
-
-	//strcpy(arr1, arr2);// 1.目标空间的起始地址  2.源空间的起始地址
-	//后面的数据拷贝到前面里；arr2的\0也会跟着一起拷贝过去 
-	// //需要头文件string.h
-	//printf("%s\n", arr1);//结果为hello
-
-	my_strcpy(arr1, arr2);
-	printf("%s\n", arr1);//结果为hello
+	char arr[] = "11,3545,35";
+	printf("%d\n", my_strlen(arr));
 	return 0;
 }
