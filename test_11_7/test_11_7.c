@@ -591,24 +591,119 @@
 //健壮性 
 //鲁棒性
 // size_t - unsigned int  无符号整型类型
-#include<assert.h>
-#include<stdio.h>
-size_t my_strlen(const char* str)
-{
-	//assert(str != NULL);
-	assert(str);
-	int count = 0;
+//#include<assert.h>
+//#include<stdio.h>
+//size_t my_strlen(const char* str)
+//{
+//	//assert(str != NULL);
+//	assert(str);
+//	int count = 0;
+//
+//	while (*str != '\0')
+//	{
+//		count++;
+//		str++;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	char arr[] = "11,3545,35";
+//	printf("%d\n", my_strlen(arr));
+//	return 0;
+//}
 
-	while (*str != '\0')
-	{
-		count++;
-		str++;
-	}
-	return count;
-}
+////写一个代码计算一个数字的二进制数里，有几个1 
+//#include<stdio.h>
+//int NumberOf1(int n)
+//{
+//	int count = 0;
+//	while (n)
+//	{
+//		n = n & (n - 1);//每运行一次都会减去一个二进制的 1，直到全部 1 变成 0
+//		count++;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	int n = -1;
+//	printf("%d\n", NumberOf1(n));
+//	return 0;
+//}
+////写一个代码判断一个数字是否为2的n次方
+////2的n次方的数字，二进制只有一个1
+////k & (k - 1) == 0
+
+
+//#include<stdio.h>
+//int NumberOf1(int n)
+//{
+//	int count = 0;
+//	while (n)
+//	{
+//		n = n & (n - 1);//每运行一次都会减去一个二进制的 1，直到全部 1 变成 0
+//		count++;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	int m = 0;
+//	int n = 0;
+//	int i = 0;
+//	int count = 0;
+//	scanf("%d %d", &m, &n);
+//	int ret = m ^ n; //^异或；相同为0，相异为1
+//	//统计一下ret的二进制中有几个1，就说明m和n的二进制位中有几个位不同
+//	count = NumberOf1(ret);
+//	/*for (i = 0; i < 32; i++)
+//	{
+//		if (((m >> i) & 1) != ((n >> i) & 1))
+//		{
+//			count++;
+//		}
+//	}*/
+//	printf("%d\n", count);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	//获取n的二进制中的奇数位和偶数位
+//	//00000000000000000000000000001010  10
+//	int i = 0;
+//	//打印偶数位
+//	for (i = 31; i >= 1; i -= 2)
+//	{
+//		printf("%d ", ((n >> i) & 1));
+//	}
+//	printf("\n");
+//	//打印奇数位
+//	for (i = 30; i >= 0; i -= 2)
+//	{
+//		printf("%d ", ((n >> i) & 1));
+//	}
+//	return 0;
+//}
+
+#include<stdio.h>
 int main()
 {
-	char arr[] = "11,3545,35";
-	printf("%d\n", my_strlen(arr));
+	int arr[] = { 1,2,3,4,5 };
+	short* p = (short*)arr;  //从int整型，强制类型转换成short短整型，4个字节变2个字节
+	int i = 0;
+	for (i = 0; i < 4; i++)
+	{
+		*(p + i) = 0; //用改过类型的*p每次赋值给2个字节的数，4次只改变了8个字节
+	}
+
+	for (i = 0; i < 5; i++)
+	{
+		printf("%d ", arr[i]); //打印的是没改前的arr结果为 0 0 3 4 5  前面8个字节被改0，后面不变
+	}
 	return 0;
 }
