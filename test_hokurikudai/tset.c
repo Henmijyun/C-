@@ -97,39 +97,58 @@
 //}
 
 //第7回
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include<stdio.h>
+//float My_Flmax(float* arr,int num)
+//{
+//	int x = 0;
+//	float max = arr[0];
+//	for (x = 1; x < num; x++)
+//	{
+//		if (max < arr[x])
+//		{
+//			max = arr[x];
+//		}
+//	}
+//	return max;
+//}
+//int main()
+//{
+//	int Num = 0;
+//	int i = 0;
+//	int a = 1;
+//	float Arr[50] = { 0 };
+//	while (a)
+//	{
+//		printf("入力する数値の数:");
+//		scanf("%d", &Num);
+//		for (i = 0; i < Num; i++)
+//		{
+//			printf("%d つ目の数値を入力:", i + 1);
+//			scanf("%f", &Arr[i]);
+//		}
+//		printf("最大の入力値は、%.2fです。\n------------\nもう一回？(1\\0)", My_Flmax(Arr, Num));
+//		scanf("%d", &a);
+//		printf("\n\n");
+//	}
+//	return 0;
+//}
+
+//第八回
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
-float My_Flmax(float arr[],int num)
-{
-	int x = 0;
-	float max = arr[0];
-	for (x = 1; x < num; x++)
-	{
-		if (max < arr[x])
-		{
-			max = arr[x];
-		}
-	}
-	return max;
-}
 int main()
 {
-	int Num = 0;
-	int i = 0;
-	int a = 1;
-	float Arr[50] = { 0 };
-	while (a)
-	{
-		printf("入力する数値の数:");
-		scanf("%d", &Num);
-		for (i = 0; i < Num; i++)
-		{
-			printf("%d つ目の数値を入力:", i + 1);
-			scanf("%f", &Arr[i]);
-		}
-		printf("最大の入力値は、%.2fです。\n------------\nもう一回？(1\\0)", My_Flmax(Arr, Num));
-		scanf("%d", &a);
-		printf("\n\n");
-	}
+	int a = 12;
+	int* p_a = &a;
+	float b = 3.45;
+	float* p_b = &b;
+	printf("aのアドレスは、%p\naの値は、%d\n", &a, a);
+
+	printf("p_aのアドレスは、%p\np_aの値は、%p\n",&p_a, p_a);
+
+	printf("bのアドレスは、%p\nbの値は、%.2f\n", &b, b);
+
+	printf("p_bのアドレスは、%p\np_bの値は、%p\n",&p_b,p_b);
 	return 0;
 }
