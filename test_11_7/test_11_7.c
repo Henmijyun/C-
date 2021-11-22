@@ -942,8 +942,8 @@ int check_sys()
 int main()
 {
 	//写代码判断当前机器的字节序
-	int a = 1;
-	char* p = (char*)&a; //本来应该放在int*类型里面，但是这里放在char*，所以需要强制类型转换(char*)
+	//int a = 1;
+	//char* p = (char*)&a; //本来应该放在int*类型里面，但是这里放在char*，所以需要强制类型转换(char*)
 	int ret = check_sys();
 	if (ret == 1)
 	{
