@@ -1,4 +1,4 @@
-//#define _CRT_SECURE_NO_WARNINGS 1
+ï»¿//#define _CRT_SECURE_NO_WARNINGS 1
 //#include<stdio.h>
 //int main()
 //{
@@ -9,7 +9,7 @@
 //	for (i = 0; i < 100; i++)
 //	{
 //
-//		printf("Êı‚¤òÈëÁ¦:> ");
+//		printf("æ•°å€¤ã‚’å…¥åŠ›:> ");
 //		scanf(" %d", &a[i]);
 //		k = a[i];
 //		if (k == 0)
@@ -18,11 +18,11 @@
 //		}
 //		else if (k < 0)
 //		{
-//			printf("égß`¤¨¤Ş¤·¤¿¡££¨Êı‚£¼0²»¿É£©¤â¤¦Ò»»ØÈëÁ¦¤·¤Æ¤¯¤À¤µ¤¤¡£\n");
+//			printf("é–“é•ãˆã¾ã—ãŸã€‚ï¼ˆæ•°å€¤ï¼œ0ä¸å¯ï¼‰ã‚‚ã†ä¸€å›å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚\n");
 //			i--;
 //		}
 //	}
-//	printf("Êı‚Ò»ÓE: ");
+//	printf("æ•°å€¤ä¸€è¦§: ");
 //	for (j = i-1; j >= 0; j--)
 //	{
 //		
@@ -30,13 +30,13 @@
 //		k = a[j] + k;
 //	}
 //	h = (float)k / i;
-//	printf("\nºÏÓ‹: %d\nÆ½¾ù: %.2f", k,h);
+//	printf("\nåˆè¨ˆ: %d\nå¹³å‡: %.2f", k,h);
 //	return 0;
 //}
 
 //Hokuriku University
 
-//µÚ6»Ø
+//ç¬¬6å›
 //#define _CRT_SECURE_NO_WARNINGS 1
 //#include<stdio.h>
 //int main()
@@ -47,7 +47,7 @@
 //	char c, d;
 //	int b = 1;
 //	int a = 0;
-//	int len = strlen(cs);  //len¤Ïch¤ÎéL¤µ
+//	int len = strlen(cs);  //lenã¯chã®é•·ã•
 //	while (b)
 //	{
 //		for (v = 0; v < len; v++)
@@ -58,17 +58,17 @@
 //				ch[v] = '\0';
 //			}
 //		}
-//		printf("’·ÈëÇ°¤ÎÎÄ×ÖÁĞ£º");
+//		printf("æŒ¿å…¥å‰ã®æ–‡å­—åˆ—ï¼š");
 //		puts(cs);
-//		printf("¤É¤ÎÎ»ÖÃ¤ÎÎÄ×Ö¤ÎÇ°¤Ë’·Èë¤·¤Ş¤¹¤«£¿");
+//		printf("ã©ã®ä½ç½®ã®æ–‡å­—ã®å‰ã«æŒ¿å…¥ã—ã¾ã™ã‹ï¼Ÿ");
 //		scanf("%d", &a);
 //		if (a < 0 || a > len)
 //		{
-//			printf("Î»ÖÃÖ¸¶¨¤¬Õı¤·¤¯¤¢¤ê¤Ş¤»¤ó\n---------------------------\n");
+//			printf("ä½ç½®æŒ‡å®šãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“\n---------------------------\n");
 //		}
 //		else if (a >= 0 && a <= len)
 //		{
-//			printf("’·Èëáá¤ÎÎÄ×ÖÁĞ£º");
+//			printf("æŒ¿å…¥å¾Œã®æ–‡å­—åˆ—ï¼š");
 //			for (i = 0; i < len; i++)
 //			{
 //				if (i == a)
@@ -88,7 +88,7 @@
 //				}
 //				printf("%c", ch[i]);
 //			}
-//			printf("¤â¤¦Ò»»Ø¤ä¤ê¤Ş¤»¤ó¤«£¨1.¤â¤¦Ò»»Ø¡¡0.½K¤ï¤ê£©£º");
+//			printf("ã‚‚ã†ä¸€å›ã‚„ã‚Šã¾ã›ã‚“ã‹ï¼ˆ1.ã‚‚ã†ä¸€å›ã€€0.çµ‚ã‚ã‚Šï¼‰ï¼š");
 //			scanf("%d", &b);
 //			printf("\n---------------------------\n");
 //		}
@@ -96,7 +96,7 @@
 //	return 0;
 //}
 
-//µÚ7»Ø
+//ç¬¬7å›
 //#define _CRT_SECURE_NO_WARNINGS 1
 //#include<stdio.h>
 //float My_Flmax(float* arr,int num)
@@ -120,35 +120,68 @@
 //	float Arr[50] = { 0 };
 //	while (a)
 //	{
-//		printf("ÈëÁ¦¤¹¤ëÊı‚¤ÎÊı:");
+//		printf("å…¥åŠ›ã™ã‚‹æ•°å€¤ã®æ•°:");
 //		scanf("%d", &Num);
 //		for (i = 0; i < Num; i++)
 //		{
-//			printf("%d ¤ÄÄ¿¤ÎÊı‚¤òÈëÁ¦:", i + 1);
+//			printf("%d ã¤ç›®ã®æ•°å€¤ã‚’å…¥åŠ›:", i + 1);
 //			scanf("%f", &Arr[i]);
 //		}
-//		printf("×î´ó¤ÎÈëÁ¦‚¤Ï¡¢%.2f¤Ç¤¹¡£\n------------\n¤â¤¦Ò»»Ø£¿(1\\0)", My_Flmax(Arr, Num));
+//		printf("æœ€å¤§ã®å…¥åŠ›å€¤ã¯ã€%.2fã§ã™ã€‚\n------------\nã‚‚ã†ä¸€å›ï¼Ÿ(1\\0)", My_Flmax(Arr, Num));
 //		scanf("%d", &a);
 //		printf("\n\n");
 //	}
 //	return 0;
 //}
 
-//µÚ°Ë»Ø
+//ç¬¬å…«å›
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 12;
+//	int* p_a = &a;
+//	float b = 3.45;
+//	float* p_b = &b;
+//	printf("aã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã¯ã€%p\naã®å€¤ã¯ã€%d\n", &a, a);
+//
+//	printf("p_aã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã¯ã€%p\np_aã®å€¤ã¯ã€%p\n",&p_a, p_a);
+//
+//	printf("bã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã¯ã€%p\nbã®å€¤ã¯ã€%.2f\n", &b, b);
+//
+//	printf("p_bã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã¯ã€%p\np_bã®å€¤ã¯ã€%p\n",&p_b,p_b);
+//	return 0;
+//}
+
+//ç¬¬ä¹å›ã€€ã‚ªãƒ—ã‚·ãƒ§ãƒ³èª²é¡Œ
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
+#include<string.h>
+#define NUM 100
+void reverse(char* pt);
+
 int main()
 {
-	int a = 12;
-	int* p_a = &a;
-	float b = 3.45;
-	float* p_b = &b;
-	printf("a¤Î¥¢¥É¥ì¥¹¤Ï¡¢%p\na¤Î‚¤Ï¡¢%d\n", &a, a);
-
-	printf("p_a¤Î¥¢¥É¥ì¥¹¤Ï¡¢%p\np_a¤Î‚¤Ï¡¢%p\n",&p_a, p_a);
-
-	printf("b¤Î¥¢¥É¥ì¥¹¤Ï¡¢%p\nb¤Î‚¤Ï¡¢%.2f\n", &b, b);
-
-	printf("p_b¤Î¥¢¥É¥ì¥¹¤Ï¡¢%p\np_b¤Î‚¤Ï¡¢%p\n",&p_b,p_b);
+	char ch[NUM] = { 0 };
+	printf("æ–‡å­—åˆ—ã‚’å…¥åŠ›ã—ã¦ä¸‹ã•ã„ï¼š");
+	gets(ch);                           //å…¥åŠ›
+	reverse(ch);
+	printf("\nåè»¢çµæœ:");
+	puts(ch);                          //å‡ºåŠ›
 	return 0;
 }
+
+void reverse(char* pt)
+{
+	int len = strlen(pt);     //æ–‡å­—åˆ—ã®é•·ã•ï¼ˆæœ€çµ‚ç›®ã®ãŸã‚ã«ï¼‰
+	char* pa = pt + len - 1;
+	while (pt < pa)           //æ–‡å­—åˆ—ã®ä¸€ç•ªç›®ã®é ˜åŸŸ < æœ€çµ‚ç›®é ˜åŸŸ
+	{
+		char tmp = *pa;
+		*pa = *pt;
+		*pt = tmp;       //äº¤æ›
+		pt++;           //æ¬¡ã¸
+		pa--;
+	}
+}
+//Visyal Studio2019ã‚’ä½¿ã£ã¦ã„ã¾ã™ã®ã§ã€ã‚ªãƒ—ã‚·ãƒ§ãƒ³èª²é¡Œã«ã¤ã„ã¦å®Ÿè¡Œçµæœã«ã€Œï¼„ã€€gccã€€-oã€€XXXX.cÂ  ã€ãŒä»˜ã„ã¦
