@@ -1113,33 +1113,72 @@
 //}
 
 
+//int main()
+//{
+//	int n = 9; //4个字节
+//
+//	float* pFloat = (float*)&n;
+//	printf("n的值为：%d\n", n);               //9        以整型的视角去输出整型数
+//	printf("*pFloat的值为：%f\n", *pFloat);   //0.000000 以浮点数的视角去输出整型数
+//
+//	*pFloat = 9.0;
+//	printf("num的值为：%d\n", n);             //1091567616 以整型数的视角去输出浮点数
+//	printf("*pFloat的值为：%f\n", *pFloat);   //9.000000   以浮点数的视角去输出浮点数
+//	//说明浮点数 和整型 在内存中的存储方式是不一样的。
+//	return 0;
+//}
+
+//int main()
+//{
+//	float f = 5.5f;//f表示浮点数 单精度浮点数
+//	//101.1
+//	// 1.011*2^2    小数点移动几位，就是2的几次方
+//	// S=0 M=1.011 E=2
+//	// S=0 M=011 E=2+127 //存的时候
+//	// 先放S->E->M
+//	// 0 10000001 011 00000000000000000000 (M不够后面就补满0)
+//	// 0100 0000 1011 0000 0000 0000 0000 0000
+//	// 4    0    b    0     0    0    0    0
+//	// 40 b0 00 00 （十六进制）
+//	//以上是浮点数存入内存中的过程 （十进制->二进制->十六进制）
+//	return 0;
+//}
+
+#include<stdio.h>
 int main()
 {
-	int n = 9; //4个字节
+	char ch = 'q';
+	char* pc = &ch;
 
-	float* pFloat = (float*)&n;
-	printf("n的值为：%d\n", n);               //9        以整型的视角去输出整型数
-	printf("*pFloat的值为：%f\n", *pFloat);   //0.000000 以浮点数的视角去输出整型数
+	//本质上是把"hello bit"这个字符串的首字符的地址存储在了ps中
 
-	*pFloat = 9.0;
-	printf("num的值为：%d\n", n);             //1091567616 以整型数的视角去输出浮点数
-	printf("*pFloat的值为：%f\n", *pFloat);   //9.000000   以浮点数的视角去输出浮点数
-	//说明浮点数 和整型 在内存中的存储方式是不一样的。
+	const char* ps = "hello bit"; //存放首字符 h 的地址
+	char arr[] = "hello bit"; //全部放进去数组中
+	
+	//printf("%c\n", *ps);//结果为 h
+	printf("%s\n", ps);//结果为 hello bit   通过首字符的地址，来找到整个字符串
+	printf("%s\n", arr);//结果为 hello bit   同上
 	return 0;
 }
 
+#include <stdio.h> 
 int main()
 {
-	float f = 5.5f;
-	//101.1
-	// 1.011*2^2    小数点移动几位，就是2的几次方
-	// S=0 M=1.011 E=2
-	// S=0 M=011 E=2+127 
-	// 先放S->E->M
-	// 0 10000001 011 00000000000000000000 (M不够后面就补满0)
-	// 0100 0000 1011 0000 0000 0000 0000 0000
-	// 4    0    b    0     0    0    0    0
-	// 40 b0 00 00 （十六进制）
-	//以上是浮点数存入内存中的过程 （十进制->二进制->十六进制）
-	return 0;
+	char str1[] = "hello bit.";
+	char str2[] = "hello bit.";
+
+	char* str3 = "hello bit.";
+	char* str4 = "hello bit.";
+
+	if (str1 == str2)
+		printf("str1 and str2 are same\n");
+	else
+		printf("str1 and str2 are not same\n");//不相同  （两块不同的内存）
+
+	if (str3 == str4)
+		printf("str3 and str4 are same\n");//相同  （都指向同一个常量字符串）
+	else
+		printf("str3 and str4 are not same\n");
+
+	return 0; 
 }
