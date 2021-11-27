@@ -1144,41 +1144,223 @@
 //	return 0;
 //}
 
-#include<stdio.h>
-int main()
-{
-	char ch = 'q';
-	char* pc = &ch;
+//#include<stdio.h>
+//int main()
+//{
+//	char ch = 'q';
+//	char* pc = &ch;
+//
+//	//本质上是把"hello bit"这个字符串的首字符的地址存储在了ps中
+//
+//	const char* ps = "hello bit"; //存放首字符 h 的地址
+//	char arr[] = "hello bit"; //全部放进去数组中
+//	
+//	//printf("%c\n", *ps);//结果为 h
+//	printf("%s\n", ps);//结果为 hello bit   通过首字符的地址，来找到整个字符串
+//	printf("%s\n", arr);//结果为 hello bit   同上
+//	return 0;
+//}
 
-	//本质上是把"hello bit"这个字符串的首字符的地址存储在了ps中
+//#include <stdio.h> 
+//int main()
+//{
+//	char str1[] = "hello bit.";
+//	char str2[] = "hello bit.";
+//
+//	char* str3 = "hello bit.";
+//	char* str4 = "hello bit.";
+//
+//	if (str1 == str2)
+//		printf("str1 and str2 are same\n");
+//	else
+//		printf("str1 and str2 are not same\n");//不相同  （两块不同的内存）
+//
+//	if (str3 == str4)
+//		printf("str3 and str4 are same\n");//相同  （都指向同一个常量字符串）
+//	else
+//		printf("str3 and str4 are not same\n");
+//
+//	return 0; 
+//}
 
-	const char* ps = "hello bit"; //存放首字符 h 的地址
-	char arr[] = "hello bit"; //全部放进去数组中
-	
-	//printf("%c\n", *ps);//结果为 h
-	printf("%s\n", ps);//结果为 hello bit   通过首字符的地址，来找到整个字符串
-	printf("%s\n", arr);//结果为 hello bit   同上
-	return 0;
-}
+//#include<stdio.h>
+//int main()
+//{
+//	//指针数组
+//	//数组 - 数组中存放的是指针（地址）
+//	//int* arr[4]; 
+//	//数组中有三个元素，每个元素是一个指针int*
+//	//是一个存放整型指针的数组
+//
+//	//int a = 10;
+//	//int b = 20;
+//	//int c = 30;
+//	//int* arr[3] = { &a,&b,&c };
+//	//int i = 0;
+//	//for (i = 0; i < 3; i++)
+//	//{
+//	//	printf("%d ", *(arr[i]));
+//	//}
+//
+//	int a[5] = { 1,2,3,4,5 };
+//	int b[] = { 2,3,4,5,6 };
+//	int c[] = { 3,4,5,6,7 };
+//
+//	int* arr[3] = { a,b,c };
+//	int i = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 5; j++)
+//		{
+//			//printf("%d ", *(arr[i] + j));
+//			printf("%d ", arr[i][j]);  //跟上面一样的结果，模拟出一个二维数组，但是它不是二维数组
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
 
-#include <stdio.h> 
-int main()
-{
-	char str1[] = "hello bit.";
-	char str2[] = "hello bit.";
+//int* arr1[10];   整型指针的数组
+//char* arr2[4];   一级字符指针的数组
+//char** arr3[5];   二级字符指针的数组
+//
 
-	char* str3 = "hello bit.";
-	char* str4 = "hello bit.";
+//int main()
+//{
+//	int a = 10;
+//	int* pa = &a;
+//	char ch = 'w';
+//	char* pc = &ch;
+//
+//	int arr[10] = { 1,2,3,4,5 };
+//	//arr;//arr - 数组名是首元素的地址 - arr[0]的地址
+//
+//	int(*parr)[10] = &arr;//取出数组的地址
+//	//parr 就是一个数组指针 - 其中存放的是数组的地址
+//	// 这时 parr 为数组指针名字， int(*)[10] 为数组指针的类型
+//
+//	double* d[5];
+//	double* (*pd)[5] = &d;//pd 是一个数组指针
+//	return 0;
+//}
 
-	if (str1 == str2)
-		printf("str1 and str2 are same\n");
-	else
-		printf("str1 and str2 are not same\n");//不相同  （两块不同的内存）
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	
+//	printf("%p\n", arr); //00000060707BF8D8 打印地址结果一致，但是表达的意思不同;
+//	printf("%p\n", &arr); //00000060707BF8D8  上面arr的地址为首元素的地址，下面&arr的地址为整个数组的地址;
+//
+//	//当我们用这两个地址进行指针初始化的时候，就能明显感受到不同
+//	int* p1 = arr;          //整型指针
+//	int(*p2)[10] = &arr;     //数组指针
+//
+//	printf("%p\n", p1); //结果同上
+//	printf("%p\n", p2); //结果同上
+//
+//	//创建指针后地址也是一样，但是指针的 加减 有了明显的变化
+//	printf("%p\n", p1 + 1); //+1跳过了一个int的距离 - int* - 4个字节
+//	printf("%p\n", p2 + 1); //+1跳过了40个int的距离 - int(*)[10] - 一个数组里面10个int，10*4->需要跳过40个字节
+//
+//	return 0;
+//}
 
-	if (str3 == str4)
-		printf("str3 and str4 are same\n");//相同  （都指向同一个常量字符串）
-	else
-		printf("str3 and str4 are not same\n");
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int(*pa)[10] = &arr;
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", *((*pa) + i)); //可以用，但是不太好（多此一举），还不如直接用int* ;这里的（*pa）相当于arr
+//	}
+//	return 0;
+//}
 
-	return 0; 
-}
+//#include<stdio.h>
+//void print1(int arr[3][5],int r,int c) //传统写法
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < r; i++)
+//	{
+//		for (j = 0; j < c; j++)
+//		{
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//void print2(int(*p)[5], int r, int c) //p为数组指针，表示arr第一行的地址
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < r; i++)
+//	{
+//		for (j = 0; j < c; j++)
+//		{
+//			printf("%d ", *(*(p + i) + j));
+//
+//			// *(p+i) 相当于第一行的数组名arr[0]
+//		}
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	int arr[3][5] = { {1,2,3,4,5},{2,3,4,5,6},{3,4,5,6,7} };
+//	//print1(arr, 3, 5);
+//
+//	print2(arr, 3, 5);//arr是二维数组名，表示二维数组 首元素 地址
+//	//而二维数组的 首元素 是：第一行！ --> 相当于把 第一行的地址 传入函数中
+//	return 0;
+//}
+
+
+//#include <stdio.h>
+//void test(int arr[])//ok 
+//{}
+//void test(int arr[10])//ok 
+//{}
+//void test(int* arr)//ok
+//{}
+//void test2(int* arr[20])//ok
+//{}
+//void test2(int** arr)//ok 解引用第一次得到首元素int*，再解一次得到它的地址
+//{}
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int* arr2[20] = { 0 };
+//	test(arr);
+//	test2(arr2);
+//	return 0;
+//}
+
+//void test(int arr[3][5])//ok
+//{}
+//void test(int arr[][])//NO！ 
+//{}
+//void test(int arr[][5])//ok  二维数组的 行可以省略，列不可以省略
+//{}
+////总结：二维数组传参，函数形参的设计只能省略第一个[]的数字。
+////因为对一个二维数组，可以不知道有多少行，但是必须知道一行多少元素。 
+////这样才方便运算。
+////
+//void test(int* arr)//NO！  
+//{}
+//void test(int* arr[5])//NO！  
+//{}
+//void test(int(*arr)[5])//ok  这里就是用的数组指针 
+//{}
+//void test(int** arr)//NO！  传过去的不是二级指针！ 
+//{}
+//int main() 
+//{
+//	int arr[3][5] = { 0 }; 
+//	test(arr);
+//	return 0;
+//}
