@@ -184,4 +184,3 @@ void reverse(char* pt)
 		pa--;
 	}
 }
-//Visyal Studio2019を使っていますので、オプション課題について実行結果に「＄　gcc　-o　XXXX.c  」が付いて
