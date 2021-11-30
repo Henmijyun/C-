@@ -1365,4 +1365,57 @@
 //	return 0;
 //}
 
+//#include<stdio.h>
+//int main()
+//{
+//	int i = 0;
+//
+//	while (i<100) 
+//	{
+//		printf("呵呵 呵呵\n");
+//		i++;
+//	}
+//	
+//	return 0;
+//}
 
+
+//#include<stdio.h>
+//int i;
+////i是全局变量，不初始化，默认是0
+//int main()
+//{
+//	i--; //-1
+//	//sizeof这个操作符，算出来的结果的类型是unsigned int （无符号整型）
+//	//所以-1需要类型转换，-1的符号位变成有效数字-->超级大
+//	if (i > sizeof(i))
+//	{
+//		printf(">\n"); //所以是>
+//	}
+//	else
+//	{
+//		printf("<\n");
+//	}
+//	return 0;
+//}
+
+#include<stdio.h>
+int main()
+{
+	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+	int* p = arr;
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	int* pend = arr + sz - 1;
+	while (p <= pend)
+	{
+		printf("%d ", *p);
+		p++;
+	}
+
+	//int i = 0;
+	//for (i = 0; i < sz; i++)
+	//{
+	//	printf("%d ", *(p + i));
+	//}
+	return 0;
+}
