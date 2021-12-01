@@ -1399,23 +1399,234 @@
 //	return 0;
 //}
 
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int* p = arr;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int* pend = arr + sz - 1;
+//	while (p <= pend)
+//	{
+//		printf("%d ", *p);
+//		p++;
+//	}
+//
+//	//int i = 0;
+//	//for (i = 0; i < sz; i++)
+//	//{
+//	//	printf("%d ", *(p + i));
+//	//}
+//	return 0;
+//}
+
+////求出0~100000之间的所有“水仙花数”并输出。
+////“水仙花数”是指 一个n位数，其各位数字的n次方之和，恰好等于该数本身。
+////如：153 = 1^3+ 5^3+ 3^3 ,则 153 是一个 “水仙花数”。
+//
+//#include<math.h>
+//#include<stdio.h>
+//int main()
+//{
+//	int i = 0;
+//	for (i = 0; i <= 100000; i++)
+//	{
+//		//判断i是否为自幂数
+//		//1.计算i的位数 - n
+//		int n = 1;
+//		int tmp = i;
+//		while (tmp / 10)
+//		{
+//			n++;
+//			tmp = tmp / 10;
+//		}
+//		//2.计算i的每一位的n次方之和
+//		tmp = i;
+//		int sum = 0;
+//		while (tmp)
+//		{
+//			//pow是用来 求次方数
+//			sum += pow(tmp % 10, n);
+//			tmp = tmp / 10;
+//		}
+//		//判断
+//		if (sum == i)
+//		{
+//			printf("%d ", i);
+//		}
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	unsigned long pulArray[] = { 6,7,8,9,10 };
+//	unsigned long* pulPtr;
+//	pulPtr = pulArray;
+//	*(pulPtr + 3) += 3;
+//	printf("%d,%d\n", *pulPtr, *(pulPtr + 3));//结果为 6,12
+//	return 0;
+//}
+
+//#include<stdio.h>
+//struct stu
+//{
+//	int num;
+//	char name[10];
+//	int age;
+//};
+//void fun(struct stu* p)
+//{
+//	printf("%s\n", (*p).name);
+//}
+//int main()
+//{
+//	struct stu students[3] = { {9801,"zhang",20},
+//								{9802,"wang",19},
+//								{9803,"zhao",18}
+//	};  //这里创建的是结构体数组
+//	fun(students + 1); //数组名相当于 首元素 地址，地址+1，指向第二个元素。
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//#include<assert.h>//断言的头文件 （养成指针传参时，断言的好习惯）
+//void reverse(char* str)
+//{
+//	assert(str);//断言 str != NULL
+//
+//	int len = strlen(str);
+//	char* left = str;
+//	char* right = str + len - 1;
+//
+//	while (left < right)
+//	{
+//		char tmp = *left;
+//		*left = *right;
+//		*right = tmp;
+//		left++;
+//		right--;
+//	}
+//}
+//int main()
+//{
+//	char arr[] = "abcdefg";
+//	reverse(arr);
+//	printf("%s\n", arr);
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//int main()
+//{
+//	int line = 0;
+//	scanf("%d", &line);
+//	int i = 0;
+//	//上
+//	for (i = 0; i < line; i++)
+//	{
+//		//打印一行
+//		//空格
+//		int j = 0;
+//		for (j = 0; j < line - 1 - i; j++)
+//		{
+//			printf(" ");
+//		}
+//		//*
+//		for (j = 0; j < 2 * i + 1; j++)
+//		{
+//			printf("*");
+//		}
+//		printf("\n");
+//	}
+//	//下
+//	for (i = 0; i < line - 1; i++)
+//	{
+//		//打印一行
+//		//空格
+//		int j = 0;
+//		for (j = 0; j <= i; j++)
+//		{
+//			printf(" ");
+//		}
+//		//*
+//		for (j = 0; j < 2 * (line - 1 - i) - 1; j++)
+//		{
+//			printf("*");
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+
+////20块钱买汽水，1元1瓶，2个空瓶可以换1瓶汽水，共能喝多少瓶？
+//#include<stdio.h>
+//int main()
+//{
+//	int money = 0;
+//	int total = 0;
+//	scanf("%d", &money);
+//	if (money > 0)
+//		total = 2 * money - 1;  //这种算法更好
+//	//int total = money; 
+//	//int empty = money;
+//	////开始置换空瓶
+//	//while (empty >= 2)      //常规
+//	//{
+//	//	total += empty / 2;
+//	//	empty = empty / 2 + empty % 2;
+//	//}
+//	printf("%d\n", total);
+//	return 0;
+//}
+
+//输入一个整型数组，实现一个函数
+//来调整该数组中的数字的顺序，使得数组中所有的奇数位于数组的前半部分
+//所有偶数位于数组的后半部分
 #include<stdio.h>
+void print(int* p, int sz)
+{
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", *(p + i));
+	}
+	printf("\n");
+}
+void move(int* p, int sz)
+{
+	int* left = p;
+	int* right = p + sz - 1;
+	while (left < right)
+	{
+		//从前往后找一个偶数
+		while ((left < right) && ((*left) % 2 == 1))
+		{
+			left++;
+		}
+		//从后往前找一个奇数
+		while ((left < right) && ((*right) % 2 == 0))
+		{
+			right--;
+		}
+		//交换
+		if (left < right)
+		{
+			int tmp = *left;
+			*left = *right;
+			*right = tmp;
+		}
+	}
+}
 int main()
 {
 	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
-	int* p = arr;
 	int sz = sizeof(arr) / sizeof(arr[0]);
-	int* pend = arr + sz - 1;
-	while (p <= pend)
-	{
-		printf("%d ", *p);
-		p++;
-	}
-
-	//int i = 0;
-	//for (i = 0; i < sz; i++)
-	//{
-	//	printf("%d ", *(p + i));
-	//}
+	move(arr, sz);
+	print(arr, sz);
 	return 0;
 }
