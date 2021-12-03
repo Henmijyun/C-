@@ -1,3 +1,2 @@
 ﻿  tset.c
-E:\C\repos\lianxiyong\test_hokurikudai\tset.c(167,6): warning C4013: “gets”未定义；假设外部返回 int
   test_hokurikudai.vcxproj -> E:\C\repos\lianxiyong\test_hokurikudai\Debug\test_hokurikudai.exe

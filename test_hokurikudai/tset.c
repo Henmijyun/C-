@@ -154,33 +154,54 @@
 //}
 
 //第九回　オプション課題
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include<stdio.h>
+//#include<string.h>
+//#define NUM 100
+//void reverse(char* pt);
+//
+//int main()
+//{
+//	char ch[NUM] = { 0 };
+//	printf("文字列を入力して下さい：");
+//	gets(ch);                           //入力
+//	reverse(ch);
+//	printf("\n反転結果:");
+//	puts(ch);                          //出力
+//	return 0;
+//}
+//
+//void reverse(char* pt)
+//{
+//	int len = strlen(pt);     //文字列の長さ（最終目のために）
+//	char* pa = pt + len - 1;
+//	while (pt < pa)           //文字列の一番目の領域 < 最終目領域
+//	{
+//		char tmp = *pa;
+//		*pa = *pt;
+//		*pt = tmp;       //交換
+//		pt++;           //次へ
+//		pa--;
+//	}
+//}
+
+//第十回　課題
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
-#include<string.h>
-#define NUM 100
-void reverse(char* pt);
-
+void addValue(int* num1, int* num2, int* result);
 int main()
 {
-	char ch[NUM] = { 0 };
-	printf("文字列を入力して下さい：");
-	gets(ch);                           //入力
-	reverse(ch);
-	printf("\n反転結果:");
-	puts(ch);                          //出力
+	//変数の宣言
+	int num1 = 10;
+	int num2 = 15;
+	int result = 0;
+	//足し算プログラムの呼び出し
+	addValue(&num1, &num2, &result);
+	printf("result = %d\n", result);
+
 	return 0;
 }
-
-void reverse(char* pt)
+void addValue(int* num1, int* num2, int* result)
 {
-	int len = strlen(pt);     //文字列の長さ（最終目のために）
-	char* pa = pt + len - 1;
-	while (pt < pa)           //文字列の一番目の領域 < 最終目領域
-	{
-		char tmp = *pa;
-		*pa = *pt;
-		*pt = tmp;       //交換
-		pt++;           //次へ
-		pa--;
-	}
+	*result = *num1 + *num2;
 }
