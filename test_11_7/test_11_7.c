@@ -1584,49 +1584,296 @@
 //	return 0;
 //}
 
-//输入一个整型数组，实现一个函数
-//来调整该数组中的数字的顺序，使得数组中所有的奇数位于数组的前半部分
-//所有偶数位于数组的后半部分
+////输入一个整型数组，实现一个函数
+////来调整该数组中的数字的顺序，使得数组中所有的奇数位于数组的前半部分
+////所有偶数位于数组的后半部分
+//#include<stdio.h>
+//void print(int* p, int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", *(p + i));
+//	}
+//	printf("\n");
+//}
+//void move(int* p, int sz)
+//{
+//	int* left = p;
+//	int* right = p + sz - 1;
+//	while (left < right)
+//	{
+//		//从前往后找一个偶数
+//		while ((left < right) && ((*left) % 2 == 1))
+//		{
+//			left++;
+//		}
+//		//从后往前找一个奇数
+//		while ((left < right) && ((*right) % 2 == 0))
+//		{
+//			right--;
+//		}
+//		//交换
+//		if (left < right)
+//		{
+//			int tmp = *left;
+//			*left = *right;
+//			*right = tmp;
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	move(arr, sz);
+//	print(arr, sz);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	//unsigned char 0~255
+//
+//	unsigned char a = 200;
+//	//00000000000000000000000011001000
+//	//11001000
+//
+//	unsigned char b = 100;
+//	//00000000000000000000000001100100 数字是整型
+//	//01100100  类型是char
+//
+//	unsigned char c = 0;
+//	//发生整型提升 （无符号unsigned前面全部补0）
+//	//00000000000000000000000011001000
+//	//00000000000000000000000001100100
+//	//00000000000000000000000100101100  相加之后截断
+//	//00101100  44   
+//	c = a + b;
+//	//00000000000000000000000000101100  44
+//	printf("%d %d", a + b, c);  //结果为 300  44 （因为放入char，而char最大只能放入255）
+//	return 0;
+//}
+
+////杨辉三角:
+////1
+////1 1
+////1 2 1
+////1 3 3 1
+////1 4 6 4 1
+////1 5 10 10 5 1
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[10][10] = { 0 };
+//	int i = 0;
+//	int j = 0;
+//	int k = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		for (j = 0; j <= i; j++)
+//		{
+//			if (j == 0 || i == j)
+//			{
+//				arr[i][j] = 1;
+//			}
+//			if (i >= 2 && j >= 1)
+//			{
+//				arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
+//			}
+//		}
+//	}
+//	for (i = 0; i < 10; i++)
+//	{
+//		if (i != 9)
+//		{
+//			for (k = 9; k - i; k--) //这里是为了打印出来效果更像菱形
+//			{
+//				printf(" ");
+//			}
+//		}
+//		for (j = 0; j <= i; j++)
+//		{
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+
+////4个杀人嫌疑犯的供词：
+//// A：不是我杀的
+//// B：是C杀的
+//// C：是D杀的
+//// D：C在撒谎
+////已知3个人在说真话，1个人在撒谎，请问凶手是谁？
+//#include<stdio.h>
+//int main()
+//{
+//	char killer = 0;
+//	for (killer = 'A'; killer <= 'D'; killer++)
+//	{
+//		if ((killer != 'A') + (killer == 'C') + (killer == 'D') + (killer != 'D') == 3)
+//		{
+//			printf("%c\n", killer);//每个表达式成立的话，得1，全部加起来为3的话，3个表达式成立
+//		}
+//	}
+//	return 0;
+//}
+
+////5名运动员比赛前进行预测：
+//// A：B第二，我第三
+//// B：我第二，E第四
+//// C：我第一，D第二
+//// D：C最后，我第三
+//// E：我第四，A第一
+////比赛结束后，每个选手说对了一半，请确定每个选手的排名
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	int c = 0;
+//	int d = 0;
+//	int e = 0;
+//	for (a = 1; a <= 5; a++)
+//	{
+//		for (b = 1; b <= 5; b++)
+//		{
+//			for (c = 1; c <= 5; c++)
+//			{
+//				for (d = 1; d <= 5; d++)
+//				{
+//					for (e = 1; e <= 5; e++)
+//					{
+//						if (
+//							(b == 2) + (a == 3) == 1
+//							&& (b == 2) + (e == 4) == 1
+//							&& (c == 1) + (d == 2) == 1
+//							&& (c == 5) + (d == 3) == 1
+//							&& (e == 4) + (a == 1) == 1
+//							) //每个判断条件正确为1，错误为0，每个人只猜对一半的话，两个表达式相加等于1
+//						{
+//							if ((a * b * c * d * e) == 120)
+//							{
+//								printf("a=%d b=%d c=%d d=%d e=%d\n", a, b, c, d, e);
+//								//结果为：a=3 b=1 c=5 d=2 e=4
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//void print(int* ptr, int sz)  //一级指针传参，用一级指针 int* 接收
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", *(ptr + i));
+//	}
+//}
+//void test(char* p) //用什么类型接收，就要用对应的类型传参
+//{
+//
+//}
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int* p = arr;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	//p是一级指针
+//	print(p, sz);
+//	
+//	char ch = 'w';
+//	test(&ch);//char*
+//	char* p1 = &ch;
+//	test(p1);
+//
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//void test(int** p2)
+//{
+//	**p2 = 20;
+//}
+//int main()
+//{
+//	int a = 10;
+//	int* pa = &a;//一级指针
+//	int** ppa = &pa;//二级指针
+//	//把二级指针进行传参
+//	test(ppa);
+//	printf("%d\n", a);
+//	
+//	test(&pa); //OK 传 一级指针变量的地址 
+//	
+//	int* arr[10] = { 0 };
+//	test(arr); //OK 传 存放一级指针的数组 （指针数组）
+//	return 0;
+//}
+
+//
+//#include<stdio.h>
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int main()
+//{
+//	int a = 10;
+//	int* pa = &a;
+//	
+//	char ch = 'w';
+//	char* pc = &ch;
+//
+//	int arr[10] = { 0 };
+//	int(*parr)[10] = &arr;//取出数组的地址
+//	//parr 是指向数组的指针 - 存放的是数组的地址
+//
+//	//函数指针 - 存放函数地址的指针
+//	// &函数名 - 取到的就是函数的地址
+//	printf("%p\n", &Add);
+//	printf("%p\n", Add); //函数名 == &函数名
+//
+//	int(*pf)(int, int) = &Add; //pf就是一个函数指针变量 （用：指向的内容 和 返回的内容 来定义）
+//
+//	return 0;
+//}
+
+//void test(char* str)
+//{
+//}
+//int main()
+//{
+//	void(*pt)(char*) = &test;
+//	return 0;
+//}
+
+//函数指针的使用
 #include<stdio.h>
-void print(int* p, int sz)
+int Add(int x, int y)
 {
-	int i = 0;
-	for (i = 0; i < sz; i++)
-	{
-		printf("%d ", *(p + i));
-	}
-	printf("\n");
-}
-void move(int* p, int sz)
-{
-	int* left = p;
-	int* right = p + sz - 1;
-	while (left < right)
-	{
-		//从前往后找一个偶数
-		while ((left < right) && ((*left) % 2 == 1))
-		{
-			left++;
-		}
-		//从后往前找一个奇数
-		while ((left < right) && ((*right) % 2 == 0))
-		{
-			right--;
-		}
-		//交换
-		if (left < right)
-		{
-			int tmp = *left;
-			*left = *right;
-			*right = tmp;
-		}
-	}
+	return x + y;
 }
 int main()
 {
-	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	move(arr, sz);
-	print(arr, sz);
+	//pt是一个函数指针变量
+	int (*pt)(int, int) = &Add;
+	//int (*pt)(int, int) = Add; //这样写也没问题  Add == pt
+
+	int ret = (*pt)(3, 5); //可以把 (*pt) 这个解引用看成是：Add 这个函数名 （用函数指针来调用函数）
+	//int ret = Add(3, 5);
+	//int ret = pt(3, 5); //这三个一样的，（*pt）这里的 * 是没有实际意义，只是为了更好理解它，就算写成（****pt）也一样
+
+	printf("%d\n", ret); //结果为8
 	return 0;
 }
