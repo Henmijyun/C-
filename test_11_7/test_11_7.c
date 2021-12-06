@@ -2053,3 +2053,218 @@
 //}
 
 
+//void test(const char* str)
+//{
+//	printf("%s\n", str);
+//}
+//int main()
+//{
+//	//函数指针 pfun
+//	void (*pfun)(const char*) = &test;
+//	//函数指针数组 pfunArr
+//	void (*pfunArr[5])(const char*);
+//	pfunArr[0] = test;
+//	//指向函数指针数组 pfunArr 的指针 ppfunArr
+//	void (*(*ppfunArr)[5])(const char*) = &pfunArr;
+//	return 0;
+//}
+//
+//int main()
+//{
+//	int arr[10];
+//	//数组元素类型 - int
+//	//arr数组的类型是 int [10]
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//int Mul(int x, int y)
+//{
+//	return x * y;
+//}
+//int Div(int x, int y)
+//{
+//	return x / y;
+//}
+//void menu()
+//{
+//	printf("*********************\n");
+//	printf("****1.add   2.sub****\n");
+//	printf("****3.mul   4.div****\n");
+//	printf("****    0.exit   ****\n");
+//	printf("*********************\n");
+//}
+//int Calc(int(*pf)(int, int))  //用 函数指针 接收传过来的 函数
+//{
+//	int x = 0;
+//	int y = 0;
+//	printf("请输入两个操作数>:");
+//	scanf("%d %d", &x, &y);
+//	return pf(x, y);      //回调函数
+//	 
+//}
+//int main()
+//{
+//	//计算器 - 计算整型变量的加，减，乘，除
+//	//a&b a^b a|b a<<b a>>b ....
+//	int input = 0;
+//	do
+//	{
+//		int ret = 0;
+//		menu();
+//		printf("请选择：>");
+//		scanf("%d", &input);
+//
+//		//用 回调函数 来实现下面代码，更简洁
+//		switch (input)
+//		{
+//		case 1:
+//			ret = Calc(Add);  
+//			printf("结果为 %d\n", ret);
+//			break;
+//		case 2:
+//			ret = Calc(Sub);
+//			printf("结果为 %d\n", ret);
+//			break;
+//		case 3:
+//			ret = Calc(Mul);
+//			printf("结果为 %d\n", ret);
+//			break;
+//		case 4:
+//			ret = Calc(Div);
+//			printf("结果为 %d\n", ret);
+//			break;
+//		case 0:
+//			printf("退出程序\n");
+//			break;
+//		default:
+//			printf("选择错误，请重新选择！\n");
+//			break;
+//		}
+//	} while (input);
+//	return 0;
+//}
+
+
+//冒泡排序
+//#include<stdio.h>
+//void bubble_sort(int arr[], int sz) //冒泡排序函数
+//{
+//	int i = 0;
+//	//冒泡排序的趟数
+//	for (i = 0; i < sz - 1; i++)  //i最大为9，（从0开始数）+（10个元素只要对比9次）
+//	{
+//		//一趟冒泡排序
+//		int j = 0;
+//		for (j = 0; j < sz-1-i; j++)
+//		{
+//			if (arr[j] > arr[j + 1])
+//			{
+//				//交换
+//				int tmp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = tmp;
+//			}
+//		}
+//	}
+//}
+//void print_arr(int arr[], int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	printf("\n");
+//}
+//int main()
+//{
+//	//升序
+//	int arr[10] = { 9,8,7,6,5,4,3,2,1,0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	print_arr(arr, sz);  //排序前
+//	bubble_sort(arr, sz);
+//	print_arr(arr, sz);  //排序后 
+//	return 0;
+//}
+
+
+
+//快速排序的库函数 qsort();
+// 
+//void qsort(void* base,  //base 中存放的是待排序数据中第一个对象的地址
+//	        size_t num,  //num 是排序数据元素的个数
+//	        size_t size,  //size 是排序数据中一个元素的大小，单位是字节
+//		    int (*cmp)(const void*, const void*) //函数指针  是用来比较待排序数据中的2个元素的函数
+//		    );
+
+//base用的是void* ，无类型指针 - 任意一个数据的地址都可以放入这个指针中
+//size_t - unsigned int  无符号整型类型
+//因为用无类型指针来接收，所以不知道元素的大小（元素大小决定了指针每一步走多少个字节）
+//因此需要传元素的大小入函数中
+#include<stdio.h>
+#include<stdlib.h>  //qsort();函数的头文件
+#include<string.h>  //strcmp();函数的头文件
+int cmp_int(const void* e1, const void* e2) //整型 ，返回值：>0 或 0 或 <0 
+{
+	return *(int*)e1 - *(int*)e2;
+}
+//因为接收的是无类型指针，所以需要强制类型转换
+//返回值：>0 或 0 或 <0 
+void print_arr(int arr[], int sz) //打印
+{
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+}
+void test1()  //用qsort();排序整型
+{
+	int arr[10] = { 9,8,7,6,5,4,3,2,1,0 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+
+	print_arr(arr, sz);
+	qsort(arr, sz, sizeof(arr[0]), cmp_int);
+	print_arr(arr, sz);
+}
+struct Stu  //创建结构体
+{
+	char name[20];
+	int age;
+};
+int sort_by_age(const void* e1, const void* e2) //结构体,年龄
+{
+	return ((struct Stu*)e1)->age - ((struct Stu*)e2)->age; //结构体中的age相减，返回值：>0 或 0 或 <0 
+}
+int sort_by_name(const void* e1, const void* e2)  //结构体,名字 
+{
+	return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->name);
+}
+
+void test2()  //用qsort();排序结构体
+{
+	//使用qsort()函数排序结构体数据
+	struct Stu s[] = { {"wan",28} ,{"xu",22}, {"cao",20}};
+	int sz = sizeof(s) / sizeof(s[0]);
+	//按年龄排序
+	//qsort(s, sz, sizeof(s[0]), sort_by_age);  //按数字大小排序
+	//按照名字来排序
+	qsort(s, sz, sizeof(s[0]), sort_by_name); //按首字母的 ASCII码值 进行比较（字母相同，就比较下一个，如此类推）
+
+}
+int main()
+{
+	//test1();
+	test2();
+	return 0;
+}
