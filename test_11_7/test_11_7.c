@@ -1858,22 +1858,198 @@
 //	return 0;
 //}
 
-//函数指针的使用
-#include<stdio.h>
-int Add(int x, int y)
-{
-	return x + y;
-}
-int main()
-{
-	//pt是一个函数指针变量
-	int (*pt)(int, int) = &Add;
-	//int (*pt)(int, int) = Add; //这样写也没问题  Add == pt
+////函数指针的使用
+//#include<stdio.h>
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int main()
+//{
+//	//pt是一个函数指针变量
+//	int (*pt)(int, int) = &Add;
+//	//int (*pt)(int, int) = Add; //这样写也没问题  Add == pt
+//
+//	int ret = (*pt)(3, 5); //可以把 (*pt) 这个解引用看成是：Add 这个函数名 （用函数指针来调用函数）
+//	//int ret = Add(3, 5);
+//	//int ret = pt(3, 5); //这三个一样的，（*pt）这里的 * 是没有实际意义，只是为了更好理解它，就算写成（****pt）也一样
+//
+//	printf("%d\n", ret); //结果为8
+//	return 0;
+//}
 
-	int ret = (*pt)(3, 5); //可以把 (*pt) 这个解引用看成是：Add 这个函数名 （用函数指针来调用函数）
-	//int ret = Add(3, 5);
-	//int ret = pt(3, 5); //这三个一样的，（*pt）这里的 * 是没有实际意义，只是为了更好理解它，就算写成（****pt）也一样
 
-	printf("%d\n", ret); //结果为8
-	return 0;
-}
+////理解：代码1
+////(*(void(*)())0)()  //0是一个int类型，把它强制类型转换为 函数指针类型，再把它整体看作为一个函数
+//int main()
+//{
+//	(*(void(*)())0)();
+//	//调用0地址处的函数
+//	//该函数无参，返回类型是void
+//	// 
+//	//1. void(*)() - 函数指针类型
+//	//2. (void(*)())0 - 对0进行强制类型转换，被解释为一个函数地址
+//	//3. *(void(*)())0 - 对0地址进行了解引用操作
+//	//4. (*(void(*)())0)() - 调用0地址处的函数
+//	//
+//	return 0;
+//}
+
+////理解：代码2
+//void(*signal(int, void(*)(int)))(int);
+////signal是一个函数，把 函数指针 作为参数来使用，再把这个函数作为 函数名 作成一个函数指针
+////
+////  1.signal和()先结合，说明signal是函数名
+////  2.signal函数的第一个参数的类型是int，第二个参数的类型是函数指针
+////     该函数指针，指向一个参数为int，返回类型是void的函数
+////  3.signal函数的返回类型也是一个函数指针
+////     该函数指针，指向一个参数为int，返回类型是void的函数
+////
+////  signal是一个函数的声明
+////
+////为了更好理解，可以看成是这样：
+//void(*)(int) signal(int, void(*)(int));//错误写法
+////void(*)(int)是返回类型 signal是函数，(int, void(*)(int))是它的传参参数
+//// 但是这种写法是错误的，不能这样写
+//// 
+//// 函数的返回类型如果是函数指针的话
+////  * 必须要跟signal名字靠在一起，所以
+//// void(*signal(int, void(*)(int)))(int);
+////      必须写作这样子
+////
+////typedef - 对类型进行重定义
+//typedef void(*pfun_t)(int) ;//对 void(*)(int)的函数指针类型 重命名为 pfun_t
+//pfun_t signal(int, pfun_t);
+//
+////与void(*signal(int, void(*)(int)))(int);//完全等价，完全相同
+//
+////typedef unsigned int uint; //unsigned int 重命名为 uint
+//int main()
+//{
+//	return 0;
+//}
+
+////函数指针数组 - 存放函数指针的数组
+//// 
+////整型指针 int*
+//// 整型指针数组 int* arr[5];
+////
+//
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//
+//int main()
+//{
+//	int(*pf1)(int, int) = Add;
+//	int(*pf2)(int, int) = Sub;
+//	int(*pfArr[2])(int, int) = { Add,Sub };// pfArr 就是 函数指针数组，  
+//	//  {pf1,pf2} 这样进行初始化也行
+//	//可以拆分看作 pfArr[2] 数组名，int(*)(int,int) 函数指针类型
+//
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//int Mul(int x, int y)
+//{
+//	return x * y;
+//}
+//int Div(int x, int y)
+//{
+//	return x / y;
+//}
+//void menu()
+//{
+//	printf("*********************\n");
+//	printf("****1.add   2.sub****\n");
+//	printf("****3.mul   4.div****\n");
+//	printf("****    0.exit   ****\n");
+//	printf("*********************\n");
+//}
+//int main()
+//{
+//	//计算器 - 计算整型变量的加，减，乘，除
+//	//a&b a^b a|b a<<b a>>b ....
+//	int input = 0;
+//	do
+//	{
+//		int(*pfArr[5])(int, int) = { NULL,Add,Sub,Mul,Div };
+//		int x = 0;
+//		int y = 0;
+//		int ret = 0;
+//		menu();
+//		printf("请选择：>");
+//		scanf("%d", &input);
+//		if (input > 0 && input <= 4)
+//		{
+//			printf("请输入2个操作数:>");
+//			scanf("%d %d", &x, &y);
+//			ret = (pfArr[input])(x, y);  //pfArr就是函数指针数组
+//			printf("结果为：%d\n", ret);  //转移表 - 《C和指针》里把这个内容称为转移表
+//		}                                //因为它利用数组作为跳板，进行转移动作
+//		else if (input == 0)
+//		{
+//			printf("退出程序\n");
+//			break;
+//		}
+//		else
+//		{
+//			printf("选择错误，请重新选择！");
+//		}
+//
+///*		//用函数指针数组来实现下面代码，更简洁
+//		switch (input)
+//		{
+//		case 1:
+//			printf("请输入2个操作数:>");
+//			scanf("%d %d", &x, &y);
+//			ret = Add(x, y);
+//			printf("结果为 %d\n", ret);
+//			break;
+//		case 2:
+//			printf("请输入2个操作数:>");
+//			scanf("%d %d", &x, &y);
+//			ret = Sub(x, y);
+//			printf("结果为 %d\n", ret);
+//			break;
+//		case 3:
+//			printf("请输入2个操作数:>");
+//			scanf("%d %d", &x, &y);
+//			ret = Mul(x, y);
+//			printf("结果为 %d\n", ret);
+//			break;
+//		case 4:
+//			printf("请输入2个操作数:>");
+//			scanf("%d %d", &x, &y);
+//			ret = Div(x, y);
+//			printf("结果为 %d\n", ret);
+//			break;
+//		case 0:
+//			printf("退出程序\n");
+//			break;
+//		default:
+//			printf("选择错误，请重新选择！\n");
+//			break;
+//		}
+//*/
+//	} while (input);
+//	return 0;
+//}
+
+
