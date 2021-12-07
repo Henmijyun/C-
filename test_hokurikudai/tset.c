@@ -186,22 +186,22 @@
 //}
 
 //第十回　課題
-#define _CRT_SECURE_NO_WARNINGS 1
-#include<stdio.h>
-void addValue(int* num1, int* num2, int* result);
-int main()
-{
-	//変数の宣言
-	int num1 = 10;
-	int num2 = 15;
-	int result = 0;
-	//足し算プログラムの呼び出し
-	addValue(&num1, &num2, &result);
-	printf("result = %d\n", result);
-
-	return 0;
-}
-void addValue(int* num1, int* num2, int* result)
-{
-	*result = *num1 + *num2;
-}
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include<stdio.h>
+//void addValue(int* num1, int* num2, int* result);
+//int main()
+//{
+//	//変数の宣言
+//	int num1 = 10;
+//	int num2 = 15;
+//	int result = 0;
+//	//足し算プログラムの呼び出し
+//	addValue(&num1, &num2, &result);
+//	printf("result = %d\n", result);
+//
+//	return 0;
+//}
+//void addValue(int* num1, int* num2, int* result)
+//{
+//	*result = *num1 + *num2;
+//}
