@@ -2198,73 +2198,143 @@
 
 
 
-//快速排序的库函数 qsort();
-// 
-//void qsort(void* base,  //base 中存放的是待排序数据中第一个对象的地址
-//	        size_t num,  //num 是排序数据元素的个数
-//	        size_t size,  //size 是排序数据中一个元素的大小，单位是字节
-//		    int (*cmp)(const void*, const void*) //函数指针  是用来比较待排序数据中的2个元素的函数
-//		    );
+////快速排序的库函数 qsort();
+//// 
+////void qsort(void* base,  //base 中存放的是待排序数据中第一个对象的地址
+////	        size_t num,  //num 是排序数据元素的个数
+////	        size_t size,  //size 是排序数据中一个元素的大小，单位是字节
+////		    int (*cmp)(const void*, const void*) //函数指针  是用来比较待排序数据中的2个元素的函数
+////		    );
+//
+////base用的是void* ，无类型指针 - 任意一个数据的地址都可以放入这个指针中
+////size_t - unsigned int  无符号整型类型
+////因为用无类型指针来接收，所以不知道元素的大小（元素大小决定了指针每一步走多少个字节）
+////因此需要传元素的大小入函数中
+//#include<stdio.h>
+//#include<stdlib.h>  //qsort();函数的头文件
+//#include<string.h>  //strcmp();函数的头文件
+//int cmp_int(const void* e1, const void* e2) //整型 ，返回值：>0 或 0 或 <0 
+//{
+//	return *(int*)e1 - *(int*)e2;
+//	//默认是升序，但是如果把 e1 和 e2 的位置交换：
+//	//return *(int*)e2 - *(int*)e1;  //就会变成 降序 。
+//}
+////因为接收的是无类型指针，所以需要强制类型转换
+////返回值：>0 或 0 或 <0 
+//void print_arr(int arr[], int sz) //打印
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	printf("\n");
+//}
+//void test1()  //用qsort();排序整型
+//{
+//	int arr[10] = { 9,8,7,6,5,4,3,2,1,0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//
+//	print_arr(arr, sz);
+//	qsort(arr, sz, sizeof(arr[0]), cmp_int);
+//	print_arr(arr, sz);
+//}
+//struct Stu  //创建结构体
+//{
+//	char name[20];
+//	int age;
+//};
+//int sort_by_age(const void* e1, const void* e2) //结构体,年龄
+//{
+//	return ((struct Stu*)e1)->age - ((struct Stu*)e2)->age; //结构体中的age相减，返回值：>0 或 0 或 <0 
+//}
+//int sort_by_name(const void* e1, const void* e2)  //结构体,名字 
+//{
+//	return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->name);
+//}
+//
+//void test2()  //用qsort();排序结构体
+//{
+//	//使用qsort()函数排序结构体数据
+//	struct Stu s[] = { {"wan",28} ,{"xu",22}, {"cao",20}};
+//	int sz = sizeof(s) / sizeof(s[0]);
+//	//按年龄排序
+//	//qsort(s, sz, sizeof(s[0]), sort_by_age);  //按数字大小排序
+//	//按照名字来排序
+//	qsort(s, sz, sizeof(s[0]), sort_by_name); //按首字母的 ASCII码值 进行比较（字母相同，就比较下一个，如此类推）
+//
+//}
+//int main()
+//{
+//	//test1();
+//	test2();
+//	return 0;
+//}
 
-//base用的是void* ，无类型指针 - 任意一个数据的地址都可以放入这个指针中
-//size_t - unsigned int  无符号整型类型
-//因为用无类型指针来接收，所以不知道元素的大小（元素大小决定了指针每一步走多少个字节）
-//因此需要传元素的大小入函数中
+
+//模仿qsort实现一个自定义冒泡排序的通用算法
 #include<stdio.h>
-#include<stdlib.h>  //qsort();函数的头文件
-#include<string.h>  //strcmp();函数的头文件
-int cmp_int(const void* e1, const void* e2) //整型 ，返回值：>0 或 0 或 <0 
+void Swap(char* buf1, char* buf2, int width)
+{
+	int i = 0;
+	for (i = 0; i < width; i++)
+	{
+		char tmp = *buf1;
+		*buf1 = *buf2;
+		*buf2 = tmp;
+		buf1++;
+		buf2++;
+	}
+}
+void bubble_sort(void* base,
+				int sz,
+				int width,
+				int (*cmp)(const void* e1, const void* e2)
+				)
+{
+	int i = 0;
+	//趟数
+	for (i = 0; i < sz - 1; i++)
+	{
+		//一趟的排序
+		int j = 0;
+		for (j = 0; j < sz - 1 - i; j++)
+		{
+			//两个元素比较
+			//arr[j]  arr[j+1]
+			if (cmp((char*)base + j * width, (char*)base + (j + 1) * width) > 0)   //例如：相减a-b>0的话，a>b
+			{
+				//交换
+				Swap((char*)base + j * width, (char*)base + (j + 1) * width, width);
+				//这里的Swap函数，必须要在前面创建，这样才可以在这里使用，后面创建的话不行。
+			}
+		}
+	}
+}
+int cmp_int(const void* e1, const void* e2)  //两个数值传进来比较大小，例如：相减a-b>0的话，a>b
 {
 	return *(int*)e1 - *(int*)e2;
 }
-//因为接收的是无类型指针，所以需要强制类型转换
-//返回值：>0 或 0 或 <0 
-void print_arr(int arr[], int sz) //打印
+void print(int arr[], int sz)
 {
 	int i = 0;
-	for (i = 0; i < sz; i++)
+	for (i = 0; i < sz ; i++)
 	{
 		printf("%d ", arr[i]);
 	}
-	printf("\n");
 }
-void test1()  //用qsort();排序整型
+void test()
 {
-	int arr[10] = { 9,8,7,6,5,4,3,2,1,0 };
+	int arr[] = { 1,3,5,7,9,2,4,6,8,0 };
 	int sz = sizeof(arr) / sizeof(arr[0]);
-
-	print_arr(arr, sz);
-	qsort(arr, sz, sizeof(arr[0]), cmp_int);
-	print_arr(arr, sz);
-}
-struct Stu  //创建结构体
-{
-	char name[20];
-	int age;
-};
-int sort_by_age(const void* e1, const void* e2) //结构体,年龄
-{
-	return ((struct Stu*)e1)->age - ((struct Stu*)e2)->age; //结构体中的age相减，返回值：>0 或 0 或 <0 
-}
-int sort_by_name(const void* e1, const void* e2)  //结构体,名字 
-{
-	return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->name);
-}
-
-void test2()  //用qsort();排序结构体
-{
-	//使用qsort()函数排序结构体数据
-	struct Stu s[] = { {"wan",28} ,{"xu",22}, {"cao",20}};
-	int sz = sizeof(s) / sizeof(s[0]);
-	//按年龄排序
-	//qsort(s, sz, sizeof(s[0]), sort_by_age);  //按数字大小排序
-	//按照名字来排序
-	qsort(s, sz, sizeof(s[0]), sort_by_name); //按首字母的 ASCII码值 进行比较（字母相同，就比较下一个，如此类推）
-
+	//自定义qsort函数
+	bubble_sort(arr, sz, sizeof(arr[0]), cmp_int);
+	print(arr, sz);
 }
 int main()
 {
-	//test1();
-	test2();
+	test();
 	return 0;
 }
+
+
