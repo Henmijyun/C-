@@ -2272,69 +2272,174 @@
 //}
 
 
-//模仿qsort实现一个自定义冒泡排序的通用算法
+////模仿qsort实现一个自定义冒泡排序的通用算法
+//#include<stdio.h>
+//void Swap(char* buf1, char* buf2, int width)
+//{
+//	int i = 0;
+//	for (i = 0; i < width; i++)
+//	{
+//		char tmp = *buf1;
+//		*buf1 = *buf2;
+//		*buf2 = tmp;
+//		buf1++;
+//		buf2++;
+//	}
+//}
+//void bubble_sort(void* base,
+//				int sz,
+//				int width,
+//				int (*cmp)(const void* e1, const void* e2)
+//				)
+//{
+//	int i = 0;
+//	//趟数
+//	for (i = 0; i < sz - 1; i++)
+//	{
+//		//一趟的排序
+//		int j = 0;
+//		for (j = 0; j < sz - 1 - i; j++)
+//		{
+//			//两个元素比较
+//			//arr[j]  arr[j+1]
+//			if (cmp((char*)base + j * width, (char*)base + (j + 1) * width) > 0)   //例如：相减a-b>0的话，a>b
+//			{
+//				//交换
+//				Swap((char*)base + j * width, (char*)base + (j + 1) * width, width);
+//				//这里的Swap函数，必须要在前面创建，这样才可以在这里使用，后面创建的话不行。
+//			}
+//		}
+//	}
+//}
+//int cmp_int(const void* e1, const void* e2)  //两个数值传进来比较大小，例如：相减a-b>0的话，a>b
+//{
+//	return *(int*)e1 - *(int*)e2;
+//}
+//void print(int arr[], int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz ; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//}
+//void test()
+//{
+//	int arr[] = { 1,3,5,7,9,2,4,6,8,0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	//自定义qsort函数
+//	bubble_sort(arr, sz, sizeof(arr[0]), cmp_int);
+//	print(arr, sz);
+//}
+//int main()
+//{
+//	test();
+//	return 0;
+//}
+
+
+
+////void* 指针的好处：可以存放任意类型的地址
+////坏处：不能解引用和加减，要使用里面的地址的话，必须先强制类型转换，再用
+//int main()
+//{
+//	int a = 10;
+//	char ch = 'w';
+//	void* p = &a;//无具体类型的指针
+//	p = &ch; //因为没有具体类型，所以可以存放 任意类型 的地址
+//	*p;//错误，无法解引用，因为不知道访问几个字节
+//	p++;//也是错误
+//	//要使用的话，必须先将 无类型指针 进行 强制类型转换
+//	return 0;
+//}
+
+
+
+//一维数组：
+////sizeof(数组名) - 数组名表示整个数组的 - 计算的是整个数组的大小
+////&数组名 - 数组名表示整个数组，取出的是整个数组的地址
+////除此之外，所有的数组名都是数组首元素的地址
+//#include<stdio.h>
+//int main()
+//{
+//	int a[] = { 1,2,3,4 }; //4*4=16
+//	printf("%d\n", sizeof(a));//16  整个数组的大小
+//	printf("%d\n", sizeof(a + 0));//4或8  a+0是第一个元素的地址，sizeof(a+0)计算的是地址的大小
+//	printf("%d\n", sizeof(*a));//4   *a是数组的第一个元素，sizeof(*a)计算的是第一个元素的大小
+//	printf("%d\n", sizeof(a + 1));//4或8  a+1是第二个元素的地址，sizeof(a+1)计算的是地址的大小
+//	printf("%d\n", sizeof(a[1]));//4 - 计算的是第二个元素的大小
+//
+//	printf("%d\n", sizeof(&a));//4或8  &a虽然是数组的地址，但也是地址，sizeof(&a)计算的是一个地址的大小
+//	printf("%d\n", sizeof(*&a));//16   &a是&数组a的地址，再解引用，结果还是a数组。- 计算的是数组的大小
+//	printf("%d\n", sizeof(&a + 1));//4或8  &a是取数组地址，&a+1相当于跳过一个数组之后，下一块空间的起始地址。是数组后面的空间的地址。
+//	printf("%d\n", sizeof(&a[0]));//4或8   第一个元素的地址
+//	printf("%d\n", sizeof(&a[0] + 1));//4或8  第二个元素的地址
+//
+//	return 0;
+//}
+
+
+//字符数组
 #include<stdio.h>
-void Swap(char* buf1, char* buf2, int width)
-{
-	int i = 0;
-	for (i = 0; i < width; i++)
-	{
-		char tmp = *buf1;
-		*buf1 = *buf2;
-		*buf2 = tmp;
-		buf1++;
-		buf2++;
-	}
-}
-void bubble_sort(void* base,
-				int sz,
-				int width,
-				int (*cmp)(const void* e1, const void* e2)
-				)
-{
-	int i = 0;
-	//趟数
-	for (i = 0; i < sz - 1; i++)
-	{
-		//一趟的排序
-		int j = 0;
-		for (j = 0; j < sz - 1 - i; j++)
-		{
-			//两个元素比较
-			//arr[j]  arr[j+1]
-			if (cmp((char*)base + j * width, (char*)base + (j + 1) * width) > 0)   //例如：相减a-b>0的话，a>b
-			{
-				//交换
-				Swap((char*)base + j * width, (char*)base + (j + 1) * width, width);
-				//这里的Swap函数，必须要在前面创建，这样才可以在这里使用，后面创建的话不行。
-			}
-		}
-	}
-}
-int cmp_int(const void* e1, const void* e2)  //两个数值传进来比较大小，例如：相减a-b>0的话，a>b
-{
-	return *(int*)e1 - *(int*)e2;
-}
-void print(int arr[], int sz)
-{
-	int i = 0;
-	for (i = 0; i < sz ; i++)
-	{
-		printf("%d ", arr[i]);
-	}
-}
-void test()
-{
-	int arr[] = { 1,3,5,7,9,2,4,6,8,0 };
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	//自定义qsort函数
-	bubble_sort(arr, sz, sizeof(arr[0]), cmp_int);
-	print(arr, sz);
-}
+#include<string.h>
 int main()
-{
-	test();
+{/*
+	char arr[] = { 'a','b','c','d','e','f' };
+
+	printf("%d\n", sizeof(arr));  //6
+	printf("%d\n", sizeof(arr + 0));  //4或8  只要是地址，就是4或8个字节（32位和64位）
+	printf("%d\n", sizeof(*arr));   //1
+	printf("%d\n", sizeof(arr[1]));  //1
+	printf("%d\n", sizeof(&arr));  //4或8
+	printf("%d\n", sizeof(&arr + 1)); //4或8     &arr+1,跳过一整个数组
+	printf("%d\n\n", sizeof(&arr[0] + 1));  //4或8
+
+	//strlen求字符串长度
+	printf("%d\n", strlen(arr));  //随机值（找不到'\0'）
+	printf("%d\n", strlen(arr + 0));  //随机值
+	//printf("%d\n", strlen(*arr));  //err报错
+	//printf("%d\n", strlen(arr[1]));  //err报错
+	printf("%d\n", strlen(&arr));  //随机值
+	printf("%d\n", strlen(&arr + 1));  //随机值-6 随机值
+	printf("%d\n", strlen(&arr[0] + 1));  //随机值-1 随机值
+	*/
+	char arr[] = "abcdef";
+
+	printf("%d\n", sizeof(arr));  //7  包括\0
+	printf("%d\n", sizeof(arr + 0));  //4或8
+	printf("%d\n", sizeof(*arr));   //1
+	printf("%d\n", sizeof(arr[1]));  //1
+	printf("%d\n", sizeof(&arr));  //4或8
+	printf("%d\n", sizeof(&arr + 1)); //4或8
+	printf("%d\n\n", sizeof(&arr[0] + 1));  //4或8
+
+	printf("%d\n", strlen(arr));  //6
+	printf("%d\n", strlen(arr + 0));  //6
+	//printf("%d\n", strlen(*arr));  //err报错
+	//printf("%d\n", strlen(arr[1]));  //err报错
+	printf("%d\n", strlen(&arr));  //6
+	printf("%d\n", strlen(&arr + 1));  //随机值
+	printf("%d\n", strlen(&arr[0] + 1));  //5
+
+	char* p = "abcdef";
+
+	printf("%d\n", sizeof(p));  //4或8
+	printf("%d\n", sizeof(p + 1));  //4或8
+	printf("%d\n", sizeof(*p));   //1    
+	printf("%d\n", sizeof(p[0]));  //1
+	printf("%d\n", sizeof(&p));  //4或8   p指针的地址
+	printf("%d\n", sizeof(&p + 1)); //4或8  p指针后面的地址
+	printf("%d\n\n", sizeof(&p[0] + 1));  //4或8  p[1]的地址
+
+	printf("%d\n", strlen(p));  //6
+	printf("%d\n", strlen(p + 1));  //5
+	printf("%d\n", strlen(*p));  //err报错
+	printf("%d\n", strlen(p[0]));  //err报错
+	printf("%d\n", strlen(&p));  //随机值
+	printf("%d\n", strlen(&p + 1));  //随机值
+	printf("%d\n", strlen(&p[0] + 1));  //5
 	return 0;
 }
+
 
 

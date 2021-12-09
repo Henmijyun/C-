@@ -1,2 +1,6 @@
 ﻿  test_11_7.c
-  test_11_7.vcxproj -> C:\Users\11066\source\repos\test_11_7\Debug\test_11_7.exe
+E:\C\repos\lianxiyong\test_11_7\test_11_7.c(2420,28): warning C4047: “函数”:“const char *”与“char (*)[7]”的间接级别不同
+E:\C\repos\lianxiyong\test_11_7\test_11_7.c(2420,24): warning C4024: “strlen”: 形参和实参 1 的类型不同
+E:\C\repos\lianxiyong\test_11_7\test_11_7.c(2421,32): warning C4047: “函数”:“const char *”与“char (*)[7]”的间接级别不同
+E:\C\repos\lianxiyong\test_11_7\test_11_7.c(2421,29): warning C4024: “strlen”: 形参和实参 1 的类型不同
+  test_11_7.vcxproj -> E:\C\repos\lianxiyong\test_11_7\Debug\test_11_7.exe
