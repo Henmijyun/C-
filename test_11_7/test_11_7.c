@@ -2379,67 +2379,119 @@
 //}
 
 
-//字符数组
-#include<stdio.h>
-#include<string.h>
+////字符数组
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	char arr[] = { 'a','b','c','d','e','f' };
+//
+//	printf("%d\n", sizeof(arr));  //6
+//	printf("%d\n", sizeof(arr + 0));  //4或8  只要是地址，就是4或8个字节（32位和64位）
+//	printf("%d\n", sizeof(*arr));   //1
+//	printf("%d\n", sizeof(arr[1]));  //1
+//	printf("%d\n", sizeof(&arr));  //4或8
+//	printf("%d\n", sizeof(&arr + 1)); //4或8     &arr+1,跳过一整个数组
+//	printf("%d\n\n", sizeof(&arr[0] + 1));  //4或8
+//
+//	//strlen求字符串长度
+//	printf("%d\n", strlen(arr));  //随机值（找不到'\0'）
+//	printf("%d\n", strlen(arr + 0));  //随机值
+//	//printf("%d\n", strlen(*arr));  //err报错
+//	//printf("%d\n", strlen(arr[1]));  //err报错
+//	printf("%d\n", strlen(&arr));  //随机值
+//	printf("%d\n", strlen(&arr + 1));  //随机值-6 随机值
+//	printf("%d\n", strlen(&arr[0] + 1));  //随机值-1 随机值
+//
+//	char arr[] = "abcdef";
+//
+//	printf("%d\n", sizeof(arr));  //7  包括\0
+//	printf("%d\n", sizeof(arr + 0));  //4或8
+//	printf("%d\n", sizeof(*arr));   //1
+//	printf("%d\n", sizeof(arr[1]));  //1
+//	printf("%d\n", sizeof(&arr));  //4或8
+//	printf("%d\n", sizeof(&arr + 1)); //4或8
+//	printf("%d\n\n", sizeof(&arr[0] + 1));  //4或8
+//
+//	printf("%d\n", strlen(arr));  //6
+//	printf("%d\n", strlen(arr + 0));  //6
+//	//printf("%d\n", strlen(*arr));  //err报错
+//	//printf("%d\n", strlen(arr[1]));  //err报错
+//	printf("%d\n", strlen(&arr));  //6
+//	printf("%d\n", strlen(&arr + 1));  //随机值
+//	printf("%d\n", strlen(&arr[0] + 1));  //5
+//
+//	char* p = "abcdef";
+//
+//	printf("%d\n", sizeof(p));  //4或8
+//	printf("%d\n", sizeof(p + 1));  //4或8
+//	printf("%d\n", sizeof(*p));   //1    
+//	printf("%d\n", sizeof(p[0]));  //1
+//	printf("%d\n", sizeof(&p));  //4或8   p指针的地址
+//	printf("%d\n", sizeof(&p + 1)); //4或8  p指针后面的地址
+//	printf("%d\n\n", sizeof(&p[0] + 1));  //4或8  p[1]的地址
+//
+//	printf("%d\n", strlen(p));  //6
+//	printf("%d\n", strlen(p + 1));  //5
+//	printf("%d\n", strlen(*p));  //err报错
+//	printf("%d\n", strlen(p[0]));  //err报错
+//	printf("%d\n", strlen(&p));  //随机值
+//	printf("%d\n", strlen(&p + 1));  //随机值
+//	printf("%d\n", strlen(&p[0] + 1));  //5
+//	return 0;
+//}
+//
+//
+
+
 int main()
-{/*
-	char arr[] = { 'a','b','c','d','e','f' };
+{
+	int a[3][4] = { 0 };
 
-	printf("%d\n", sizeof(arr));  //6
-	printf("%d\n", sizeof(arr + 0));  //4或8  只要是地址，就是4或8个字节（32位和64位）
-	printf("%d\n", sizeof(*arr));   //1
-	printf("%d\n", sizeof(arr[1]));  //1
-	printf("%d\n", sizeof(&arr));  //4或8
-	printf("%d\n", sizeof(&arr + 1)); //4或8     &arr+1,跳过一整个数组
-	printf("%d\n\n", sizeof(&arr[0] + 1));  //4或8
+	printf("%d\n", sizeof(a));  //48
+	printf("%d\n", sizeof(a[0][0]));  //4  a[0][0] - 是第一行第一个元素
+	//a[0] 就可以理解为：第一行的数组名
 
-	//strlen求字符串长度
-	printf("%d\n", strlen(arr));  //随机值（找不到'\0'）
-	printf("%d\n", strlen(arr + 0));  //随机值
-	//printf("%d\n", strlen(*arr));  //err报错
-	//printf("%d\n", strlen(arr[1]));  //err报错
-	printf("%d\n", strlen(&arr));  //随机值
-	printf("%d\n", strlen(&arr + 1));  //随机值-6 随机值
-	printf("%d\n", strlen(&arr[0] + 1));  //随机值-1 随机值
-	*/
-	char arr[] = "abcdef";
+	printf("%d\n", sizeof(a[0]));//16  sizeof(a[0]) - 数组名a[0]单独放在sizeof内部，
+	//a[0]表示的是：整个第一行。sizeof(a[0])计算的是第一行的大小。
 
-	printf("%d\n", sizeof(arr));  //7  包括\0
-	printf("%d\n", sizeof(arr + 0));  //4或8
-	printf("%d\n", sizeof(*arr));   //1
-	printf("%d\n", sizeof(arr[1]));  //1
-	printf("%d\n", sizeof(&arr));  //4或8
-	printf("%d\n", sizeof(&arr + 1)); //4或8
-	printf("%d\n\n", sizeof(&arr[0] + 1));  //4或8
+	printf("%d\n", sizeof(a[0] + 1));  //4  解释：a[0]作为数组名并没有单独放在sizeof内部，也没有&取地址，
+	//所以a[0]就是第一行第一个元素的地址。
+	//所以 a[0]+1 ,就是第一行第二个元素的地址。
 
-	printf("%d\n", strlen(arr));  //6
-	printf("%d\n", strlen(arr + 0));  //6
-	//printf("%d\n", strlen(*arr));  //err报错
-	//printf("%d\n", strlen(arr[1]));  //err报错
-	printf("%d\n", strlen(&arr));  //6
-	printf("%d\n", strlen(&arr + 1));  //随机值
-	printf("%d\n", strlen(&arr[0] + 1));  //5
+	printf("%d\n", sizeof(*(a[0] + 1)));  //4  解释：*(a[0]+1)是第一行第二个元素（int所以是4） 
 
-	char* p = "abcdef";
+	printf("%d\n", sizeof(a + 1));  //4   a是二维数组的数组名，并不是取地址。
+	//也没有单独放在sizeof内部，所以a就表示二维数组首元素的地址，即：第一行的地址。
+	// a+1 的话，就是 二维数组 第二行的地址。
 
-	printf("%d\n", sizeof(p));  //4或8
-	printf("%d\n", sizeof(p + 1));  //4或8
-	printf("%d\n", sizeof(*p));   //1    
-	printf("%d\n", sizeof(p[0]));  //1
-	printf("%d\n", sizeof(&p));  //4或8   p指针的地址
-	printf("%d\n", sizeof(&p + 1)); //4或8  p指针后面的地址
-	printf("%d\n\n", sizeof(&p[0] + 1));  //4或8  p[1]的地址
+	printf("%d\n", sizeof(*(a + 1)));  //16  a+1是第二行的地址，所以*(a+1)表示第二行
+	//所以计算的就是第二行的大小  *(a+1) == a[1]
 
-	printf("%d\n", strlen(p));  //6
-	printf("%d\n", strlen(p + 1));  //5
-	printf("%d\n", strlen(*p));  //err报错
-	printf("%d\n", strlen(p[0]));  //err报错
-	printf("%d\n", strlen(&p));  //随机值
-	printf("%d\n", strlen(&p + 1));  //随机值
-	printf("%d\n", strlen(&p[0] + 1));  //5
+	printf("%d\n", sizeof(&a[0] + 1));  //4   a[0]是第一行的数组名，
+	//&a[0]取出的就是第一行的地址，那么 &a[0]+1 就是第二行的地址
+
+	printf("%d\n", sizeof(*(&a[0] + 1)));  //16   &a[0]+1 是第二行的地址，
+	// *(&a[0]+1) 就是第二行,所以计算的第二行的大小
+
+	printf("%d\n", sizeof(*a));  //16  a作为二维数组的数组名，没有&，没有单独放在sizeof内部，
+	//a就是首元素的地址，即第一行的地址，所以*a就是第一行，计算的是第一行的大小
+
+	printf("%d\n", sizeof(a[3]));  //16    a[3]其实是第四行的数组名（如果有的话）
+	//所以其实不存在，也是通过类型计算大小的
+
+	//3+5
+	//表达式：
+	//1.值属性 - 8
+	//2.类型属性 - int
+
 	return 0;
 }
-
-
-
+int main()
+{
+	short s = 5;
+	int a = 4;
+	printf("%d\n", sizeof(s = a + 6));//2  计算s的大小，s是short类型
+	printf("%d\n", s);//5  sizeof内部的表达式，不会改变sizeof外部的信息
+	return 0;
+}
