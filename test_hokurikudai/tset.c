@@ -448,25 +448,56 @@
 //}
 
 //第十一回課題
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include<stdio.h>
+//struct Student
+//{
+//	char Name[60];
+//	char Gender[10];
+//	int age;
+//}Stu[3] = { { "Yamada_Tarou","Male",16 } ,
+//	        { "Suzuki_Itirou","Male",17 } ,
+//	        { "Takahasi_Youko","Female",15 } 
+//		   };
+//void print(struct Student* P)
+//{
+//	printf("Name=%s\nGender=%s\nAge=%d\n\n", P->Name, P->Gender, P->age);
+//	printf("Name=%s\nGender=%s\nAge=%d\n\n", (P + 1)->Name, (P + 1)->Gender, (P + 1)->age);
+//	printf("Name=%s\nGender=%s\nAge=%d\n\n", (P + 2)->Name, (P + 2)->Gender, (P + 2)->age);
+//}
+//int main()
+//{
+//	print(Stu);
+//	return 0;
+//}
+
+//第十二回課題
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
-struct Student
-{
-	char Name[60];
-	char Gender[10];
-	int age;
-}Stu[3] = { { "Yamada_Tarou","Male",16 } ,
-	        { "Suzuki_Itirou","Male",17 } ,
-	        { "Takahasi_Youko","Female",15 } 
-		   };
-void print(struct Student* P)
-{
-	printf("Name=%s\nGender=%s\nAge=%d\n\n", P->Name, P->Gender, P->age);
-	printf("Name=%s\nGender=%s\nAge=%d\n\n", (P + 1)->Name, (P + 1)->Gender, (P + 1)->age);
-	printf("Name=%s\nGender=%s\nAge=%d\n\n", (P + 2)->Name, (P + 2)->Gender, (P + 2)->age);
-}
+#include<stdlib.h>
 int main()
 {
-	print(Stu);
+	int i = 1;
+	FILE* file;
+	if (NULL == (file = fopen("12-1.txt", "w")))
+	{
+		printf("12-1.txt cannot open.\n");
+		exit(1);
+	}
+	file = fopen("12-1.txt", "w");
+	for (i = 1; i < 1000; i++)
+	{
+
+		fprintf(file, "%d", i);
+		if (i % 5 == 0)
+		{
+			fprintf(file, "\n");
+		}
+		else
+		{
+			fprintf(file, ",");
+		}
+	}
+	fclose(file);
 	return 0;
 }
