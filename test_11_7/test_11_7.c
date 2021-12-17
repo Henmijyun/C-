@@ -2696,7 +2696,7 @@
 //1 2 3
 //2 3 4
 //4 5 6
-#include<stdio.h>
+//#include<stdio.h>
 //int find_num(int arr[3][3], int r, int c, int k) //不用指针实现
 //{
 //	int x = 0;
@@ -2719,52 +2719,182 @@
 //	return 0;//找不到
 //}
 
-int find_num(int arr[3][3], int *px, int *py, int k) //指针实现（为了知道坐标）
+//int find_num(int arr[3][3], int *px, int *py, int k) //指针实现（为了知道坐标）
+//{
+//	int x = 0;
+//	int y = *py - 1;
+//	while (x < *px && y >= 0) // 防止越界  时间复杂度为 O(1)
+//	{
+//		if (arr[x][y] < k)
+//		{
+//			x++;
+//		}
+//		else if (arr[x][y] > k)
+//		{
+//			y--;
+//		}
+//		else
+//		{
+//			*px = x;
+//			*py = y;
+//			return 1;//找到了
+//		}
+//	}
+//	return 0;//找不到
+//}
+//int main()
+//{
+//	int  arr[3][3] = { 1,2,3,4,5,6,7,8,9 };//N - 查找的次数最坏的情况下是N次
+//	//需要 O(1) 
+//	//查找数字,比如找 7
+//	int k = 7;
+//	//如果找到返回1，找不到返回0
+//	int x = 3;//行
+//	int y = 3;//列
+//	//&x,&y
+//	//1.传入参数
+//	//2.带回值
+//	int ret = find_num(arr, &x, &y, k);//把arr数组，3行3列，需要找的数k，放入函数find_num中，ret接收返回值
+//	if (ret == 1)
+//	{
+//		
+//		printf("找到了\n");
+//		printf("坐标为%d %d", x, y);
+//	}
+//	else
+//	{
+//		printf("没找到\n");
+//	}
+//
+//	return 0;
+//}
+
+
+//数组
+//字符串
+//数据结构
+//
+
+////字符串左旋
+//// 题目内容：
+//// 实现一个函数，可以左旋字符串中的k个字符。
+//// 例如：
+//// ABCD左旋一个字符得到BCDA
+//// ABCD左旋两个字符得到CDAB
+////
+//
+//#include<stdio.h>
+//#include<string.h>
+//void string_left_rotate(char* str, int k)
+//{
+//	int i = 0;
+//	int n = strlen(str);
+//	for (i = 0; i < k; i++)
+//	{
+//		//每次左旋转一个字符
+//		//1.
+//		char tmp = *str;
+//		//2.后边的n-1个字符往前挪动
+//		int j = 0;
+//		for (j = 0; j < n - 1; j++)
+//		{
+//			*(str + j) = *(str + j + 1);
+//		}
+//		//3.tmp放在最后
+//		*(str + n - 1) = tmp;
+//	}
+//}
+//int main()
+//{
+//	char arr[10] = "ABCDEF";
+//	int k = 2;//旋转k个字符
+//	string_left_rotate(arr, k);
+//	printf("%s\n", arr);
+//	return 0;
+//}
+
+////三步反转法
+//#include<assert.h>
+//#include<stdio.h>
+//#include<string.h>
+//void reverse(char* left, char* right)
+//{
+//	assert(left);
+//	assert(right);
+//	while (left < right)
+//	{
+//		char tmp = *left;
+//		*left = *right;
+//		*right = tmp;
+//		left++;
+//		right--;
+//	}
+//}
+//void string_left_rotate(char* str, int k)
+//{
+//	assert(str);
+//
+//	int n = strlen(str);
+//	reverse(str, str + k - 1);//左
+//	reverse(str + k, str + n - 1);//右
+//	reverse(str, str + n - 1);//整体
+//}
+//int main()
+//{
+//	char arr[10] = "ABCDEF";
+//	int k = 2;//旋转k个字符
+//	string_left_rotate(arr, k);
+//	printf("%s\n", arr);
+//	return 0;
+//}
+
+
+//写一个函数，判断一个字符串是否为另外一个字符串旋转之后的字符串。
+//例如：给定s1=AABCD 和 s2=BCDAA ，返回1
+//给定s1=abcd 和 s2=ACBD，返回0
+#include<stdio.h>
+#include<string.h>
+#include<assert.h>
+int is_string_rotate(char* str1, char* str2)
 {
-	int x = 0;
-	int y = *py - 1;
-	while (x < *px && y >= 0) // 防止越界  时间复杂度为 O(1)
+	assert(str1);
+	assert(str2);
+	int i = 0;
+	int n = strlen(str1);
+	for (i = 0; i < n; i++)
 	{
-		if (arr[x][y] < k)
+		//每次左旋转一个字符
+		//1.
+		char tmp = *str1;
+		//2.后边的n-1个字符往前挪动
+		int j = 0;
+		for (j = 0; j < n - 1; j++)
 		{
-			x++;
+			*(str1 + j) = *(str1 + j + 1);
 		}
-		else if (arr[x][y] > k)
+		//3.tmp放在最后
+		*(str1 + n - 1) = tmp;
+		//判断是否相对
+		if (strcmp(str1, str2) == 0)
 		{
-			y--;
-		}
-		else
-		{
-			*px = x;
-			*py = y;
-			return 1;//找到了
+			return 1;
 		}
 	}
-	return 0;//找不到
+	return 0;
 }
 int main()
 {
-	int  arr[3][3] = { 1,2,3,4,5,6,7,8,9 };//N - 查找的次数最坏的情况下是N次
-	//需要 O(1) 
-	//查找数字,比如找 7
-	int k = 7;
-	//如果找到返回1，找不到返回0
-	int x = 3;//行
-	int y = 3;//列
-	//&x,&y
-	//1.传入参数
-	//2.带回值
-	int ret = find_num(arr, &x, &y, k);//把arr数组，3行3列，需要找的数k，放入函数find_num中，ret接收返回值
+	char arr1[] = "AABCD";
+	char arr2[] = "BCDAA";
+	int ret = is_string_rotate(arr1, arr2);
 	if (ret == 1)
 	{
-		
-		printf("找到了\n");
-		printf("坐标为%d %d", x, y);
+		printf("yes\n");
 	}
 	else
 	{
-		printf("没找到\n");
+		printf("no\n");
 	}
-
+	
 	return 0;
 }
