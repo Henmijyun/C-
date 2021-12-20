@@ -2849,52 +2849,132 @@
 //}
 
 
-//写一个函数，判断一个字符串是否为另外一个字符串旋转之后的字符串。
-//例如：给定s1=AABCD 和 s2=BCDAA ，返回1
-//给定s1=abcd 和 s2=ACBD，返回0
+////写一个函数，判断一个字符串是否为另外一个字符串旋转之后的字符串。
+////例如：给定s1=AABCD 和 s2=BCDAA ，返回1
+////给定s1=abcd 和 s2=ACBD，返回0
+//#include<stdio.h>
+//#include<string.h>
+//#include<assert.h>
+//int is_string_rotate(char* str1, char* str2)
+//{
+//	//判断长度是否相等
+//	if (strlen(str1) != strlen(str2))
+//	{
+//		return 0;
+//	}
+//	//1.str1字符串后面追加一个str1
+//	//AABCDAABCD
+//	int len = strlen(str1);
+//	strncat(str1, str1, len);
+//	//判断str2是否为str1的字串
+//	int ret = strstr(str1, str2);//用库函数来判断
+//	//如果str2是str1中的字串，返回str2起始元素的地址，则返回值为指针
+//	//如果不是，返回空指针NULL
+//	return ret != NULL;//成立返回1，不成立返回0
+//}
+//
+//int main()
+//{
+//	char arr1[20] = "AABCD";
+//	
+//	char arr2[] = "BCDAA";
+//	int ret = is_string_rotate(arr1, arr2);
+//	if (ret == 1)
+//	{
+//		printf("yes\n");
+//	}
+//	else
+//	{
+//		printf("no\n");
+//	}
+//	
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	char arr[20] = "hello";
+//	//只要空间够大，就可以用 strcat()函数 对 arr数组 进行追加。
+//	//"hello bit\0"
+//	//strcat(arr,"bit");
+//	
+//	//strcat(arr, arr);//err
+//
+//	strncat(arr, arr, 5);//hellohello
+//	printf("%s\n", arr);
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//#include<string.h>
+//#include<assert.h>
+////三个版本：
+////1.计算器
+////2.递归
+////3.指针-指针
+//int my_strlen(const char* str)
+//{
+//	int count = 0;//计数器
+//	assert(str != NULL);
+//	while (*str != '\0')
+//	{
+//		count++;
+//		str++;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	char arr[] = "abc";// ""的后面默认隐藏一个\0
+//	//char arr[] = { 'a','b','c'};// {}里面没有\0，所以strlen计算结果为随机值
+//	//模拟实现
+//	int len = my_strlen(arr);
+//	printf("%d\n", len);
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	if (strlen("abc") - strlen("abcdef") > 0)
+//	{
+//		printf(">\n");//结果为>
+//		//strlen返回类型是size_t，无符号整型类型，所以两个无符号整型类型的数相减，得到的还是正数。
+//		//size_t == unsigned int
+//		//3-6 = -3 但是这个负号会变成有限数字，则变成一个非常大的数字
+//	}
+//	else
+//	{
+//		printf("<=\n");
+//	}
+//	return 0;
+//}
+
 #include<stdio.h>
 #include<string.h>
-#include<assert.h>
-int is_string_rotate(char* str1, char* str2)
-{
-	assert(str1);
-	assert(str2);
-	int i = 0;
-	int n = strlen(str1);
-	for (i = 0; i < n; i++)
-	{
-		//每次左旋转一个字符
-		//1.
-		char tmp = *str1;
-		//2.后边的n-1个字符往前挪动
-		int j = 0;
-		for (j = 0; j < n - 1; j++)
-		{
-			*(str1 + j) = *(str1 + j + 1);
-		}
-		//3.tmp放在最后
-		*(str1 + n - 1) = tmp;
-		//判断是否相对
-		if (strcmp(str1, str2) == 0)
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
 int main()
 {
-	char arr1[] = "AABCD";
-	char arr2[] = "BCDAA";
-	int ret = is_string_rotate(arr1, arr2);
-	if (ret == 1)
-	{
-		printf("yes\n");
-	}
-	else
-	{
-		printf("no\n");
-	}
-	
+	char arr[20] = { 'a','b' };
+	//arr = "hello";//err
+	char* p = "hello";
+	strcpy(arr, p);//string copy  把p地址的数据复制到arr地址中,隐藏的'\0'也会被复制过去
+	//直接写 strcpy(arr,"hello"); 也一样，同理
+	//会把原本的数据'a''b'覆盖，删除
+	//
+	char arr2[] = { 'a','b','c'/*,'\0' */ };//没有隐藏的'\0'，strcpy函数需要遇到'\0'才能停下来，所以会err
+	strcpy(arr, arr2);
+	printf("%s\n", arr);
+	//
+	char arr3[5] = "####";
+	char* p2 = "hello world";
+	strcpy(arr3, p2);
+	printf("%s\n", arr3);//数组空间不够大，但是strcpy函数会硬来，硬塞进去导致越界访问
+	//
+
 	return 0;
 }
