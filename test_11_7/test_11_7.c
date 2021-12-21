@@ -2955,26 +2955,61 @@
 //	return 0;
 //}
 
-#include<stdio.h>
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	char arr[20] = { 'a','b' };
+//	//arr = "hello";//err
+//	char* p = "hello";
+//	strcpy(arr, p);//string copy  把p地址的数据复制到arr地址中,隐藏的'\0'也会被复制过去
+//	//直接写 strcpy(arr,"hello"); 也一样，同理
+//	//会把原本的数据'a''b'覆盖，删除
+//	//
+//	char arr2[] = { 'a','b','c'/*,'\0' */ };//没有隐藏的'\0'，strcpy函数需要遇到'\0'才能停下来，所以会err
+//	strcpy(arr, arr2);
+//	printf("%s\n", arr);
+//	//
+//	char arr3[5] = "####";
+//	char* p2 = "hello world";
+//	strcpy(arr3, p2);
+//	printf("%s\n", arr3);//数组空间不够大，但是strcpy函数会硬来，硬塞进去导致越界访问
+//	//
+//	char* str = "xxxxxxxxxxxxxxx";
+//	char* p3 = "hello world";
+//	strcpy(str, p3);//????这里会出问题，str不是数组，是一个常量字符串，不能被修改，所以err
+//	return 0;
+//}
+
+
 #include<string.h>
+#include<stdio.h>
+#include<assert.h>
+char* my_strcat(char* dest, const char* src) //返回的是目标空间的起始位置
+{
+	char* ret = dest;
+	assert(dest && src);
+	//1.找目标字符串中的\0
+	while (*dest)
+	{
+		dest++;
+	}
+	//2.追加源字符串,包含\0
+	while (*dest++ = *src++)
+	{
+		;
+	}
+	return ret;//返回的是目标空间的起始位置
+}
 int main()
 {
-	char arr[20] = { 'a','b' };
-	//arr = "hello";//err
-	char* p = "hello";
-	strcpy(arr, p);//string copy  把p地址的数据复制到arr地址中,隐藏的'\0'也会被复制过去
-	//直接写 strcpy(arr,"hello"); 也一样，同理
-	//会把原本的数据'a''b'覆盖，删除
-	//
-	char arr2[] = { 'a','b','c'/*,'\0' */ };//没有隐藏的'\0'，strcpy函数需要遇到'\0'才能停下来，所以会err
-	strcpy(arr, arr2);
-	printf("%s\n", arr);
-	//
-	char arr3[5] = "####";
-	char* p2 = "hello world";
-	strcpy(arr3, p2);
-	printf("%s\n", arr3);//数组空间不够大，但是strcpy函数会硬来，硬塞进去导致越界访问
-	//
-
+	char arr[20] = "hello \0###########";
+	//strcat(arr, "world"); //字符串追加（连接）
+	//printf("%s\n", arr);
+	char arr2[] = "world";
+	my_strcat(arr, arr2);  //两种方法都一样
+	printf("%s\n", arr);  //hello world
+	//追加时,从'\0'开始，覆盖'\0'，会把源字符串里面的字符全部加进去，包括'\0'
+	printf("%s\n", my_strcat(arr, arr2)); //hello worldworld
 	return 0;
 }
