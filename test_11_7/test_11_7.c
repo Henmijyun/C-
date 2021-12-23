@@ -2982,34 +2982,68 @@
 //}
 
 
-#include<string.h>
+//#include<string.h>
+//#include<stdio.h>
+//#include<assert.h>
+//char* my_strcat(char* dest, const char* src) //返回的是目标空间的起始位置
+//{
+//	char* ret = dest;
+//	assert(dest && src);
+//	//1.找目标字符串中的\0
+//	while (*dest)
+//	{
+//		dest++;
+//	}
+//	//2.追加源字符串,包含\0
+//	while (*dest++ = *src++)
+//	{
+//		;
+//	}
+//	return ret;//返回的是目标空间的起始位置
+//}
+//int main()
+//{
+//	char arr[20] = "hello \0###########";
+//	//strcat(arr, "world"); //字符串追加（连接）
+//	//printf("%s\n", arr);
+//	char arr2[] = "world";
+//	my_strcat(arr, arr2);  //两种方法都一样
+//	printf("%s\n", arr);  //hello world
+//	//追加时,从'\0'开始，覆盖'\0'，会把源字符串里面的字符全部加进去，包括'\0'
+//	printf("%s\n", my_strcat(arr, arr2)); //hello worldworld
+//	return 0;
+//}
+
+
+////strcat();不能自己给自己追加
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	char arr[20] = "abcd";
+//	strcat(arr, arr);//err  因为拷贝过程中，把路径上自己末尾的'\0'覆盖掉了，所以无法复制'\0'，导致死循环
+//	printf("%s\n", arr);
+//	return 0;
+//}
+
+//比较字符串的大小
 #include<stdio.h>
-#include<assert.h>
-char* my_strcat(char* dest, const char* src) //返回的是目标空间的起始位置
-{
-	char* ret = dest;
-	assert(dest && src);
-	//1.找目标字符串中的\0
-	while (*dest)
-	{
-		dest++;
-	}
-	//2.追加源字符串,包含\0
-	while (*dest++ = *src++)
-	{
-		;
-	}
-	return ret;//返回的是目标空间的起始位置
-}
+#include<string.h>
 int main()
 {
-	char arr[20] = "hello \0###########";
-	//strcat(arr, "world"); //字符串追加（连接）
-	//printf("%s\n", arr);
-	char arr2[] = "world";
-	my_strcat(arr, arr2);  //两种方法都一样
-	printf("%s\n", arr);  //hello world
-	//追加时,从'\0'开始，覆盖'\0'，会把源字符串里面的字符全部加进去，包括'\0'
-	printf("%s\n", my_strcat(arr, arr2)); //hello worldworld
+	char* p = "obc";
+	char* q = "abcdef";
+	/*if (p > q) //err 这里比较的是p和q的地址
+	{
+		printf(">\n");
+	}
+	if("obc"> "abcdef")//err  这里也是比较o和a的地址
+	*/
+
+	//strcmp - 字符串比较大小
+	//比较的不是字符串的长度，是字符的大小，如：abc > abbbbcd ,a=a,b=b,c>b,c后面就可以不用看了
+	//相等的情况下，按顺序一直比较到\0的位置，如果都相等，则两个字符串相等，如：abc\0 == abc\0   \0为结束标志
+	int ret = strcmp("obb", "abcdef"); //公式1 > 公式2 -> 返回1 ；公式1 < 公式2 -> -1 ;公式1 == 公式2 -> 0 ;
+	printf("%d\n", ret);//所以这里结果为：打印 1  o>a (与长度无关，比较ASCII值有关)
 	return 0;
 }
