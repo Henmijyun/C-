@@ -517,10 +517,10 @@ int main()
 	int i = 0;
 	int n = 0;
 	int num = 0;
-	int* p = NULL;
+	int* array;
 	printf("学生の人数は？");
 	scanf("%d", &n);
-	if ((p = (int*)malloc(n * sizeof(int))) == NULL)
+	if ((array = (int*)malloc(n * sizeof(int))) == NULL)
 	{
 		printf("malloc failed.\n");
 		exit(1);
@@ -529,9 +529,12 @@ int main()
 	{
 		for (i = 0; i < n; i++)
 		{
-			printf("student #%d:%d",p->)
+			num = rand();
+			S.id = i;
+			S.score = num;
+			printf("student #%d:%d\n", S.id, S.score);
 		}
 	}
-	free(p);
+	free(array);
 	return 0;
 }
