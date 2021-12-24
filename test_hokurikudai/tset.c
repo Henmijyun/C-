@@ -472,34 +472,66 @@
 //}
 
 //第十二回課題
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include<stdio.h>
+//#include<stdlib.h>
+//int main()
+//{
+//	int i = 1;
+//	FILE* file;
+//	if (NULL == (file = fopen("12-1.txt", "w")))
+//	{
+//		printf("12-1.txt cannot open.\n");
+//		exit(1);
+//	}
+//	file = fopen("12-1.txt", "w");
+//	for (i = 1; i < 1000; i++)
+//	{
+//
+//		fprintf(file, "%d", i);
+//		if (i % 5 == 0)
+//		{
+//			fprintf(file, "\n");
+//		}
+//		else
+//		{
+//			fprintf(file, ",");
+//		}
+//	}
+//	fclose(file);
+//	return 0;
+//}
+
+//第十四回課題
 #define _CRT_SECURE_NO_WARNINGS 1
-#include<stdio.h>
 #include<stdlib.h>
+#include<stdio.h>
+struct Student
+{
+	int id;
+	int score;
+};
 int main()
 {
-	int i = 1;
-	FILE* file;
-	if (NULL == (file = fopen("12-1.txt", "w")))
+	struct Student S;
+	int i = 0;
+	int n = 0;
+	int num = 0;
+	int* p = NULL;
+	printf("学生の人数は？");
+	scanf("%d", &n);
+	if ((p = (int*)malloc(n * sizeof(int))) == NULL)
 	{
-		printf("12-1.txt cannot open.\n");
+		printf("malloc failed.\n");
 		exit(1);
 	}
-	file = fopen("12-1.txt", "w");
-	for (i = 1; i < 1000; i++)
+	else
 	{
-
-		fprintf(file, "%d", i);
-		if (i % 5 == 0)
+		for (i = 0; i < n; i++)
 		{
-			fprintf(file, "\n");
-		}
-		else
-		{
-			fprintf(file, ",");
+			printf("student #%d:%d",p->)
 		}
 	}
-	fclose(file);
+	free(p);
 	return 0;
 }
-
-
