@@ -3047,3 +3047,4 @@ int main()
 	printf("%d\n", ret);//所以这里结果为：打印 1  o>a (与长度无关，比较ASCII值有关)
 	return 0;
 }
+
