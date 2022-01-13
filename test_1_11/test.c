@@ -31,15 +31,25 @@
 //  
 //    int i = 0;
 //    printf("%d\n", Name);
-//
+// 
+//    return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//    printf("Name    Age     Gender\n");
+//    printf("---------------------\n");
+//    printf("Jack    18      man\n");
 //    return 0;
 //}
 
 #include<stdio.h>
 int main()
 {
-    printf("Name    Age     Gender\n");
-    printf("---------------------\n");
-    printf("Jack    18      man\n");
-    return 0;
+	int a = 2;
+	int b = -a;
+	int c = +b;
+	printf("%d %d %d\n", a, b, c);
+	return 0;
 }
