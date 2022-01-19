@@ -502,39 +502,226 @@
 //	return 0;
 //}
 
+//第十三回課題
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include<stdlib.h>
+//#include<stdio.h>
+//struct Student
+//{
+//	int id;
+//	int score;
+//};
+//int main()
+//{
+//	struct Student S;
+//	int i = 0;
+//	int n = 0;
+//	int num = 0;
+//	int* array;
+//	printf("学生の人数は？");
+//	scanf("%d", &n);
+//	if ((array = (int*)malloc(n * sizeof(int))) == NULL)
+//	{
+//		printf("malloc failed.\n");
+//		exit(1);
+//	}
+//	else
+//	{
+//		for (i = 0; i < n; i++)
+//		{
+//			num = rand();
+//			S.id = i;
+//			S.score = num;
+//			printf("student #%d:%d\n", S.id, S.score);
+//		}
+//	}
+//	free(array);
+//	return 0;
+//}
+
+
 //第十四回課題
-#define _CRT_SECURE_NO_WARNINGS 1
-#include<stdlib.h>
-#include<stdio.h>
-struct Student
-{
-	int id;
-	int score;
-};
-int main()
-{
-	struct Student S;
-	int i = 0;
-	int n = 0;
-	int num = 0;
-	int* array;
-	printf("学生の人数は？");
-	scanf("%d", &n);
-	if ((array = (int*)malloc(n * sizeof(int))) == NULL)
-	{
-		printf("malloc failed.\n");
-		exit(1);
-	}
-	else
-	{
-		for (i = 0; i < n; i++)
-		{
-			num = rand();
-			S.id = i;
-			S.score = num;
-			printf("student #%d:%d\n", S.id, S.score);
-		}
-	}
-	free(array);
-	return 0;
-}
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include <stdio.h>
+//#include <stdlib.h>
+//#define SIZE  50
+//
+//int main()
+//{
+//	FILE* fp;
+//	int data[6][SIZE];
+//	int no = 0;
+//	int sum = 0;
+//	float avg = 0;
+//	char hyoka = 0;
+//	int i = 0;
+//	int j = 0;
+//
+//	if (NULL == (fp = fopen("14_point.txt", "r")))
+//	{
+//		printf("14_point.txt is cannot open.\n");
+//		exit(1);
+//	}
+//	while (fscanf(fp, "%d,%d,%d,%d,%d,%d",
+//		&data[0][i], &data[1][i], &data[2][i],
+//		&data[3][i], &data[4][i], &data[5][i]
+//	       ) != EOF)
+//	{
+//		i++;
+//	}
+//
+//	fclose(fp);
+//
+//	while (1)
+//	{
+//		printf("生徒番号を入力してください。\n");
+//		scanf("%d", &no);
+//		if (no < 0)
+//			break;
+//		if (no == 0)
+//		{
+//			printf("生徒番号\t国語\t数学\t社会\t理科\t英語\t合計\t平均\t評価\n");
+//			for (i = 0; i < SIZE; i++)
+//			{
+//				sum = 0;
+//				for (j = 1; j < 6; j++)
+//				{
+//					sum = sum + data[j][i];
+//				}
+//				avg = (float)sum / 5;
+//
+//				if (avg >= 80)
+//					hyoka = 'A';
+//				else if (avg >= 70)
+//					hyoka = 'B';
+//				else if (avg >= 60)
+//					hyoka = 'C';
+//				else
+//					hyoka = 'D';
+//
+//				printf("%d\t\t%d\t%d\t%d\t%d\t%d\t%d\t%.2f\t%c\n\n",
+//						data[0][i], data[1][i], data[2][i],
+//						data[3][i], data[4][i], data[5][i],
+//						sum, avg, hyoka);
+//			}
+//		}
+//		else 
+//		{
+//			for (i = 0; i < SIZE; i++)
+//			{
+//				if (data[0][i] == no)
+//				{
+//					printf("生徒番号\t国語\t数学\t社会\t理科\t英語\t合計\t平均\t評価\n");
+//					sum = 0;
+//					for (j = 1; j < 6; j++)
+//					{
+//						sum = sum + data[j][i];
+//					}
+//					avg = (float)sum / 5;
+//					if (avg >= 80)
+//						hyoka = 'A';
+//					else if (avg >= 70)
+//						hyoka = 'B';
+//					else if (avg >= 60)
+//						hyoka = 'C';
+//					else
+//						hyoka = 'D';
+//
+//					printf("%d\t\t%d\t%d\t%d\t%d\t%d\t%d\t%.2f\t%c\n\n",
+//						data[0][i], data[1][i], data[2][i],
+//						data[3][i], data[4][i], data[5][i],
+//						sum, avg, hyoka);
+//					break;
+//				}
+//				
+//			}
+//			if (i == SIZE && sum == 0)
+//				printf("生徒番号(%d)は存在しません.\n\n", no);
+//		}
+//	}
+//	return 0;
+//}
+
+
+///////////////////////////////期末試験
+// 
+//標準入出力
+//int age;
+//printf("あなたの年齢は？");
+//scanf("%d", &age);
+//printf("生まれてから今まで、およそ %d日です", age * 365);
+
+//分岐処理
+//int score1;
+//int score2;
+//scanf("%d", &score1);
+//scanf("%d", &score2);
+//if (score1 >= 60 && score2 >= 60)
+//printf("合格");
+//else if ((score1 + score2) >= 130)
+//printf("合格");
+//else if ((score1 + score2) >= 100 && (score1 >= 90 || score2 >= 90))
+//printf("合格");
+//else
+//printf("不合格");
+
+//繰り返し処理
+//九九表（1～9）を表示するプログラムがある．
+//int main()
+//{
+//	int p, q;
+//	for (p = 1; p <= 9; p++)
+//	{
+//		for (q = 1; q <= 9; q++)
+//			printf(" %2d", p * q);
+//		printf("\n");
+//
+//	}
+//	return 0;
+//}
+
+//構造体
+//#include<stdio.h>
+//struct seiseki 
+//{
+//	int jap, eng, math;//50 100 60
+//};
+//
+//int sum(struct seiseki  x) 
+//{
+//	return (x.jap + x.eng + x.math);
+//}
+//
+//float avg(struct seiseki  y)
+//{
+//	return (sum(y) / (float)3);
+//}
+//
+//int main() 
+//{
+//	struct seiseki data;
+//	data.jap = 50;
+//	data.eng = 100;
+//	data.math = 60;
+//	printf("合計: %d\n", sum(data));  // 210
+//	printf("平均: %.1f\n", avg(data));// 70
+//	return 0;
+//
+//}
+
+//ポインタ
+//#include<stdio.h>
+//int main() 
+//{
+//	int a[3]; //11 22 33
+//	int* x, *y, *z;
+//	int i;
+//	for (i = 0; i < 3; i++) 
+//	{
+//		a[i] = (i + 1) * 10 + (i + 1);
+//	}
+//	x = &a[1];  y = &a[2];  z = &a[0];
+//	printf(" %d, %d, %d\n",(*z)*(*z),(*z)*(*x) ,(*z)*(*y) ); //121，242，363
+//	return 0;
+//
+//}
