@@ -500,28 +500,96 @@
 //比如 :
 //char arr[] = "abcdef";
 //逆序之后数组的内容变成：fedcba
+//#include <stdio.h>
+//void reverse_string(char* string)
+//{
+//	int i = 0;
+//	char tmp = *string;
+//	if (*(string + 1) != '\0')
+//	{
+//		reverse_string(string + 1);
+//	}
+//	*(string - 1)= tmp;
+//}
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	reverse_string(arr);
+//	printf("%s\n", arr);
+//	return 0;
+//}
+
+
+
+
+////数组
+//#include <stdio.h>
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//
+//	arr[0] = 99;
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//
+//
+//	return 0;
+//}
+
+
+
+//创建一个整形数组，完成对数组的操作
+//实现函数init() 初始化数组为全0
+//实现print()  打印数组的每个元素
+//实现reverse()  函数完成数组元素的逆置。
+//要求：自己设计以上函数的参数，返回值。
 #include <stdio.h>
-void reverse_string(char* string)
+void init(int arr[],int se) //变000
 {
 	int i = 0;
-	char tmp = *string;
-	if (*(string + 1) != '\0')
+	for (i = 0; i < se; i++)
 	{
-		reverse_string(string + 1);
+		arr[i] = 0;
 	}
-	*(string - 1)= tmp;
+}
+void print(int arr[],int se) //打印
+{
+	int i = 0;
+	for (i = 0; i < se; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+}
+void reverse(int* left, int* right) //逆转
+{
+	int tmp = 0;
+	while (left <= right)
+	{
+		tmp = *left;
+		*left = *right;
+		*right = tmp;
+
+		left++;
+		right--;
+	}
 }
 int main()
 {
-	char arr[] = "abcdef";
-	reverse_string(arr);
-	printf("%s\n", arr);
+	int arr[3] = { 10,2,3 };
+	int se = sizeof(arr) / sizeof(arr[0]);
+	int* a = &arr[0];
+	int* b = &arr[se-1];
+	print(arr, se); //打印 10 2 3
+	reverse(a, b);  //逆转
+	print(arr, se);//打印 3 2 10
+	init(arr, se);  //变0
+	print(arr, se);//打印 0 0 0
 	return 0;
 }
 
-
-
-
-//数组
 
 
