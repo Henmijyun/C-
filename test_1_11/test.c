@@ -546,50 +546,194 @@
 //实现print()  打印数组的每个元素
 //实现reverse()  函数完成数组元素的逆置。
 //要求：自己设计以上函数的参数，返回值。
-#include <stdio.h>
-void init(int arr[],int se) //变000
-{
-	int i = 0;
-	for (i = 0; i < se; i++)
-	{
-		arr[i] = 0;
-	}
-}
-void print(int arr[],int se) //打印
-{
-	int i = 0;
-	for (i = 0; i < se; i++)
-	{
-		printf("%d ", arr[i]);
-	}
-	printf("\n");
-}
-void reverse(int* left, int* right) //逆转
-{
-	int tmp = 0;
-	while (left <= right)
-	{
-		tmp = *left;
-		*left = *right;
-		*right = tmp;
+//#include <stdio.h>
+//void init(int arr[],int se) //变000
+//{
+//	int i = 0;
+//	for (i = 0; i < se; i++)
+//	{
+//		arr[i] = 0;
+//	}
+//}
+//void print(int arr[],int se) //打印
+//{
+//	int i = 0;
+//	for (i = 0; i < se; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	printf("\n");
+//}
+//void reverse(int* left, int* right) //逆转
+//{
+//	int tmp = 0;
+//	while (left <= right)
+//	{
+//		tmp = *left;
+//		*left = *right;
+//		*right = tmp;
+//
+//		left++;
+//		right--;
+//	}
+//}
+//int main()
+//{
+//	int arr[3] = { 10,2,3 };
+//	int se = sizeof(arr) / sizeof(arr[0]);
+//	int* a = &arr[0];
+//	int* b = &arr[se-1];
+//	print(arr, se); //打印 10 2 3
+//	reverse(a, b);  //逆转
+//	print(arr, se);//打印 3 2 10
+//	init(arr, se);  //变0
+//	print(arr, se);//打印 0 0 0
+//	return 0;
+//}
+//
 
-		left++;
-		right--;
-	}
+
+
+//test.c 测试游戏的逻辑
+//#include "game.h"
+//
+//void menu()
+//{
+//	printf("****************\n");
+//	printf("**** 1.play ****\n");
+//	printf("**** 0.exit ****\n");
+//	printf("****************\n");
+//}
+//
+//void game()
+//{
+//	char ret = 0; //判断用
+//
+//	//存放下棋的数据
+//	char board[ROW][COL] = { 0 };
+//
+//	//初始化棋盘为全空格
+//	InitBoard(board, ROW, COL);
+//
+//	//打印棋盘
+//	DisplayBoard(board, ROW, COL);
+//
+//	while (1)
+//	{
+//		//玩家下棋
+//		player_move(board, ROW, COL);
+//		DisplayBoard(board, ROW, COL);
+//
+//		//判断输赢  玩家赢'*'  电脑赢'#'  平局'Q'  继续'C'
+//		ret = is_win(board, ROW, COL);
+//		if (ret != 'C')
+//			break;
+//
+//
+//		//电脑下棋
+//		Computer_move(board, ROW, COL); //随机下棋
+//		DisplayBoard(board, ROW, COL);
+//		
+//		//判断输赢
+//		ret = is_win(board, ROW, COL);
+//		if (ret != 'C')
+//			break;
+//	}
+//	if (ret == '*')
+//		printf("玩家赢\n");
+//	else if (ret == '#')
+//		printf("电脑赢\n");
+//	else
+//		printf("平局\n");
+//
+//}
+//
+//void test() 
+//{
+//	int input = 0;
+//	do 
+//	{
+//		menu();
+//		srand((unsigned int)time(NULL));
+//		printf("请选择:>");
+//		scanf("%d", &input);
+//		switch (input)
+//		{
+//		case 1:
+//			game();//游戏实现
+//			break;
+//		case 0:
+//			printf("退出游戏\n");
+//			break;
+//		default:
+//			printf("选择错误\n");
+//			break;
+//			
+//		}
+//	} while (input);
+//}
+//
+//int main()
+//{
+//	test();
+//	return 0;
+//}
+
+
+
+#include "game.h"
+
+void menu()
+{
+	printf("****************\n");
+	printf("**** 1.play ****\n");
+	printf("**** 0.exit ****\n");
+	printf("****************\n");
+}
+
+void game()
+{
+	//扫雷游戏的实现
+	char mine[ROWS][COLS] = { 0 }; //'0'  布置雷
+	char show[ROWS][COLS] = { 0 }; //'*'  排查雷
+
+	//初始化棋盘
+	init_board(mine, ROWS, COLS, '0');
+	init_board(show, ROWS, COLS, '*');
+
+	//打印棋盘
+	//show_board(mine, ROW, COL); //看见雷
+	//show_board(show, ROW, COL); //隐藏雷
+
+	//布置雷
+	set_mine(mine, ROW, COL);
+	show_board(show, ROW, COL);
+
+	//排查雷
+	fine_mine(mine, show, ROW, COL);
 }
 int main()
 {
-	int arr[3] = { 10,2,3 };
-	int se = sizeof(arr) / sizeof(arr[0]);
-	int* a = &arr[0];
-	int* b = &arr[se-1];
-	print(arr, se); //打印 10 2 3
-	reverse(a, b);  //逆转
-	print(arr, se);//打印 3 2 10
-	init(arr, se);  //变0
-	print(arr, se);//打印 0 0 0
+	int input = 0;
+	srand((unsigned int)time(NULL));
+
+	do
+	{
+		menu();
+		printf("请输入:>\n");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 1:
+			game();
+			break;
+		case 0:
+			printf("退出游戏\n");
+			break;
+		default:
+			printf("输入有误,请重新输入!\n");
+			break;
+		}
+	} while (input);
 	return 0;
 }
-
-
-
