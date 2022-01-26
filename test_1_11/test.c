@@ -594,7 +594,7 @@
 
 
 
-//test.c 测试游戏的逻辑
+////test.c 测试游戏的逻辑
 //#include "game.h"
 //
 //void menu()
@@ -678,74 +678,84 @@
 //	test();
 //	return 0;
 //}
-
-
-
-
-
-
-
-
-
-
-
 //
-//#include "game.h"
 //
-//void menu()
-//{
-//	printf("****************\n");
-//	printf("**** 1.play ****\n");
-//	printf("**** 0.exit ****\n");
-//	printf("****************\n");
-//}
-//
-//void game()
-//{
-//	//扫雷游戏的实现
-//	char mine[ROWS][COLS] = { 0 }; //'0'  布置雷
-//	char show[ROWS][COLS] = { 0 }; //'*'  排查雷
-//
-//	//初始化棋盘
-//	init_board(mine, ROWS, COLS, '0');
-//	init_board(show, ROWS, COLS, '*');
-//
-//	//打印棋盘
-//	//show_board(mine, ROW, COL); //看见雷
-//	//show_board(show, ROW, COL); //隐藏雷
-//
-//	//布置雷
-//	set_mine(mine, ROW, COL);
-//	show_board(show, ROW, COL);
-//
-//	//排查雷
-//	fine_mine(mine, show, ROW, COL);
-//}
-//int main()
-//{
-//	int input = 0;
-//	srand((unsigned int)time(NULL));
-//
-//	do
-//	{
-//		menu();
-//		printf("请输入:>\n");
-//		scanf("%d", &input);
-//		switch (input)
-//		{
-//		case 1:
-//			game();
-//			break;
-//		case 0:
-//			printf("退出游戏\n");
-//			break;
-//		default:
-//			printf("输入有误,请重新输入!\n");
-//			break;
-//		}
-//	} while (input);
-//	return 0;
-//}
+
+
+
+
+
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include "game.h"
+
+void menu()
+{
+	printf("****************\n");
+	printf("**** 1.play ****\n");
+	printf("**** 0.exit ****\n");
+	printf("****************\n");
+}
+
+void game()
+{
+	//扫雷游戏的实现
+	char mine[ROWS][COLS] = { 0 }; //'0'  布置雷
+	char show[ROWS][COLS] = { 0 }; //'*'  排查雷
+
+	//初始化棋盘
+	init_board(mine, ROWS, COLS, '0');
+	init_board(show, ROWS, COLS, '*');
+
+	//打印棋盘
+	//show_board(mine, ROW, COL); //看见雷
+	//show_board(show, ROW, COL); //隐藏雷
+
+	//布置雷
+	set_mine(mine, ROW, COL);
+	show_board(show, ROW, COL);
+
+	//排查雷
+	fine_mine(mine, show, ROW, COL);
+}
+int main()
+{
+	int input = 0;
+	srand((unsigned int)time(NULL));
+
+	do
+	{
+		menu();
+		printf("请输入:>\n");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 1:
+			game();
+			break;
+		case 0:
+			printf("退出游戏\n");
+			break;
+		default:
+			printf("输入有误,请重新输入!\n");
+			break;
+		}
+	} while (input);
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -779,7 +789,7 @@
 //	*str = *(str + len - 1);    //最左变最右的字符
 //
 //	*(str + len - 1) = '\0';    //最右字符变'\0' ,方便下一次字符串计算长度
-//	if (strlen(str + 1) > 2)    //字符有两个以上才继续递归
+//	if (strlen(str + 1) >= 2)    //字符有两个以上才继续递归
 //	{
 //		reverse_string_d(str + 1); //递归
 //	}
@@ -797,4 +807,27 @@
 //	return 0;
 //}
 
-
+//编写一个函数实现n的k次方，使用递归实现
+//#include <stdio.h>
+//
+//double Power(int n, int k)
+//{
+//	if (k > 0)
+//		return n * Power(n, k - 1);
+//	else if (k == 0)
+//		return 1;
+//	else
+//		return 1.0 / Power(n, -k);
+//}
+//
+//int main()
+//{
+//	int n = 0;
+//	int k = 0;
+//	scanf("%d %d", &n, &k);
+//	double ret = Power(n, k);
+//	printf("%lf\n", ret);
+//	return 0;
+//}
+//
+//
