@@ -847,3 +847,32 @@
 //}
 
 
+//#include <stdio.h>
+//#include <string.h>
+//struct Stu
+//{
+//	char name[20];
+//	int age;
+//};
+//void print1(struct Stu ss)
+//{
+//	printf("%s %d\n", ss.name, ss.age);
+//}
+//void print2(struct Stu* ps)
+//{
+//	printf("%s %d\n", ps->name, ps->age);
+//}
+//int main()
+//{
+//	struct Stu s = { "张三", 25 };
+//
+//	//要改变结构体内的字符串的方法:
+//	strcpy(s.name, "张三丰"); //方法1  用strcpy函数,复制进去
+//	print1(s);
+//
+//	scanf("%s", s.name);//方法2  输入进去 (scanf函数需要的就是一个地址)
+//	print2(&s);
+//	return 0;
+//}
+
+
