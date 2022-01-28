@@ -875,4 +875,197 @@
 //	return 0;
 //}
 
+//#include <stdio.h>
+//int main()
+//{
+//	int data1[] = { 1,2,3,4,5 };
+//	int data2[] = { 2,3,4,5,6 };
+//	int data3[] = { 3,4,5,6,7 };
+//	
+//	int* arr[3] = { data1,data2,data3 }; //指针数组  
+//	int i = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 5; j++)
+//		{
+//			printf("%d ", arr[i][j]);  //类似实现二维数组
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
 
+
+//#include <stdio.h>
+//int main()
+//{
+//    int a, b, c;
+//    a = 5;
+//    c = ++a;// ++a：加给a+1，结果为6，用加完之后的结果给c赋值，因此：a = 6  c = 6
+//    b = ++c, c++, ++a, a++;
+//
+//    // 逗号表达式的优先级，最低，这里先算b=++c, b得到的是++c后的结果，b是7
+//    // b=++c 和后边的构成逗号表达式，依次从左向右计算的。
+//    // 表达式结束时，c++和，++a,a++会给a+2，给c加1，此时c：8，a：8，b:7
+//
+//    b += a++ + c; // a先和c加，结果为16，在加上b的值7，比的结果为23，最后给a加1，a的值为9
+//    printf("a = %d b = %d c = %d\n:", a, b, c); // a:9, b:23, c:8
+//    return 0;
+//}
+
+//输入两个整数，求两个整数二进制格式有多少个位不同
+//#include <stdio.h>
+//
+//int main()
+//{
+//    int a = 0;
+//    int b = 0;
+//    int c = 0;
+//    int ret = 0;
+//    int i = 0;
+//    scanf("%d %d", &a, &b);
+//    c = a ^ b;
+//    for (i = 0; i < 32; i++)
+//    {
+//        if (1 == (c & 1))
+//        {
+//            ret++;
+//        }
+//        c >>= 1;
+//    }
+//    printf("%d\n", ret);
+//    return 0;
+//}
+
+
+////获取一个整数二进制序列中所有的偶数位和奇数位，分别打印出二进制序列
+////
+//#include <stdio.h>
+//void conse(int arr[], int n,int sz)//每个二进制位逆序保存在arr
+//{
+//	int i = 0;
+//	for (i = 0; i < 32; i++)
+//	{
+//		if (0 == (n & 1))
+//			arr[(sz - 1) - i] = 0;
+//		else
+//			arr[(sz - 1) - i] = 1;
+//		n >>= 1;
+//	}
+//}
+//	
+//void print(int arr[])//打印
+//{
+//	int i = 0;
+//	for (i = 0; i < 32; i++)
+//	{
+//		printf("%d", arr[i]);
+//	}
+//	printf("\n");
+//}
+//int main()
+//{
+//	int num = 0;
+//	int i = 0;
+//	int odd = 0;
+//	int even = 0;
+//	int arr[32] = { 0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	scanf("%d", &num);
+//	for (i = 0; i < 32; i++)
+//	{
+//		if (1 == (num & 1))
+//			odd++; //奇数
+//		else
+//			even++; //偶数
+//		num >>= 1;
+//	}
+//	printf("奇数有:%d 偶数有:%d\n", odd, even);
+//
+//	conse(arr, odd, sz);//保存奇数的二进制数值
+//	print(arr);//打印
+//	
+//	conse(arr, even, sz);//保存偶数的二进制数值
+//	print(arr);//打印
+//	return 0;
+//}
+
+
+
+//不允许创建临时变量，交换两个整数的内容
+//#include <stdio.h>
+//void Exch(int* a, int* b)
+//{
+//	*a = *a ^ *b;
+//	*b = *a ^ *b;
+//	*a = *a ^ *b;
+//}
+//int main()
+//{
+//	int a = 5;
+//	int b = 8;
+//	printf("交换前:a=%d b=%d\n", a, b);
+//	Exch(&a, &b);
+//	printf("交换后:a=%d b=%d\n", a, b);
+//	return 0;
+//}
+
+//写一个函数打印arr数组的内容，不使用数组下标，使用指针。
+//arr是一个整形一维数组。
+//
+//#include <stdio.h>
+//void print(int* p,int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", *(p + i));
+//	}
+//}
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int* p = arr;
+//	print(p, sz);
+//	return 0;
+//}
+
+//
+//#include <stdio.h>
+//#include <string.h>
+//void rever(char* left, char* right)
+//{
+//    while (left < right) //交换
+//    {
+//        char tmp = *left;
+//        *left = *right;
+//        *right = tmp;
+//        left++;
+//        right--;
+//    }
+//}
+//int main()
+//{
+//    char arr[100] = { 0 };
+//    gets(arr);//输入
+//    int ret = strlen(arr);
+//    char* left = &arr[0];  //左地址
+//    char* right = &arr[ret - 1];  //右地址
+//    rever(left, right);//交换
+//    printf("%s\n", arr);//输出
+//    return 0;
+//}
+
+//求Sn = a + aa + aaa + aaaa + aaaaa的前5项之和，其中a是一个数字，
+//例如：2 + 22 + 222 + 2222 + 22222
+//#include <stdio.h>
+//int main()
+//{
+//	int a = 0;
+//	int i = 0;
+//	scanf("%d", &a);
+//	a*1 + a*10+a + a*100+
+//	return 0;
+//}
