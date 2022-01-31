@@ -688,64 +688,64 @@
 
 
 
-
-#define _CRT_SECURE_NO_WARNINGS 1
-#include "game.h"
-
-void menu()
-{
-	printf("****************\n");
-	printf("**** 1.play ****\n");
-	printf("**** 0.exit ****\n");
-	printf("****************\n");
-}
-
-void game()
-{
-	//扫雷游戏的实现
-	char mine[ROWS][COLS] = { 0 }; //'0'  布置雷
-	char show[ROWS][COLS] = { 0 }; //'*'  排查雷
-
-	//初始化棋盘
-	init_board(mine, ROWS, COLS, '0');
-	init_board(show, ROWS, COLS, '*');
-
-	//打印棋盘
-	//show_board(mine, ROW, COL); //看见雷
-	//show_board(show, ROW, COL); //隐藏雷
-
-	//布置雷
-	set_mine(mine, ROW, COL);
-	show_board(show, ROW, COL);
-
-	//排查雷
-	fine_mine(mine, show, ROW, COL);
-}
-int main()
-{
-	int input = 0;
-	srand((unsigned int)time(NULL));
-
-	do
-	{
-		menu();
-		printf("请输入:>\n");
-		scanf("%d", &input);
-		switch (input)
-		{
-		case 1:
-			game();
-			break;
-		case 0:
-			printf("退出游戏\n");
-			break;
-		default:
-			printf("输入有误,请重新输入!\n");
-			break;
-		}
-	} while (input);
-	return 0;
-}
+//
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include "game.h"
+//
+//void menu()
+//{
+//	printf("****************\n");
+//	printf("**** 1.play ****\n");
+//	printf("**** 0.exit ****\n");
+//	printf("****************\n");
+//}
+//
+//void game()
+//{
+//	//扫雷游戏的实现
+//	char mine[ROWS][COLS] = { 0 }; //'0'  布置雷
+//	char show[ROWS][COLS] = { 0 }; //'*'  排查雷
+//
+//	//初始化棋盘
+//	init_board(mine, ROWS, COLS, '0');
+//	init_board(show, ROWS, COLS, '*');
+//
+//	//打印棋盘
+//	//show_board(mine, ROW, COL); //看见雷
+//	//show_board(show, ROW, COL); //隐藏雷
+//
+//	//布置雷
+//	set_mine(mine, ROW, COL);
+//	show_board(show, ROW, COL);
+//
+//	//排查雷
+//	fine_mine(mine, show, ROW, COL);
+//}
+//int main()
+//{
+//	int input = 0;
+//	srand((unsigned int)time(NULL));
+//
+//	do
+//	{
+//		menu();
+//		printf("请输入:>\n");
+//		scanf("%d", &input);
+//		switch (input)
+//		{
+//		case 1:
+//			game();
+//			break;
+//		case 0:
+//			printf("退出游戏\n");
+//			break;
+//		default:
+//			printf("输入有误,请重新输入!\n");
+//			break;
+//		}
+//	} while (input);
+//	return 0;
+//}
 
 
 
@@ -940,7 +940,7 @@ int main()
 
 
 ////获取一个整数二进制序列中所有的偶数位和奇数位，分别打印出二进制序列
-////
+//
 //#include <stdio.h>
 //void conse(int arr[], int n,int sz)//每个二进制位逆序保存在arr
 //{
@@ -976,7 +976,7 @@ int main()
 //	for (i = 0; i < 32; i++)
 //	{
 //		if (1 == (num & 1))
-//			odd++; //奇数
+//			odd++; //奇数 
 //		else
 //			even++; //偶数
 //		num >>= 1;
@@ -1069,3 +1069,85 @@ int main()
 //	a*1 + a*10+a + a*100+
 //	return 0;
 //}
+
+
+//
+//int main()
+//{
+//    int a = 0;
+//    int b = 0;
+//    int ret = 0;
+//    int c = 0;
+//    scanf("%d %d", &a, &b);
+//    c = a ^ b; //c的二进制数每个1，是a和b的一个不同位
+//    while (c) // c=0时结束循环
+//    {
+//        c = c & (c - 1);//每次运行去掉c二进制最右边的一个1
+//        //如： c=10100 (c-1)=10011
+//        //c&(c-1)=10000
+//        //删除了c最右边的1
+//        ret++;
+//    }
+//    printf("%d\n", ret);
+//    return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	int a, b, c;
+//	a = 5;
+//	c = ++a; // 6
+//	b = ++c, c++, ++a, a++;   //b = 7 ,  c 8  ,a 8  
+//
+//	b += a++ + c;
+//	printf("a = %d b = %d c = %d\n:", a, b, c);
+//	while (1 + 2, 5 + 3, 2 * 0)
+//	return 0;
+//}
+
+//
+//#include <stdio.h>
+//int i;//0
+//int main()
+//{
+//    //int i ;//随机值
+//    i--;//-1
+//    if (i > sizeof(i))
+//    {
+//        printf(">\n");
+//    }
+//    else
+//    {
+//        printf("<\n");
+//    }
+//    return 0;
+//}
+
+//#include <stdio.h>
+//void Printbit(int num)
+//{
+//	for (int i = 31; i >= 1; i -= 2)
+//	{
+//		printf("%d ", (num >> i) & 1);
+//	}
+//	printf("\n");
+//
+//	for (int i = 30; i >= 0; i -= 2)
+//	{
+//		printf("%d ", (num >> i) & 1);
+//	}
+//	printf("\n");
+//}
+//
+//int main()
+//{
+//	int a = 0;
+//	scanf("%d", &a);
+//	Printbit(a);
+//	return 0;
+//
+//}
+
+
+//获取一个整数二进制序列中所有的偶数位和奇数位，分别打印出二进制序列
