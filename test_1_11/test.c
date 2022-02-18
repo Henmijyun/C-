@@ -1154,4 +1154,31 @@
 
 //寒假作业day 01
 
- 
+
+struct Sut
+{
+	char name[20];//名字
+	int age;//年龄
+	char sex[8];//性别
+	float score;//分数
+}s1,s2;//全局变量
+typedef struct Sut Sut; //用typedef 重新定义 struct Stu的名字为 Sut 
+
+//同理
+typedef struct Sut2
+{
+	char name[20];
+	int age;
+	char sex[8];
+	float score;
+}Sut2; //这里的Sut2不是全局变量，也不是变量，这里是把struct Sut2的名字重新定义为Sut2
+//这种写法经常会出现数据结构中
+
+int main()
+{
+	struct Sut s3;//局部变量
+	Sut s4;//用typedef 重命名后的 struct Sut
+
+	Sut2 s1;//用typedef 重命名后的 struct Sut2
+	return 0;
+}
