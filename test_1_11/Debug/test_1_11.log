@@ -1,5 +1,2 @@
 ﻿  test.c
-E:\1_C\repos\lianxiyong\test_1_11\test.c(1182,7): warning C4101: “s1”: 未引用的局部变量
-E:\1_C\repos\lianxiyong\test_1_11\test.c(1179,13): warning C4101: “s3”: 未引用的局部变量
-E:\1_C\repos\lianxiyong\test_1_11\test.c(1180,6): warning C4101: “s4”: 未引用的局部变量
   test_1_11.vcxproj -> E:\1_C\repos\lianxiyong\test_1_11\Debug\test_1_11.exe
