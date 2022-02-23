@@ -1185,20 +1185,40 @@
 //
 //
 
+//
+//#include <stdio.h>
+//int Add(int x, int y)
+//{
+//	int z = 0;
+//	z = x + y;
+//	return z;
+//}
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	int c = 0;
+//	c = Add(a, b);
+//	printf("%d\n", c);
+//	return 0;
+//}
+
 
 #include <stdio.h>
-int Add(int x, int y)
+#include <assert.h>
+unsigned int my_strlen(const char* p)
 {
-	int z = 0;
-	z = x + y;
-	return z;
+	int i = 0;
+	assert(p);
+	while (*p++ != '\0')
+	{
+		i++;
+	}
+	return i;
 }
 int main()
 {
-	int a = 10;
-	int b = 20;
-	int c = 0;
-	c = Add(a, b);
-	printf("%d\n", c);
+	char arr[] = "abcd";
+	printf("%d\n", my_strlen(arr));
 	return 0;
 }
