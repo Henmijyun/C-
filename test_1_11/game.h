@@ -4,7 +4,7 @@
 //#include <stdlib.h>
 // #include <time.h>
 //
-////游戏函数的声明
+////游戏函数的声脕E
 //#define ROW 3
 //#define COL 3
 //
@@ -14,10 +14,10 @@
 ////打印棋盘
 //void DisplayBoard(char board[ROW][COL], int row, int col);
 //
-////玩家下棋
+////玩家下苼E
 //void player_move(char board[ROW][COL], int row, int col);
 //
-////电脑下棋
+////电脑下苼E
 //void Computer_move(char board[ROW][COL], int row, int col);
 //
 ////判断输赢

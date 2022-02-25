@@ -30,7 +30,7 @@
 //				printf("|");
 //		}
 //		printf("\n");
-//		//¥Ú”°∑÷∏Ó––
+//		//¥Ú”°∑÷∏˚Ï–
 //		if (i < row - 1)
 //		{
 //			for (j = 0; j < col; j++)
@@ -44,7 +44,7 @@
 //	}
 //}
 //
-////ÕÊº“œ¬∆Â
+////ÕÊº“œ¬∆ÅE
 //void player_move(char board[ROW][COL], int row, int col)
 //{
 //	int x = 0;
@@ -53,25 +53,25 @@
 //	printf("ÕÊº“œ¬∆Â\n");
 //	while (1)
 //	{
-//		printf("«Î ‰»Î◊¯±Í:>\n");
+//		printf("«ÅE‰»ÅE¯±ÅE>\n");
 //		scanf("%d %d", &x, &y);
 //		if (x >= 1 && x <= row && y >= 1 && y <= col)
 //		{
-//			//œ¬∆Â
+//			//œ¬∆ÅE
 //			if (board[x - 1][y - 1] == ' ')
 //			{
 //				board[x - 1][y - 1] = '*';
 //				break;
 //			}
 //			else
-//				printf("◊¯±Í∑«∑®,«Î÷ÿ–¬ ‰»Î\n");
+//				printf("◊¯±ÅE«∑®,«ÅEÿ–¬ ‰»ÅEn");
 //		}
 //		else
-//			printf("◊¯±Í∑«∑®,«Î÷ÿ–¬ ‰»Î\n");
+//			printf("◊¯±ÅE«∑®,«ÅEÿ–¬ ‰»ÅEn");
 //	}
 //}
 //
-////µÁƒ‘œ¬∆Â
+////µÁƒ‘œ¬∆ÅE
 //void Computer_move(char board[ROW][COL], int row, int col)
 //{
 //	int x = 0;
@@ -99,7 +99,7 @@
 //		int j = 0;
 //		for (j = 0; j < col; j++)
 //		{
-//			if (board[i][j] == ' ') //√ª¬˙
+//			if (board[i][j] == ' ') //√ª¬ÅE
 //				return 0;
 //		}
 //	}
@@ -131,7 +131,7 @@
 //	//≈–∂œ∆Ωæ÷
 //	if (if_full(board, row, col) == 1)
 //		return 'Q';
-//	//ºÃ–¯
+//	//ºÃ–ÅE
 //	return 'C';
 //}
 //
@@ -207,7 +207,7 @@
 //	return (mine[x - 1][y] + mine[x - 1][y - 1] + mine[x][y - 1] + mine[x + 1][y - 1] +
 //		mine[x + 1][y] + mine[x + 1][y + 1] + mine[x][y + 1] + mine[x - 1][y + 1])
 //		- 8 * '0';
-//	//Àƒ÷‹µƒASCII¬Î÷µµƒ∫Õ,ºı»•8∏ˆ'0'µƒASCII¬Î÷µµƒ∫Õ,µ√µΩ÷‹Œß'1'µƒ∏ˆ ˝
+//	//Àƒ÷‹µƒASCII¬ÅEµµƒ∫Õ,ºı»•8∏ÅE0'µƒASCII¬ÅEµµƒ∫Õ,µ√µΩ÷‹Œß'1'µƒ∏ˆ ˝
 //}
 //
 //void fine_mine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
@@ -217,7 +217,7 @@
 //	int win = 0;
 //	while (win < row * col - EASY_COUNT)
 //	{
-//		printf("«Î ‰»Î“™≈≈≤Èµƒ◊¯±Í:>");
+//		printf("«ÅE‰»ÅE™≈≈≤Èµƒ◊¯±ÅE>");
 //		scanf("%d %d", &x, &y);
 //		if (x >= 1 && x <= row && y >= 1 && y <= col)
 //		{
@@ -229,18 +229,18 @@
 //			}
 //			else
 //			{
-//				int count = get_mine_conut(mine, x, y);//∏ΩΩ¸”–º∏∏ˆ¿◊
-//				show[x][y] = count + '0'; //œ‡µ±”⁄∞—count±‰Œ™◊÷∑˚(»Áπ˚countŒ™3,‘ÚΩ·π˚Œ™'0'µƒASCII¬Î÷µ,Õ˘∫Û ˝3Œªµƒ◊÷∑˚)
+//				int count = get_mine_conut(mine, x, y);//∏ΩΩÅE–º∏∏ˆ¿◊
+//				show[x][y] = count + '0'; //œ‡µ±”⁄∞—count±‰Œ™◊÷∑ÅE»Áπ˚countŒ™3,‘ÚΩ·π˚Œ™'0'µƒASCII¬ÅEµ,Õ˘∫Û ˝3Œªµƒ◊÷∑ÅE
 //				show_board(show, ROW, COL);
 //				win++;
 //			}
 //		}
 //		else
-//			printf("◊¯±Í∑«∑®,«Î÷ÿ–¬ ‰»Î\n");
+//			printf("◊¯±ÅE«∑®,«ÅEÿ–¬ ‰»ÅEn");
 //	}
 //	if (win == row * col - EASY_COUNT)
 //	{
-//		printf("πßœ≤ƒ„,≈≈¿◊≥…π¶!\n");
+//		printf("πßœ≤ƒÅE≈≈¿◊≥…π¶!\n");
 //		show_board(mine, ROW, COL);
 //	}
 //}

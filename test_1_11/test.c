@@ -1,10 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 //#include "XXXX.h"
-//#pragma comment(lib,"XXXX.lib") //µ¼Èë¾²Ì¬¿â
+//#pragma comment(lib,"XXXX.lib") //µ¼ÈE²Ì¬¿E
 
 //×ÖÃæ³£Á¿  100; 'c';
 //constĞŞÊÎµÄ³£±äÁ¿
-//#define ¶¨ÒåµÄ±êÊ¶·û³£Á¿
+//#define ¶¨ÒåµÄ±E¶·û³£Á¿
 //Ã¶¾Ù³£Á¿   Ò»ÖÖ×Ô¶¨ÒåÀàĞÍµÄ·½·¨
 
 //#include<stdio.h>
@@ -57,7 +57,7 @@
 //}
 
 //#include<stdio.h>
-////´´½¨½á¹¹Ìå
+////´´½¨½á¹¹ÌE
 //struct Sut
 //{
 //    float a[5];
@@ -73,7 +73,7 @@
 //    int i = 0;
 //    for (i = 0; i < 5; i++)
 //    {
-//        //ÊäÈë
+//        //ÊäÈE
 //        scanf("%f %f %f %f %f", (s[i]).a, (s[i]).b, (s[i]).c, (s[i]).d, (s[i]).e);
 //        printf("\n");
 //    }
@@ -113,7 +113,7 @@
 //}
 
 
-//¼ÆËã1 / 1 - 1 / 2 + 1 / 3 - 1 / 4 + 1 / 5 ¡­¡­ + 1 / 99 - 1 / 100 µÄÖµ£¬´òÓ¡³ö½á¹û
+//¼ÆËE / 1 - 1 / 2 + 1 / 3 - 1 / 4 + 1 / 5 ¡­¡­ + 1 / 99 - 1 / 100 µÄÖµ£¬´òÓ¡³ö½á¹E
 
 
 //#include<stdio.h>
@@ -122,7 +122,7 @@
 //	int i = 1;
 //	float add = 0;
 //
-//	while (i < 100)   //1 3 5 7 9  i×î´ó99
+//	while (i < 100)   //1 3 5 7 9  i×ûĞE9
 //	{
 //		add += ((1.0 / i) - (1.0 / (i + 1)));
 //		i += 2; 
@@ -180,7 +180,7 @@
 //	do
 //	{
 //		menu();
-//		printf("ÇëÑ¡Ôñ¡·£º");
+//		printf("ÇE¡Ôñ¡·£º");
 //		scanf("%d", &input);
 //		switch (input)
 //		{
@@ -191,7 +191,7 @@
 //			printf("ÍË³öÓÎÏ·\n");
 //			break;
 //		default:
-//			printf("ÊäÈë´íÎó£¬ÖØĞÂÊäÈë");
+//			printf("ÊäÈEúêó£¬ÖØĞÂÊäÈE);
 //			break;
 //		}
 //	} while (input);
@@ -254,7 +254,7 @@
 //	int a = 0;
 //	int b = 0;
 //	int m = 0;
-//	//ÊäÈë
+//	//ÊäÈE
 //	scanf("%d %d", &a, &b);
 //	while (m = a % b)
 //	{
@@ -329,7 +329,7 @@
 //void print(int n)
 //{
 //	if (n > 9)
-//		print(n / 10);  //µİ¹éÈë¿Ú
+//		print(n / 10);  //µİ¹éÈEÚ
 //	printf("%d ", n % 10);  //µİ¹é³ö¿Ú£¬´òÓ¡
 //}
 //int main()
@@ -343,14 +343,14 @@
 
 //µİ¹éºÍ·Çµİ¹é·Ö±ğÊµÏÖÇónµÄ½×³Ë£¨²»¿¼ÂÇÒç³öµÄÎÊÌâ£©
 //#include <stdio.h>
-//int FacRial(int n)//µİ¹é
+//int FacRial(int n)//µİ¹E
 //{
 //	if (n == 1) //n=1 Ê±Í£ÏÂÀ´
 //		return 1;
 //	return n * FacRial(n - 1); //n-1 ·µ»ØÖµ *n
 //}
 //
-//int FacRial2(int n)//²»ÓÃµİ¹é
+//int FacRial2(int n)//²»ÓÃµİ¹E
 //{
 //	int i = 0;
 //	int k = 1;
@@ -365,22 +365,22 @@
 //{
 //	int num = 0;
 //	scanf("%d", &num);
-//	int ret = FacRial(num);//µİ¹é
-//	int ret2 = FacRial2(num);//²»ÓÃµİ¹é
-//	printf("µİ¹é:%d\n²»ÓÃµİ¹é:%d\n", ret, ret2);
+//	int ret = FacRial(num);//µİ¹E
+//	int ret2 = FacRial2(num);//²»ÓÃµİ¹E
+//	printf("µİ¹E%d\n²»ÓÃµİ¹E%d\n", ret, ret2);
 //	return 0;
 //}
 
 //µİ¹éºÍ·Çµİ¹é·Ö±ğÊµÏÖstrlen
 //#include <stdio.h>
-//int MyStrlen(char* str)//µİ¹é
+//int MyStrlen(char* str)//µİ¹E
 //{
 //	if (*str != '\0')
 //		return 1 + MyStrlen(str+1);
 //	return 0;
 //}
 //
-//int MyStrlen2(char* str2)//·Çµİ¹é
+//int MyStrlen2(char* str2)//·Çµİ¹E
 //{
 //	int count = 0;
 //	while (*str2 != '\0')
@@ -394,7 +394,7 @@
 //int main()
 //{
 //	char arr[] = "abcdef";
-//	printf("µİ¹é:%d\n·Çµİ¹é:%d\n", MyStrlen(arr), MyStrlen2(arr));
+//	printf("µİ¹E%d\n·Çµİ¹E%d\n", MyStrlen(arr), MyStrlen2(arr));
 //	return 0;
 //}
 
@@ -420,9 +420,9 @@
 //	return 0;
 //}
 
-//Ğ´Ò»¸öµİ¹éº¯ÊıDigitSum(n)£¬ÊäÈëÒ»¸ö·Ç¸ºÕûÊı£¬·µ»Ø×é³ÉËüµÄÊı×ÖÖ®ºÍ
-//ÀıÈç£¬µ÷ÓÃDigitSum(1729)£¬ÔòÓ¦¸Ã·µ»Ø1 + 7 + 2 + 9£¬ËüµÄºÍÊÇ19
-//ÊäÈë£º1729£¬Êä³ö£º19
+//Ğ´Ò»¸öµİ¹éº¯ÊıDigitSum(n)£¬ÊäÈE»¸ö·Ç¸ºÕûÊı£¬·µ»Ø×é³ÉËEÄÊı×ÖÖ®ºÍ
+//ÀıÈç£¬µ÷ÓÃDigitSum(1729)£¬ÔòÓ¦¸Ã·µ»Ø1 + 7 + 2 + 9£¬ËEÄºÍÊÇ19
+//ÊäÈEº1729£¬Êä³ö£º19
 //#include <stdio.h>
 //unsigned int DigitSum(unsigned int n)
 //{
@@ -446,7 +446,7 @@
 //	int i =1;
 //	if (y > 1)
 //		i = Squa(x, y - 1);
-//	return x * i;   //Ã¿´Î·µ»Ø xÓëi Ïà³ËµÄ½á¹û
+//	return x * i;   //Ã¿´Î·µ»Ø xÓE Ïà³ËµÄ½á¹E
 //}
 //int main()
 //{
@@ -460,18 +460,18 @@
 
 //µİ¹éºÍ·Çµİ¹é·Ö±ğÊµÏÖÇóµÚn¸öì³²¨ÄÇÆõÊı
 //ÀıÈç£º 1 1 2 3 5 8 13 21 
-//ÊäÈë£º5  Êä³ö£º5
-//ÊäÈë£º10£¬ Êä³ö£º55
-//ÊäÈë£º2£¬ Êä³ö£º1
+//ÊäÈEº5  Êä³ö£º5
+//ÊäÈEº10£¬ Êä³ö£º55
+//ÊäÈEº2£¬ Êä³ö£º1
 //#include <stdio.h>
-//int Fib1(int n1)//µİ¹é
+//int Fib1(int n1)//µİ¹E
 //{
 //    if (n1 > 2)
 //        return Fib1(n1 - 2) + Fib1(n1 - 1);
 //	return 1;
 //}
 //
-//int Fib2(int n2)//·Çµİ¹é
+//int Fib2(int n2)//·Çµİ¹E
 //{
 //    int a = 1;
 //    int b = 1;
@@ -490,14 +490,14 @@
 //{
 //	int n = 0;
 //	scanf("%d", &n);
-//	printf("µİ¹é:%d\n·Çµİ¹é:%d\n", Fib1(n), Fib2(n));
+//	printf("µİ¹E%d\n·Çµİ¹E%d\n", Fib1(n), Fib2(n));
 //	return 0;
 //}
 
 //±àĞ´Ò»¸öº¯Êı reverse_string(char* string)£¨µİ¹éÊµÏÖ£©
 //ÊµÏÖ£º½«²ÎÊı×Ö·û´®ÖĞµÄ×Ö·û·´ÏòÅÅÁĞ£¬²»ÊÇÄæĞò´òÓ¡¡£
 //ÒªÇó£º²»ÄÜÊ¹ÓÃCº¯Êı¿âÖĞµÄ×Ö·û´®²Ù×÷º¯Êı¡£
-//±ÈÈç :
+//±ÈÈE:
 //char arr[] = "abcdef";
 //ÄæĞòÖ®ºóÊı×éµÄÄÚÈİ±ä³É£ºfedcba
 //#include <stdio.h>
@@ -522,7 +522,7 @@
 
 
 
-////Êı×é
+////Êı×E
 //#include <stdio.h>
 //int main()
 //{
@@ -541,13 +541,13 @@
 
 
 
-//´´½¨Ò»¸öÕûĞÎÊı×é£¬Íê³É¶ÔÊı×éµÄ²Ù×÷
+//´´½¨Ò»¸öÕûĞÎÊı×é£¬ÍEÉ¶ÔÊı×éµÄ²Ù×E
 //ÊµÏÖº¯Êıinit() ³õÊ¼»¯Êı×éÎªÈ«0
 //ÊµÏÖprint()  ´òÓ¡Êı×éµÄÃ¿¸öÔªËØ
-//ÊµÏÖreverse()  º¯ÊıÍê³ÉÊı×éÔªËØµÄÄæÖÃ¡£
+//ÊµÏÖreverse()  º¯ÊıÍEÉÊı×éÔªËØµÄÄæÖÃ¡£
 //ÒªÇó£º×Ô¼ºÉè¼ÆÒÔÉÏº¯ÊıµÄ²ÎÊı£¬·µ»ØÖµ¡£
 //#include <stdio.h>
-//void init(int arr[],int se) //±ä000
+//void init(int arr[],int se) //±E00
 //{
 //	int i = 0;
 //	for (i = 0; i < se; i++)
@@ -586,7 +586,7 @@
 //	print(arr, se); //´òÓ¡ 10 2 3
 //	reverse(a, b);  //Äæ×ª
 //	print(arr, se);//´òÓ¡ 3 2 10
-//	init(arr, se);  //±ä0
+//	init(arr, se);  //±E
 //	print(arr, se);//´òÓ¡ 0 0 0
 //	return 0;
 //}
@@ -612,7 +612,7 @@
 //	//´æ·ÅÏÂÆåµÄÊı¾İ
 //	char board[ROW][COL] = { 0 };
 //
-//	//³õÊ¼»¯ÆåÅÌÎªÈ«¿Õ¸ñ
+//	//³õÊ¼»¯ÆåÅÌÎªÈ«¿Õ¸E
 //	InitBoard(board, ROW, COL);
 //
 //	//´òÓ¡ÆåÅÌ
@@ -620,18 +620,18 @@
 //
 //	while (1)
 //	{
-//		//Íæ¼ÒÏÂÆå
+//		//Íæ¼ÒÏÂÆE
 //		player_move(board, ROW, COL);
 //		DisplayBoard(board, ROW, COL);
 //
-//		//ÅĞ¶ÏÊäÓ®  Íæ¼ÒÓ®'*'  µçÄÔÓ®'#'  Æ½¾Ö'Q'  ¼ÌĞø'C'
+//		//ÅĞ¶ÏÊäÓ®  Íæ¼ÒÓ®'*'  µçÄÔÓ®'#'  Æ½¾Ö'Q'  ¼ÌĞEC'
 //		ret = is_win(board, ROW, COL);
 //		if (ret != 'C')
 //			break;
 //
 //
-//		//µçÄÔÏÂÆå
-//		Computer_move(board, ROW, COL); //Ëæ»úÏÂÆå
+//		//µçÄÔÏÂÆE
+//		Computer_move(board, ROW, COL); //Ëæ»úÏÂÆE
 //		DisplayBoard(board, ROW, COL);
 //		
 //		//ÅĞ¶ÏÊäÓ®
@@ -655,7 +655,7 @@
 //	{
 //		menu();
 //		srand((unsigned int)time(NULL));
-//		printf("ÇëÑ¡Ôñ:>");
+//		printf("ÇE¡ÔE>");
 //		scanf("%d", &input);
 //		switch (input)
 //		{
@@ -666,7 +666,7 @@
 //			printf("ÍË³öÓÎÏ·\n");
 //			break;
 //		default:
-//			printf("Ñ¡Ôñ´íÎó\n");
+//			printf("Ñ¡Ôñ´úêó\n");
 //			break;
 //			
 //		}
@@ -729,7 +729,7 @@
 //	do
 //	{
 //		menu();
-//		printf("ÇëÊäÈë:>\n");
+//		printf("ÇEäÈE>\n");
 //		scanf("%d", &input);
 //		switch (input)
 //		{
@@ -740,7 +740,7 @@
 //			printf("ÍË³öÓÎÏ·\n");
 //			break;
 //		default:
-//			printf("ÊäÈëÓĞÎó,ÇëÖØĞÂÊäÈë!\n");
+//			printf("ÊäÈEĞÎEÇEØĞÂÊäÈE\n");
 //			break;
 //		}
 //	} while (input);
@@ -762,12 +762,12 @@
 //±àĞ´Ò»¸öº¯Êı reverse_string(char* string)£¨µİ¹éÊµÏÖ£©
 //ÊµÏÖ£º½«²ÎÊı×Ö·û´®ÖĞµÄ×Ö·û·´ÏòÅÅÁĞ£¬²»ÊÇÄæĞò´òÓ¡¡£
 //ÒªÇó£º²»ÄÜÊ¹ÓÃCº¯Êı¿âÖĞµÄ×Ö·û´®²Ù×÷º¯Êı¡£
-//±ÈÈç :
+//±ÈÈE:
 //char arr[] = "abcdef";
 //ÄæĞòÖ®ºóÊı×éµÄÄÚÈİ±ä³É£ºfedcba
 //#include <stdio.h>
 //#include <string.h>
-//void reverse_string_no_d(char* str)//²»ÓÃµİ¹é
+//void reverse_string_no_d(char* str)//²»ÓÃµİ¹E
 //{
 //	int len = strlen(str);
 //	char* left = str;
@@ -782,16 +782,16 @@
 //	}
 //}
 //
-//void reverse_string_d(char* str)//µİ¹é
+//void reverse_string_d(char* str)//µİ¹E
 //{
 //	int len = strlen(str);
 //	char tmp = *str;
-//	*str = *(str + len - 1);    //×î×ó±ä×îÓÒµÄ×Ö·û
+//	*str = *(str + len - 1);    //×ûóó±ä×ûïÒµÄ×Ö·E
 //
-//	*(str + len - 1) = '\0';    //×îÓÒ×Ö·û±ä'\0' ,·½±ãÏÂÒ»´Î×Ö·û´®¼ÆËã³¤¶È
-//	if (strlen(str + 1) >= 2)    //×Ö·ûÓĞÁ½¸öÒÔÉÏ²Å¼ÌĞøµİ¹é
+//	*(str + len - 1) = '\0';    //×ûïÒ×Ö·û±E\0' ,·½±ãÏÂÒ»´Î×Ö·û´®¼ÆËã³¤¶È
+//	if (strlen(str + 1) >= 2)    //×Ö·ûÓĞÁ½¸öÒÔÉÏ²Å¼ÌĞøµİ¹E
 //	{
-//		reverse_string_d(str + 1); //µİ¹é
+//		reverse_string_d(str + 1); //µİ¹E
 //	}
 //
 //	*(str + len - 1) = tmp;
@@ -837,7 +837,7 @@
 //int main()
 //{
 //	_Bool flag1 = false; //¼Ù
-//	bool flag2 = true;  //Õæ
+//	bool flag2 = true;  //ÕE
 //
 //	if (flag2)
 //	{
@@ -867,10 +867,10 @@
 //	struct Stu s = { "ÕÅÈı", 25 };
 //
 //	//Òª¸Ä±ä½á¹¹ÌåÄÚµÄ×Ö·û´®µÄ·½·¨:
-//	strcpy(s.name, "ÕÅÈı·á"); //·½·¨1  ÓÃstrcpyº¯Êı,¸´ÖÆ½øÈ¥
+//	strcpy(s.name, "ÕÅÈı·E); //·½·¨1  ÓÃstrcpyº¯Êı,¸´ÖÆ½øÈ¥
 //	print1(s);
 //
-//	scanf("%s", s.name);//·½·¨2  ÊäÈë½øÈ¥ (scanfº¯ÊıĞèÒªµÄ¾ÍÊÇÒ»¸öµØÖ·)
+//	scanf("%s", s.name);//·½·¨2  ÊäÈEøÈ¥ (scanfº¯ÊıĞèÒªµÄ¾ÍÊÇÒ»¸öµØÖ·)
 //	print2(&s);
 //	return 0;
 //}
@@ -882,14 +882,14 @@
 //	int data2[] = { 2,3,4,5,6 };
 //	int data3[] = { 3,4,5,6,7 };
 //	
-//	int* arr[3] = { data1,data2,data3 }; //Ö¸ÕëÊı×é  
+//	int* arr[3] = { data1,data2,data3 }; //Ö¸ÕEı×E 
 //	int i = 0;
 //	for (i = 0; i < 3; i++)
 //	{
 //		int j = 0;
 //		for (j = 0; j < 5; j++)
 //		{
-//			printf("%d ", arr[i][j]);  //ÀàËÆÊµÏÖ¶şÎ¬Êı×é
+//			printf("%d ", arr[i][j]);  //ÀàËÆÊµÏÖ¶şÎ¬Êı×E
 //		}
 //		printf("\n");
 //	}
@@ -902,19 +902,19 @@
 //{
 //    int a, b, c;
 //    a = 5;
-//    c = ++a;// ++a£º¼Ó¸øa+1£¬½á¹ûÎª6£¬ÓÃ¼ÓÍêÖ®ºóµÄ½á¹û¸øc¸³Öµ£¬Òò´Ë£ºa = 6  c = 6
+//    c = ++a;// ++a£º¼Ó¸øa+1£¬½á¹ûÎª6£¬ÓÃ¼ÓÍE®ºóµÄ½á¹û¸øc¸³Öµ£¬Òò´Ë£ºa = 6  c = 6
 //    b = ++c, c++, ++a, a++;
 //
-//    // ¶ººÅ±í´ïÊ½µÄÓÅÏÈ¼¶£¬×îµÍ£¬ÕâÀïÏÈËãb=++c, bµÃµ½µÄÊÇ++cºóµÄ½á¹û£¬bÊÇ7
-//    // b=++c ºÍºó±ßµÄ¹¹³É¶ººÅ±í´ïÊ½£¬ÒÀ´Î´Ó×óÏòÓÒ¼ÆËãµÄ¡£
-//    // ±í´ïÊ½½áÊøÊ±£¬c++ºÍ£¬++a,a++»á¸øa+2£¬¸øc¼Ó1£¬´ËÊ±c£º8£¬a£º8£¬b:7
+//    // ¶ººÅ±úĞE½µÄÓÅÏÈ¼¶£¬×ûÑÍ£¬ÕâÀEÈËãb=++c, bµÃµ½µÄÊÇ++cºóµÄ½á¹û£¬bÊÇ7
+//    // b=++c ºÍºó±ßµÄ¹¹³É¶ººÅ±úĞE½£¬ÒÀ´Î´Ó×óÏòÓÒ¼ÆËãµÄ¡£
+//    // ±úĞE½½áÊøÊ±£¬c++ºÍ£¬++a,a++»á¸øa+2£¬¸øc¼Ó1£¬´ËÊ±c£º8£¬a£º8£¬b:7
 //
-//    b += a++ + c; // aÏÈºÍc¼Ó£¬½á¹ûÎª16£¬ÔÚ¼ÓÉÏbµÄÖµ7£¬±ÈµÄ½á¹ûÎª23£¬×îºó¸øa¼Ó1£¬aµÄÖµÎª9
+//    b += a++ + c; // aÏÈºÍc¼Ó£¬½á¹ûÎª16£¬ÔÚ¼ÓÉÏbµÄÖµ7£¬±ÈµÄ½á¹ûÎª23£¬×ûÖó¸øa¼Ó1£¬aµÄÖµÎª9
 //    printf("a = %d b = %d c = %d\n:", a, b, c); // a:9, b:23, c:8
 //    return 0;
 //}
 
-//ÊäÈëÁ½¸öÕûÊı£¬ÇóÁ½¸öÕûÊı¶ş½øÖÆ¸ñÊ½ÓĞ¶àÉÙ¸öÎ»²»Í¬
+//ÊäÈE½¸öÕûÊı£¬ÇóÁ½¸öÕûÊı¶ş½øÖÆ¸ñÊ½ÓĞ¶àÉÙ¸öÎ»²»Í¬
 //#include <stdio.h>
 //
 //int main()
@@ -993,7 +993,7 @@
 
 
 
-//²»ÔÊĞí´´½¨ÁÙÊ±±äÁ¿£¬½»»»Á½¸öÕûÊıµÄÄÚÈİ
+//²»ÔÊĞúĞ´½¨ÁÙÊ±±äÁ¿£¬½»»»Á½¸öÕûÊıµÄÄÚÈİ
 //#include <stdio.h>
 //void Exch(int* a, int* b)
 //{
@@ -1007,11 +1007,11 @@
 //	int b = 8;
 //	printf("½»»»Ç°:a=%d b=%d\n", a, b);
 //	Exch(&a, &b);
-//	printf("½»»»ºó:a=%d b=%d\n", a, b);
+//	printf("½»»»ºEa=%d b=%d\n", a, b);
 //	return 0;
 //}
 
-//Ğ´Ò»¸öº¯Êı´òÓ¡arrÊı×éµÄÄÚÈİ£¬²»Ê¹ÓÃÊı×éÏÂ±ê£¬Ê¹ÓÃÖ¸Õë¡£
+//Ğ´Ò»¸öº¯Êı´òÓ¡arrÊı×éµÄÄÚÈİ£¬²»Ê¹ÓÃÊı×éÏÂ±ê£¬Ê¹ÓÃÖ¸ÕE£
 //arrÊÇÒ»¸öÕûĞÎÒ»Î¬Êı×é¡£
 //
 //#include <stdio.h>
@@ -1049,16 +1049,16 @@
 //int main()
 //{
 //    char arr[100] = { 0 };
-//    gets(arr);//ÊäÈë
+//    gets(arr);//ÊäÈE
 //    int ret = strlen(arr);
 //    char* left = &arr[0];  //×óµØÖ·
 //    char* right = &arr[ret - 1];  //ÓÒµØÖ·
 //    rever(left, right);//½»»»
-//    printf("%s\n", arr);//Êä³ö
+//    printf("%s\n", arr);//Êä³E
 //    return 0;
 //}
 
-//ÇóSn = a + aa + aaa + aaaa + aaaaaµÄÇ°5ÏîÖ®ºÍ£¬ÆäÖĞaÊÇÒ»¸öÊı×Ö£¬
+//ÇóSn = a + aa + aaa + aaaa + aaaaaµÄÇ°5Ïûò®ºÍ£¬ÆäÖĞaÊÇÒ»¸öÊı×Ö£¬
 //ÀıÈç£º2 + 22 + 222 + 2222 + 22222
 //#include <stdio.h>
 //int main()
@@ -1079,13 +1079,13 @@
 //    int ret = 0;
 //    int c = 0;
 //    scanf("%d %d", &a, &b);
-//    c = a ^ b; //cµÄ¶ş½øÖÆÊıÃ¿¸ö1£¬ÊÇaºÍbµÄÒ»¸ö²»Í¬Î»
+//    c = a ^ b; //cµÄ¶ş½øÖÆÊıÃ¿¸E£¬ÊÇaºÍbµÄÒ»¸ö²»Í¬Î»
 //    while (c) // c=0Ê±½áÊøÑ­»·
 //    {
-//        c = c & (c - 1);//Ã¿´ÎÔËĞĞÈ¥µôc¶ş½øÖÆ×îÓÒ±ßµÄÒ»¸ö1
+//        c = c & (c - 1);//Ã¿´ÎÔËĞĞÈ¥µôc¶ş½øÖÆ×ûïÒ±ßµÄÒ»¸E
 //        //Èç£º c=10100 (c-1)=10011
 //        //c&(c-1)=10000
-//        //É¾³ıÁËc×îÓÒ±ßµÄ1
+//        //É¾³ıÁËc×ûïÒ±ßµÄ1
 //        ret++;
 //    }
 //    printf("%d\n", ret);
@@ -1158,28 +1158,28 @@
 //struct Sut
 //{
 //	char name[20];//Ãû×Ö
-//	int age;//ÄêÁä
-//	char sex[8];//ĞÔ±ğ
+//	int age;//ÄEE
+//	char sex[8];//ĞÔ±E
 //	float score;//·ÖÊı
 //}s1,s2;//È«¾Ö±äÁ¿
-//typedef struct Sut Sut; //ÓÃtypedef ÖØĞÂ¶¨Òå struct StuµÄÃû×ÖÎª Sut 
+//typedef struct Sut Sut; //ÓÃtypedef ÖØĞÂ¶¨ÒEstruct StuµÄÃû×ÖÎª Sut 
 //
-////Í¬Àí
+////Í¬ÀE
 //typedef struct Sut2
 //{
 //	char name[20];
 //	int age;
 //	char sex[8];
 //	float score;
-//}Sut2; //ÕâÀïµÄSut2²»ÊÇÈ«¾Ö±äÁ¿£¬Ò²²»ÊÇ±äÁ¿£¬ÕâÀïÊÇ°Ñstruct Sut2µÄÃû×ÖÖØĞÂ¶¨ÒåÎªSut2
+//}Sut2; //ÕâÀEÄSut2²»ÊÇÈ«¾Ö±äÁ¿£¬Ò²²»ÊÇ±äÁ¿£¬ÕâÀEÇ°Ñstruct Sut2µÄÃû×ÖÖØĞÂ¶¨ÒåÎªSut2
 ////ÕâÖÖĞ´·¨¾­³£»á³öÏÖÊı¾İ½á¹¹ÖĞ
 //
 //int main()
 //{
 //	struct Sut s3;//¾Ö²¿±äÁ¿
-//	Sut s4;//ÓÃtypedef ÖØÃüÃûºóµÄ struct Sut
+//	Sut s4;//ÓÃtypedef ÖØÃEûºóµÄ struct Sut
 //
-//	Sut2 s1;//ÓÃtypedef ÖØÃüÃûºóµÄ struct Sut2
+//	Sut2 s1;//ÓÃtypedef ÖØÃEûºóµÄ struct Sut2
 //	return 0;
 //}
 //
