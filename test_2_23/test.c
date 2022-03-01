@@ -67,46 +67,49 @@
 //打印菱形
 //7行,每行+2个*
 
-#include <stdio.h>
-int main()
-{
-	int num = 0;
-	int i = 0;
-	scanf("%d", &num);
-	for (i = 0; i < num; i++) //打印num行
-	{
-		//打印空格
-		int j = 0;
-		for (j = 0; j < num - i; j++)
-		{
-			printf(" ");
-		}
-		//打印*
-		for (j = 0; j < i * 2 + 1; j++)
-		{
-			printf("*");
-		}
-		printf("\n");
-	}
+//#include <stdio.h>
+//int main()
+//{
+//	int num = 0;
+//	int i = 0;
+//	scanf("%d", &num);
+//	for (i = 0; i < num; i++) //打印num行
+//	{
+//		//打印空格
+//		int j = 0;
+//		for (j = 0; j < num - i; j++)
+//		{
+//			printf(" ");
+//		}
+//		//打印*
+//		for (j = 0; j < i * 2 + 1; j++)
+//		{
+//			printf("*");
+//		}
+//		printf("\n");
+//	}
+//
+//	//for (i = 0; i < num - 1; i++) 
+//	//{
+//
+//	//	int j = 0;
+//	//	//打印空格
+//	//	for (j = 1; j < i * 2 + 1; j++)
+//	//	{
+//	//		printf(" ");
+//	//	}
+//	//	//打印*
+//	//	for (j = 0; j < 2*(num-1) - i; j++)
+//	//	{
+//	//		printf("*");
+//	//	}
+//	//	printf("\n");
+//	//}
+//
+//
+//
+//	return 0;
+//}
 
-	//for (i = 0; i < num - 1; i++) 
-	//{
-
-	//	int j = 0;
-	//	//打印空格
-	//	for (j = 1; j < i * 2 + 1; j++)
-	//	{
-	//		printf(" ");
-	//	}
-	//	//打印*
-	//	for (j = 0; j < 2*(num-1) - i; j++)
-	//	{
-	//		printf("*");
-	//	}
-	//	printf("\n");
-	//}
 
 
-
-	return 0;
-}
