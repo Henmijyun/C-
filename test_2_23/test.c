@@ -249,27 +249,188 @@
 //}
 
 //比较浮点数与0.0的大小
-#include <stdio.h>
-#include <math.h>
-#include <float.h>
+//#include <stdio.h>
+//#include <math.h>
+//#include <float.h>
+//
+//int main()
+//{
+//	double a1 = 0.000000000000000000001;
+//	double a2 = 0.0000000000001;
+//	double b = 0.0;
+//	//fabs(a-b) < DBL_EPSILON   与0.0比较的话,相当于a-0.0
+//	//fabs(a-0.0) < DBL_EPSILON  a-0.0 ,相当于 a本身
+//	//则: fabs(a) < DBL_EPSILON
+//	if (fabs(a1) < DBL_EPSILON)
+//		printf("a1与0.0相等\n");
+//	else
+//		printf("a1与0.0不相等\n");
+//	//
+//	if (fabs(a2) < DBL_EPSILON)
+//		printf("a2与0.0相等\n");
+//	else
+//		printf("a2与0.0不相等\n");
+//
+//	return 0;
+//}
 
+
+////打印菱形
+////上面7行,下面6行,每行+2个* 
+//#include <stdio.h>
+//int main()
+//{
+//	int num = 0;
+//	int i = 0;
+//	scanf("%d", &num);
+//	//打印上半个菱形
+//	for (i = 0; i < num; i++) //打印num行
+//	{
+//		//打印空格
+//		int j = 0;
+//		for (j = 0; j < num - i; j++)
+//		{
+//			printf(" ");
+//		}
+//		//打印*
+//		for (j = 0; j < i * 2 + 1; j++)
+//		{
+//			printf("*");
+//		}
+//		printf("\n");
+//	}
+//	//打印下半个菱形
+//	for (i = 0; i < num - 1; i++) //打印 num 行
+//	{
+//		int j = 0;
+//		//打印空格
+//		for (j = 0; j < i + 2; j++)
+//		{
+//			printf(" ");
+//		}
+//		//打印*
+//		for (j = 0; j < (2 * num - 3) - i * 2; j++)
+//		{
+//			printf("*");
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+
+//// 求出0~100000之间的所有“水仙花数”并输出。
+////“水仙花数”是指 一个n位数，其各位数字的n次方之和，恰好等于该数本身。
+////如：153 = 1^3+ 5^3+ 3^3 ,则 153 是一个 “水仙花数”。
+//
+//#include<math.h> //pow函数的头文件
+//#include<stdio.h>
+//int main()
+//{
+//    int i = 0;
+//    for (i = 0; i <= 100000; i++)
+//    {
+//        //判断i是否为自幂数
+//        //1.计算i的位数 - n
+//        int n = 1;
+//        int tmp = i;
+//        while (tmp / 10)
+//        {
+//            n++;
+//            tmp = tmp / 10;
+//        }
+//        //2.计算i的每一位的n次方之和
+//        tmp = i;
+//        int sum = 0;
+//        while (tmp)
+//        {
+//            //pow函数是用来 求次方数
+//            sum += pow(tmp % 10, n);    //pow(x, y); 如果计算2的3次方, x是2, y是3;
+//            tmp = tmp / 10;
+//        }
+//        //判断
+//        if (sum == i)
+//        {
+//            printf("%d ", i);
+//        }
+//    }
+//    return 0;
+//}
+
+
+//喝汽水，1瓶汽水1元，2个空瓶可以换一瓶汽水，给20元，可以多少汽水（编程实现）。
+//
+//#include <stdio.h>
+//int main()
+//{
+//	int cola = 0; //汽水1元1瓶
+//	scanf("%d", &cola); //输入钱数,相当于输入第一次购买的汽水数
+//	int empty = cola; //空瓶子,20元则20个空瓶
+//	while (empty / 2)
+//	{
+//		cola += empty / 2; //每次换来的汽水累加
+//		empty = empty / 2 + empty % 2; // %2是当瓶子为奇数时,多出一个空瓶
+//	}
+//	printf("%d\n", cola);
+//	return 0;
+//}
+
+
+
+////输入一个整数数组，实现一个函数，
+////来调整该数组中数字的顺序使得数组中所有的奇数位于数组的前半部分，
+////所有偶数位于数组的后半部分。
+//
+//#include <stdio.h>
+//#include <string.h>
+//
+//void Seque(int arr[], int sz)
+//{
+//	int* left = arr;    //左坐标
+//	int* right = &arr[sz - 1]; //右坐标
+//	while (left < right) //循环
+//	{
+//		int* tmp = left; //tmp每次循环变回最左坐标
+//		if (*tmp % 2 == 0) //判断是否为偶数
+//		{
+//			while (tmp < right) //把偶数放到最右
+//			{
+//				int a = *tmp;
+//				*tmp = *(tmp + 1);
+//				*(tmp + 1) = a;
+//				tmp++;
+//			}
+//			right--; //右坐标向左移动一位
+//		}
+//		else
+//		{
+//			left++; //上面判断不是偶数,则左坐标右移一位
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 0,1,2,3,4,5,6,7,8,9};
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int i = 0;
+//	Seque(arr, sz);
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
+
+
+#include <stdio.h>
 int main()
 {
-	double a1 = 0.000000000000000000001;
-	double a2 = 0.0000000000001;
-	double b = 0.0;
-	//fabs(a-b) < DBL_EPSILON   与0.0比较的话,相当于a-0.0
-	//fabs(a-0.0) < DBL_EPSILON  a-0.0 ,相当于 a本身
-	//则: fabs(a) < DBL_EPSILON
-	if (fabs(a1) < DBL_EPSILON)
-		printf("a1与0.0相等\n");
-	else
-		printf("a1与0.0不相等\n");
-	//
-	if (fabs(a2) < DBL_EPSILON)
-		printf("a2与0.0相等\n");
-	else
-		printf("a2与0.0不相等\n");
-
-	return 0;
+    int i = 0;
+    int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+    for (i = 0; i <= 12; i++)
+    {
+        arr[i] = 0;
+        printf("hello bit\n");
+    }
+    return 0;
 }
