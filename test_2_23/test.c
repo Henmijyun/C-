@@ -435,4 +435,129 @@
 //    return 0;
 //}
 
+//char*(*p)[5] = &arr;
+// 
+// 
 
+
+
+//
+////模拟实现库函数strlen
+//#include <stdio.h>
+//#include <assert.h>
+//
+//unsigned int my_strlen(const char* p)
+//{
+//	assert(p != NULL);
+//	int count = 0;
+//	while (*p) //*p为\0时跳出循环
+//	{
+//		count++;
+//		p++;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	int len = my_strlen(arr);
+//	printf("%d\n", len);
+////	return 0;
+////}
+//
+//
+//
+////模拟实现库函数strcpy
+//#include <stdio.h>
+//#include <assert.h>
+//
+//char* my_strcpy(char* p1, const char* p2)
+//{
+//	assert(p1 && p2);
+//	char* ret = p1;
+//	while (*p1++ = *p2++)
+//	{
+//		;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	char arr1[] = "XXXXXXXXXXX";
+//	char arr2[] = "abcdef";
+//	printf("%s\n", my_strcpy(arr1, arr2));
+//	return 0;
+//}
+
+//1100 1000
+//0110 0100
+//1 0010 1100
+
+
+//在屏幕上打印杨辉三角。
+//1
+//1 1
+//1 2 1
+//1 3 3 1
+#include <stdio.h>
+int main()
+{
+	int arr[10][10] = { 0 };
+	int(*p)[10] = &arr;
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < 10; i++)  //生成
+	{
+		for (j = 0; j <= i; j++)
+		{
+			if (j == 0 || i == j)
+				*((*p + i) + j) = 1;
+			else if (i >= 2 && j >= 1)
+				*((*p + i) + j) = *((*p + i - 1) + j - 1) + *((*p + i - 1) + j);
+		}
+	}
+	for (i = 0; i < 10; i++) //打印
+	{
+		for (j = 0; j <= i; j++)
+		{
+			printf("%d ", *((*p + i) + j));
+		}
+		printf("\n");
+	}
+
+
+	return 0;
+}
+
+
+//#include<stdio.h>
+//int main()
+//{
+//    int arr[10][10] = { 0 };
+//    int i = 0;
+//    int j = 0;
+//    int k = 0;
+//    for (i = 0; i < 10; i++)
+//    {
+//        for (j = 0; j <= i; j++)
+//        {
+//            if (j == 0 || i == j)
+//            {
+//                arr[i][j] = 1;
+//            }
+//            if (i >= 2 && j >= 1)
+//            {
+//                arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
+//            }
+//        }
+//    }
+//    for (i = 0; i < 10; i++)
+//    {
+//        for (j = 0; j <= i; j++)
+//        {
+//            printf("%d ", arr[i][j]);
+//        }
+//        printf("\n");
+//    }
+//    return 0;
+//}
