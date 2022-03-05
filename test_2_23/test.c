@@ -499,36 +499,36 @@
 //1 1
 //1 2 1
 //1 3 3 1
-#include <stdio.h>
-int main()
-{
-	int arr[10][10] = { 0 };
-	int(*p)[10] = &arr;
-	int i = 0;
-	int j = 0;
-	for (i = 0; i < 10; i++)  //生成
-	{
-		for (j = 0; j <= i; j++)
-		{
-			if (j == 0 || i == j)
-				*((*p + i) + j) = 1;
-			else if (i >= 2 && j >= 1)
-				*((*p + i) + j) = *((*p + i - 1) + j - 1) + *((*p + i - 1) + j);
-		}
-	}
-	for (i = 0; i < 10; i++) //打印
-	{
-		for (j = 0; j <= i; j++)
-		{
-			printf("%d ", *((*p + i) + j));
-		}
-		printf("\n");
-	}
-
-
-	return 0;
-}
-
+//#include <stdio.h>
+//int main()
+//{
+//	int arr[10][10] = { 0 };
+//	int(*p)[10] = &arr;
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < 10; i++)  //生成
+//	{
+//		for (j = 0; j <= i; j++)
+//		{
+//			if (j == 0 || i == j)
+//				*((*p + i) + j) = 1;
+//			else if (i >= 2 && j >= 1)
+//				*((*p + i) + j) = *((*p + i - 1) + j - 1) + *((*p + i - 1) + j);
+//		}
+//	}
+//	for (i = 0; i < 10; i++) //打印
+//	{
+//		for (j = 0; j <= i; j++)
+//		{
+//			printf("%d ", *((*p + i) + j));
+//		}
+//		printf("\n");
+//	}
+//
+//
+//	return 0;
+//}
+//
 
 //#include<stdio.h>
 //int main()
@@ -561,3 +561,13 @@ int main()
 //    }
 //    return 0;
 //}
+
+
+
+//A说：不是我。
+//B说：是C。
+//C说：是D。
+//D说：C在胡说
+//已知3个人说了真话，1个人说的是假话。
+
+
