@@ -377,49 +377,49 @@
 
 
 
-////输入一个整数数组，实现一个函数，
-////来调整该数组中数字的顺序使得数组中所有的奇数位于数组的前半部分，
-////所有偶数位于数组的后半部分。
-//
-//#include <stdio.h>
-//#include <string.h>
-//
-//void Seque(int arr[], int sz)
-//{
-//	int* left = arr;    //左坐标
-//	int* right = &arr[sz - 1]; //右坐标
-//	while (left < right) //循环
-//	{
-//		int* tmp = left; //tmp每次循环变回最左坐标
-//		if (*tmp % 2 == 0) //判断是否为偶数
-//		{
-//			while (tmp < right) //把偶数放到最右
-//			{
-//				int a = *tmp;
-//				*tmp = *(tmp + 1);
-//				*(tmp + 1) = a;
-//				tmp++;
-//			}
-//			right--; //右坐标向左移动一位
-//		}
-//		else
-//		{
-//			left++; //上面判断不是偶数,则左坐标右移一位
-//		}
-//	}
-//}
-//int main()
-//{
-//	int arr[10] = { 0,1,2,3,4,5,6,7,8,9};
-//	int sz = sizeof(arr) / sizeof(arr[0]);
-//	int i = 0;
-//	Seque(arr, sz);
-//	for (i = 0; i < sz; i++)
-//	{
-//		printf("%d ", arr[i]);
-//	}
-//	return 0;
-//}
+//输入一个整数数组，实现一个函数，
+//来调整该数组中数字的顺序使得数组中所有的奇数位于数组的前半部分，
+//所有偶数位于数组的后半部分。
+
+#include <stdio.h>
+#include <string.h>
+
+void Seque(int arr[], int sz)
+{
+	int* left = arr;    //左坐标
+	int* right = &arr[sz - 1]; //右坐标
+	while (left < right) //循环
+	{
+		int* tmp = left; //tmp每次循环变回最左坐标
+		if (*tmp % 2 == 0) //判断是否为偶数
+		{
+			while (tmp < right) //把偶数放到最右
+			{
+				int a = *tmp;
+				*tmp = *(tmp + 1);
+				*(tmp + 1) = a;
+				tmp++;
+			}
+			right--; //右坐标向左移动一位
+		}
+		else
+		{
+			left++; //上面判断不是偶数,则左坐标右移一位
+		}
+	}
+}
+int main()
+{
+	int arr[10] = { 0,1,2,3,4,5,6,7,8,9};
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	int i = 0;
+	Seque(arr, sz);
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	return 0;
+}
 
 
 //#include <stdio.h>
