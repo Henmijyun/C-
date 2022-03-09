@@ -380,46 +380,95 @@
 //输入一个整数数组，实现一个函数，
 //来调整该数组中数字的顺序使得数组中所有的奇数位于数组的前半部分，
 //所有偶数位于数组的后半部分。
+//
+//#include <stdio.h>
+//#include <string.h>
+//
+//void Seque(int arr[], int sz)
+//{
+//	int* left = arr;    //左坐标
+//	int* right = &arr[sz - 1]; //右坐标
+//	while (left < right) //循环
+//	{
+//		int* tmp = left; //tmp每次循环变回最左坐标
+//		if (*tmp % 2 == 0) //判断是否为偶数
+//		{
+//			while (tmp < right) //把偶数放到最右
+//			{
+//				int a = *tmp;
+//				*tmp = *(tmp + 1);
+//				*(tmp + 1) = a;
+//				tmp++;
+//			}
+//			right--; //右坐标向左移动一位
+//		}
+//		else
+//		{
+//			left++; //上面判断不是偶数,则左坐标右移一位
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 0,1,2,3,4,5,6,7,8,9};
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int i = 0;
+//	Seque(arr, sz);
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
 
+
+
+//杨辉三角
 #include <stdio.h>
-#include <string.h>
 
-void Seque(int arr[], int sz)
-{
-	int* left = arr;    //左坐标
-	int* right = &arr[sz - 1]; //右坐标
-	while (left < right) //循环
-	{
-		int* tmp = left; //tmp每次循环变回最左坐标
-		if (*tmp % 2 == 0) //判断是否为偶数
-		{
-			while (tmp < right) //把偶数放到最右
-			{
-				int a = *tmp;
-				*tmp = *(tmp + 1);
-				*(tmp + 1) = a;
-				tmp++;
-			}
-			right--; //右坐标向左移动一位
-		}
-		else
-		{
-			left++; //上面判断不是偶数,则左坐标右移一位
-		}
-	}
-}
 int main()
 {
-	int arr[10] = { 0,1,2,3,4,5,6,7,8,9};
-	int sz = sizeof(arr) / sizeof(arr[0]);
+	int arr[10][10] = { 0 };
 	int i = 0;
-	Seque(arr, sz);
-	for (i = 0; i < sz; i++)
+	for (i = 0; i < 10; i++)
 	{
-		printf("%d ", arr[i]);
+
 	}
+
+
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //#include <stdio.h>
@@ -569,5 +618,118 @@ int main()
 //C说：是D。
 //D说：C在胡说
 //已知3个人说了真话，1个人说的是假话。
+//
+//#include <stdio.h>
+//
+//int main()
+//{
+//	int killer = 0;
+//	for (killer = 'a'; killer <= 'd'; killer++)//a到d的，ASCII值
+//	{
+//		//判断为真则1，假则0，和为3时，知道真凶
+//		if ((killer != 'a') + (killer == 'c') + (killer == 'd') + (killer == 'c') == 3)
+//		{
+//			printf("%c\n", killer);
+//		}
+//	}
+//	return 0;
+//}
+//
+//
+
+
+//5位运动员参加了10米台跳水比赛，有人让他们预测比赛结果：
+//A选手说：B第二，我第三；
+//B选手说：我第二，E第四；
+//C选手说：我第一，D第二；
+//D选手说：C最后，我第三；
+//E选手说：我第四，A第一；
+//比赛结束后，每位选手都说对了一半，请编程确定比赛的名次。
+
+//#include <stdio.h>
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	int c = 0;
+//	int d = 0;
+//	int e = 0;
+//	//每个人都可能是1到5名
+//	for (a = 1; a <= 5; a++)
+//	{
+//		for (b = 1; b <= 5; b++)
+//		{
+//			for (c = 1; c <= 5; c++)
+//			{
+//				for (d = 1; d <= 5; d++)
+//				{
+//					for (e = 1; e <= 5; e++)
+//					{
+//						if (((b == 2) + (a == 3) == 1) &&
+//							((b == 2) + (e == 4) == 1) &&
+//							((c == 1) + (d == 2) == 1) &&
+//							((c == 5) + (d == 3) == 1) &&
+//							((e == 4) + (a == 1) == 1) )
+//							if (a * b * c * d * e == 120) //只出现过一次的时候
+//							{
+//								printf("a=%d b=%d c=%d d=%d e=%d\n", a, b, c, d, e);
+//							}
+//					}
+//				}
+//			}
+//		}
+//	}
+//	return 0;
+//}
+
+
+//在屏幕上打印杨辉三角。
+//1
+//1 1
+//1 2 1
+//1 3 3 1
+//#include <stdio.h>
+//int main()
+//{
+//	int arr[10][10] = { 0 };
+//	int(*p)[10] = &arr;
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < 10; i++)  //生成
+//	{
+//		for (j = 0; j <= i; j++)
+//		{
+//			if (j == 0 || i == j)
+//				*((*p + i) + j) = 1;
+//			else if (i >= 2 && j >= 1)
+//				*((*p + i) + j) = *((*p + i - 1) + j - 1) + *((*p + i - 1) + j);
+//		}
+//	}
+//	for (i = 0; i < 10; i++) //打印
+//	{
+//		for (j = 0; j <= i; j++)
+//		{
+//			printf("%d ", *((*p + i) + j));
+//		}
+//		printf("\n");
+//	}
+//
+//
+//	return 0;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
