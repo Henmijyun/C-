@@ -704,8 +704,27 @@
 //}
 
 
-
-
+int NumberOf1(int n)
+{
+	unsigned int m = n;
+	int count = 0;
+	while (m)
+	{
+		if (m % 2 == 1)
+			count++;
+		m /= 2;
+	}
+	return count;
+}
+#include <stdio.h>
+int main()
+{
+	int n = 0;
+	scanf("%d", &n);
+	int ret = NumberOf1(n);
+	printf("%d\n", ret);
+	return 0;
+}
 
 
 
