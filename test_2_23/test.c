@@ -704,36 +704,136 @@
 //}
 
 
-int NumberOf1(int n)
-{
-	unsigned int m = n;
-	int count = 0;
-	while (m)
-	{
-		if (m % 2 == 1)
-			count++;
-		m /= 2;
-	}
-	return count;
-}
+//int NumberOf1(int n)
+//{
+//	unsigned int m = n;
+//	int count = 0;
+//	while (m)
+//	{
+//		if (m % 2 == 1)
+//			count++;
+//		m /= 2;
+//	}
+//	return count;
+//}
+//#include <stdio.h>
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	int ret = NumberOf1(n);
+//	printf("%d\n", ret);
+//	return 0;
+//}
+
+
+//#include <stdio.h>
+//void test(int(*p)[3])
+//{
+//	int i = 0;
+//	for (i = 0; i < 2; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 3; j++)
+//		{
+//			printf("%d ", *(*(p + i) + j));
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[2][3] = { {1,2,3},{5,6,7} };
+//	test(arr);
+//	return 0;
+//}
+//
+
+
+
+
+//实现一个函数，可以左旋字符串中的k个字符。
+//例如：
+//ABCD左旋一个字符得到BCDA
+//ABCD左旋两个字符得到CDAB
+//
+//
+//#include <stdio.h>
+//#include <assert.h>
+//#include <string.h>
+//
+//void Spin(char* p, int k)
+//{
+//	assert(p);
+//	int len = strlen(p); //元素个数
+//	char* lift = p + k - 1; //左坐标：‘待旋转对象’的最右边
+//	char* right = p + len - 1; //右坐标：数组的最右边
+//	char tmp = 0;
+//	while (k) //旋转k次
+//	{
+//		tmp = *lift;
+//		*lift = *right;
+//		*right = tmp;
+//		lift--;
+//		right--;
+//		k--;
+//	}
+//}
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	int k = 0;
+//	scanf("%d", &k);
+//	Spin(arr, k);
+//	printf("%s", arr);
+//	return 0;
+//}
+
+
+
+//杨氏矩阵
+//有一个数字矩阵，
+//矩阵的每行从左到右是递增的，
+//矩阵从上到下是递增的，
+//请编写程序在这样的矩阵中查找某个数字是否存在。
+//要求：时间复杂度小于O(N);
+
+
 #include <stdio.h>
+#include <assert.h>
+
+#define ROW 3 //数组的行
+#define CRO 3 //数组的列
+
+int Find(int arr[ROW][CRO], int *const row, int* const cro,const int n)
+{
+	assert(row && cro && arr);
+	int x = 0;   //一行的最左
+	int y = CRO - 1;  //一行的最右
+	while (x < ROW && y >= 0)  //从上往下，纵列循环找
+	{
+		if (arr[x][y] < n)  //从上往下，一行行判断
+			x++;
+		else if (arr[x][y] > n) //从右往左，一列列判断
+			y--;
+		else
+		{
+			*row = x;
+			*cro = y;
+			return 1;
+		}
+	}
+}
 int main()
 {
-	int n = 0;
-	scanf("%d", &n);
-	int ret = NumberOf1(n);
-	printf("%d\n", ret);
+	int arr[ROW][CRO] = { {1,2,3},{4,5,6},{7,8,9} };
+	int num = 0;
+	int x = 0; //左坐标
+	int y = 0; //右坐标
+	scanf("%d", &num);
+	int ret = Find(arr, &x, &y, num);
+	if (1 == ret)
+		printf("找到了，下标是（%d,%d）\n", x, y);
+	else
+		printf("没找到.\n");
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
