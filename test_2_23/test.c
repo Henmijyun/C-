@@ -797,43 +797,102 @@
 //请编写程序在这样的矩阵中查找某个数字是否存在。
 //要求：时间复杂度小于O(N);
 
+//
+//#include <stdio.h>
+//#include <assert.h>
+//
+//#define ROW 3 //数组的行
+//#define CRO 3 //数组的列
+//
+//int Find(int arr[ROW][CRO], int *const row, int* const cro,const int n)
+//{
+//	assert(row && cro && arr);
+//	int x = 0;   //一行的最左
+//	int y = CRO - 1;  //一行的最右
+//	while (x < ROW && y >= 0)  //从上往下，纵列循环找
+//	{
+//		if (arr[x][y] < n)  //从上往下，一行行判断
+//			x++;
+//		else if (arr[x][y] > n) //从右往左，一列列判断
+//			y--;
+//		else
+//		{
+//			*row = x;
+//			*cro = y;
+//			return 1;
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[ROW][CRO] = { {1,2,3},{4,5,6},{7,8,9} };
+//	int num = 0;
+//	int x = 0; //左坐标
+//	int y = 0; //右坐标
+//	scanf("%d", &num);
+//	int ret = Find(arr, &x, &y, num);
+//	if (1 == ret)
+//		printf("找到了，下标是（%d,%d）\n", x, y);
+//	else
+//		printf("没找到.\n");
+//	return 0;
+//}
+
+
 
 #include <stdio.h>
-#include <assert.h>
-
-#define ROW 3 //数组的行
-#define CRO 3 //数组的列
-
-int Find(int arr[ROW][CRO], int *const row, int* const cro,const int n)
+void my_while(int arr[], int n, int* i)
 {
-	assert(row && cro && arr);
-	int x = 0;   //一行的最左
-	int y = CRO - 1;  //一行的最右
-	while (x < ROW && y >= 0)  //从上往下，纵列循环找
-	{
-		if (arr[x][y] < n)  //从上往下，一行行判断
-			x++;
-		else if (arr[x][y] > n) //从右往左，一列列判断
-			y--;
-		else
-		{
-			*row = x;
-			*cro = y;
-			return 1;
-		}
-	}
+    int a = 0;
+    while (n)
+    {
+        a = *i;
+        scanf("%d", &arr[a]);
+        *i += 1;
+        n--;
+    }
+}
+void Sequ(int arr[], int sz)
+{
+    //冒泡排序
+    int i = 0;
+    for (i = 0; i < sz - 1; i++)
+    {
+        int flag = 1;//假设这一趟要排序的数据已经有序
+        //每一趟冒泡排序
+        int j = 0;
+        for (j = 0; j < sz - 1 - i; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                int tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
+                flag = 0; //本趟排序的数据其实不完全有序
+            }
+        }
+        if (flag == 1)
+            break;//（优化）第一次已经有序的情况下，后面都是有序的
+    }
+}
+void print(int* p, int sz)
+{
+    int i = 0;
+    for (i = 0; i < sz; i++)
+    {
+        printf("%d ", *(p + i));
+    }
 }
 int main()
 {
-	int arr[ROW][CRO] = { {1,2,3},{4,5,6},{7,8,9} };
-	int num = 0;
-	int x = 0; //左坐标
-	int y = 0; //右坐标
-	scanf("%d", &num);
-	int ret = Find(arr, &x, &y, num);
-	if (1 == ret)
-		printf("找到了，下标是（%d,%d）\n", x, y);
-	else
-		printf("没找到.\n");
-	return 0;
+    int n = 0; //1
+    int m = 0;  //2
+    int i = 0;
+    int arr[1000] = { 0 }; //3 5 2
+    scanf("%d %d", &n, &m);
+    my_while(arr, n, &i);
+    my_while(arr, m, &i);
+    Sequ(arr, n + m);
+    print(arr, n + m);
+    return 0;
 }
