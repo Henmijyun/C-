@@ -839,60 +839,126 @@
 //}
 
 
+//
+//#include <stdio.h>
+//void my_while(int arr[], int n, int* i)
+//{
+//    int a = 0;
+//    while (n)
+//    {
+//        a = *i;
+//        scanf("%d", &arr[a]);
+//        *i += 1;
+//        n--;
+//    }
+//}
+//void Sequ(int arr[], int sz)
+//{
+//    //冒泡排序
+//    int i = 0;
+//    for (i = 0; i < sz - 1; i++)
+//    {
+//        int flag = 1;//假设这一趟要排序的数据已经有序
+//        //每一趟冒泡排序
+//        int j = 0;
+//        for (j = 0; j < sz - 1 - i; j++)
+//        {
+//            if (arr[j] > arr[j + 1])
+//            {
+//                int tmp = arr[j];
+//                arr[j] = arr[j + 1];
+//                arr[j + 1] = tmp;
+//                flag = 0; //本趟排序的数据其实不完全有序
+//            }
+//        }
+//        if (flag == 1)
+//            break;//（优化）第一次已经有序的情况下，后面都是有序的
+//    }
+//}
+//void print(int* p, int sz)
+//{
+//    int i = 0;
+//    for (i = 0; i < sz; i++)
+//    {
+//        printf("%d ", *(p + i));
+//    }
+//}
+//int main()
+//{
+//    int n = 0; //1
+//    int m = 0;  //2
+//    int i = 0;
+//    int arr[1000] = { 0 }; //3 5 2
+//    scanf("%d %d", &n, &m);
+//    my_while(arr, n, &i);
+//    my_while(arr, m, &i);
+//    Sequ(arr, n + m);
+//    print(arr, n + m);
+//    return 0;
+//}
+
+
+//#include <stdio.h>
+//#include <string.h>
+//int main()
+//{
+//    int arr[50] = { 0 };
+//    int num = 0;
+//    int del = 0;
+//    int i = 0;
+//    int j = 0;
+//    int count = 0;
+//    scanf("%d", &num); //输入数量
+//    for (i = 0; i < num; i++)
+//    {
+//        scanf("%d", &arr[i]); //输入
+//    }
+//    scanf("%d", &del); //删除数量
+//    for (i = 0; i < num; i++)
+//    {
+//        if (arr[i] == del) //如果是需要删除的数
+//        {
+//            count++; //累计删除的个数
+//            continue; //跳过本次循环
+//        }
+//        arr[j] = arr[i]; //非删除的数，赋值给arr[j]
+//        j++; //从0开始，每次赋值后，++
+//    }
+//    for (i = 0; i < num - count; i++) //打印（总数-累计删除数）的数
+//    {
+//        printf("%d ", arr[i]);
+//    }
+//    return 0;
+//}
+
+
 
 #include <stdio.h>
-void my_while(int arr[], int n, int* i)
-{
-    int a = 0;
-    while (n)
-    {
-        a = *i;
-        scanf("%d", &arr[a]);
-        *i += 1;
-        n--;
-    }
-}
-void Sequ(int arr[], int sz)
-{
-    //冒泡排序
-    int i = 0;
-    for (i = 0; i < sz - 1; i++)
-    {
-        int flag = 1;//假设这一趟要排序的数据已经有序
-        //每一趟冒泡排序
-        int j = 0;
-        for (j = 0; j < sz - 1 - i; j++)
-        {
-            if (arr[j] > arr[j + 1])
-            {
-                int tmp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = tmp;
-                flag = 0; //本趟排序的数据其实不完全有序
-            }
-        }
-        if (flag == 1)
-            break;//（优化）第一次已经有序的情况下，后面都是有序的
-    }
-}
-void print(int* p, int sz)
-{
-    int i = 0;
-    for (i = 0; i < sz; i++)
-    {
-        printf("%d ", *(p + i));
-    }
-}
 int main()
 {
-    int n = 0; //1
-    int m = 0;  //2
+    int num = 0;
     int i = 0;
-    int arr[1000] = { 0 }; //3 5 2
-    scanf("%d %d", &n, &m);
-    my_while(arr, n, &i);
-    my_while(arr, m, &i);
-    Sequ(arr, n + m);
-    print(arr, n + m);
+    while (~scanf("%d", &num))//多组输入
+    {
+        int x = 0; //左坐标
+        int y = 0; //右坐标
+        y = num - 1;
+        for (i = 0; i < num; i++) //每一行
+        {
+            int j = 0;
+            for (j = 0; j < num; j++) //每一行对应的输出
+            {
+                if (j == x) //左坐标打印*
+                    printf("*");
+                else if (j == y) //右坐标打印*
+                    printf("*");
+                else
+                    printf(" "); //中间位置打印空格
+            }
+            x++; //坐标移动
+            y--; //同理
+            printf("\n"); //换行
+        }
+    }
     return 0;
 }
