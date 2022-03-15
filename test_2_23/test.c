@@ -932,33 +932,105 @@
 //}
 
 
+//
+//#include <stdio.h>
+//int main()
+//{
+//    int num = 0;
+//    int i = 0;
+//    while (~scanf("%d", &num))//多组输入
+//    {
+//        int x = 0; //左坐标
+//        int y = 0; //右坐标
+//        y = num - 1;
+//        for (i = 0; i < num; i++) //每一行
+//        {
+//            int j = 0;
+//            for (j = 0; j < num; j++) //每一行对应的输出
+//            {
+//                if (j == x) //左坐标打印*
+//                    printf("*");
+//                else if (j == y) //右坐标打印*
+//                    printf("*");
+//                else
+//                    printf(" "); //中间位置打印空格
+//            }
+//            x++; //坐标移动
+//            y--; //同理
+//            printf("\n"); //换行
+//        }
+//    }
+//    return 0;
+//}
 
-#include <stdio.h>
+
+
+#include<stdio.h>
+int Add(int x, int y)
+{
+    return x + y;
+}
+int Sub(int x, int y)
+{
+    return x - y;
+}
+int Mul(int x, int y)
+{
+    return x * y;
+}
+int Div(int x, int y)
+{
+    return x / y;
+}
+void menu()
+{
+    printf("*********************\n");
+    printf("****1.add   2.sub****\n");
+    printf("****3.mul   4.div****\n");
+    printf("****    0.exit   ****\n");
+    printf("*********************\n");
+}
+void Calc(int(*pf)(int, int))  //用 函数指针 接收传过来的 函数
+{
+    int x = 0;
+    int y = 0;
+    printf("请输入两个操作数>:");
+    scanf("%d %d", &x, &y);
+    int ret = pf(x, y);      //回调函数
+    printf("结果为 %d\n", ret);
+}
 int main()
 {
-    int num = 0;
-    int i = 0;
-    while (~scanf("%d", &num))//多组输入
+    //计算器 - 计算整型变量的加，减，乘，除
+    //a&b a^b a|b a<<b a>>b ....
+    int input = 0;
+    do
     {
-        int x = 0; //左坐标
-        int y = 0; //右坐标
-        y = num - 1;
-        for (i = 0; i < num; i++) //每一行
+        int ret = 0;
+        menu();
+        printf("请选择：>");
+        scanf("%d", &input);
+        switch (input) //用 回调函数 来实现下面代码，更简洁
         {
-            int j = 0;
-            for (j = 0; j < num; j++) //每一行对应的输出
-            {
-                if (j == x) //左坐标打印*
-                    printf("*");
-                else if (j == y) //右坐标打印*
-                    printf("*");
-                else
-                    printf(" "); //中间位置打印空格
-            }
-            x++; //坐标移动
-            y--; //同理
-            printf("\n"); //换行
+        case 1:
+            Calc(Add);
+            break;
+        case 2:
+            Calc(Sub);
+            break;
+        case 3:
+            Calc(Mul);
+            break;
+        case 4:
+            Calc(Div);
+            break;
+        case 0:
+            printf("退出程序\n");
+            break;
+        default:
+            printf("选择错误，请重新选择！\n");
+            break;
         }
-    }
+    } while (input);
     return 0;
 }
