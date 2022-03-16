@@ -965,72 +965,155 @@
 
 
 
-#include<stdio.h>
-int Add(int x, int y)
+//#include<stdio.h>
+//int Add(int x, int y)
+//{
+//    return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//    return x - y;
+//}
+//int Mul(int x, int y)
+//{
+//    return x * y;
+//}
+//int Div(int x, int y)
+//{
+//    return x / y;
+//}
+//void menu()
+//{
+//    printf("*********************\n");
+//    printf("****1.add   2.sub****\n");
+//    printf("****3.mul   4.div****\n");
+//    printf("****    0.exit   ****\n");
+//    printf("*********************\n");
+//}
+//void Calc(int(*pf)(int, int))  //用 函数指针 接收传过来的 函数
+//{
+//    int x = 0;
+//    int y = 0;
+//    printf("请输入两个操作数>:");
+//    scanf("%d %d", &x, &y);
+//    int ret = pf(x, y);      //回调函数
+//    printf("结果为 %d\n", ret);
+//}
+//int main()
+//{
+//    //计算器 - 计算整型变量的加，减，乘，除
+//    //a&b a^b a|b a<<b a>>b ....
+//    int input = 0;
+//    do
+//    {
+//        int ret = 0;
+//        menu();
+//        printf("请选择：>");
+//        scanf("%d", &input);
+//        switch (input) //用 回调函数 来实现下面代码，更简洁
+//        {
+//        case 1:
+//            Calc(Add);
+//            break;
+//        case 2:
+//            Calc(Sub);
+//            break;
+//        case 3:
+//            Calc(Mul);
+//            break;
+//        case 4:
+//            Calc(Div);
+//            break;
+//        case 0:
+//            printf("退出程序\n");
+//            break;
+//        default:
+//            printf("选择错误，请重新选择！\n");
+//            break;
+//        }
+//    } while (input);
+//    return 0;
+//}
+
+
+
+
+
+//写一个函数，判断一个字符串是否为另外一个字符串旋转之后的字符串。
+//例如：给定s1 = AABCD和s2 = BCDAA，返回1
+//给定s1 = abcd和s2 = ACBD，返回0.
+
+//AABCD左旋一个字符得到ABCDA
+//AABCD左旋两个字符得到BCDAA
+//AABCD右旋一个字符得到DAABC
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void revrs_arr (char* left, char* right)//恢复原样
 {
-    return x + y;
+	while (left < right)
+	{
+		char tmp = *left;
+		*left = *right;
+		*right = tmp;
+		left++;
+		right--;
+	}
 }
-int Sub(int x, int y)
+
+int jud_rot(char* p1, char* p2) //判断检测是否相同
 {
-    return x - y;
+	int len1 = strlen(p1);
+	int len2 = strlen(p2);
+	char* left= p1;//左坐标
+	char* right = p1 + len1 - 1;//右坐标
+	int i = 0;
+	if (len1 != len2)
+		return 0;
+	//左旋转
+	for (i = 0; i < len1 - 1; i++)
+	{
+		int j = 0; //类似冒泡排序
+		for (j = 0; j < len1 - 1 - i; j++)//最终：DCBAA
+		{
+			char tmp = *(p1 + j);
+			*(p1 + j) = *(p1 + j + 1);
+			*(p1 + j + 1) = tmp;
+			if (strcmp(p1, p2) == 0)
+				return 1;
+		}
+	}
+	//复原
+	revrs_arr(left, right);
+	//右旋转
+	for (i = 0; i < len1 - 1; i++)
+	{
+		int j = 0; //类似冒泡排序
+		for (j = len1 - 1 - i; j > 0; j--)//最终：DCBAA
+		{
+			char tmp = *(p1 + j);
+			*(p1 + j) = *(p1 + j - 1);
+			*(p1 + j - 1) = tmp;
+			if (strcmp(p2, p1) == 0)
+				return 1;
+		}
+	}
+	return 0;
 }
-int Mul(int x, int y)
-{
-    return x * y;
-}
-int Div(int x, int y)
-{
-    return x / y;
-}
-void menu()
-{
-    printf("*********************\n");
-    printf("****1.add   2.sub****\n");
-    printf("****3.mul   4.div****\n");
-    printf("****    0.exit   ****\n");
-    printf("*********************\n");
-}
-void Calc(int(*pf)(int, int))  //用 函数指针 接收传过来的 函数
-{
-    int x = 0;
-    int y = 0;
-    printf("请输入两个操作数>:");
-    scanf("%d %d", &x, &y);
-    int ret = pf(x, y);      //回调函数
-    printf("结果为 %d\n", ret);
-}
+
 int main()
 {
-    //计算器 - 计算整型变量的加，减，乘，除
-    //a&b a^b a|b a<<b a>>b ....
-    int input = 0;
-    do
-    {
-        int ret = 0;
-        menu();
-        printf("请选择：>");
-        scanf("%d", &input);
-        switch (input) //用 回调函数 来实现下面代码，更简洁
-        {
-        case 1:
-            Calc(Add);
-            break;
-        case 2:
-            Calc(Sub);
-            break;
-        case 3:
-            Calc(Mul);
-            break;
-        case 4:
-            Calc(Div);
-            break;
-        case 0:
-            printf("退出程序\n");
-            break;
-        default:
-            printf("选择错误，请重新选择！\n");
-            break;
-        }
-    } while (input);
-    return 0;
+	char arr1[20] = "AABCD";
+	char arr2[20] = { 0 };
+	while (~scanf("%s", arr2))
+	{
+		int ret = jud_rot(arr1, arr2);
+		if (1 == ret)
+			printf("arr2是由arr1旋转所得\n");
+		else if (0 == ret)
+			printf("arr2不是由arr1旋转所得\n");
+	}
+	return 0;
 }
