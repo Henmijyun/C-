@@ -1047,73 +1047,206 @@
 //AABCD左旋两个字符得到BCDAA
 //AABCD右旋一个字符得到DAABC
 
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//
+//void revrs_arr (char* p, int sz)//冒泡排序恢复原样
+//{
+//	int i = 0;
+//	for (i = 0; i < sz - 1; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < sz - 1 - i; j++)
+//		{
+//			if (*(p + j) > *(p + j + 1))
+//			{
+//				char tmp = *(p + j);
+//				*(p + j ) = *(p + j + 1);
+//				*(p + j + 1) = tmp;
+//			}
+//		}
+//	}
+//}
+//
+//int jud_rot(char* p1, char* p2) //判断检测是否相同
+//{
+//	int len1 = strlen(p1);
+//	int len2 = strlen(p2);
+//	int i = 0;
+//	if (len1 != len2)
+//		return 0;
+//	//左旋转
+//	for (i = 0; i < len1 - 1; i++)
+//	{
+//		int j = 0; //类似冒泡排序
+//		for (j = 0; j < len1 - 1 - i; j++)//最终：DCBAA
+//		{
+//			char tmp = *(p1 + j);
+//			*(p1 + j) = *(p1 + j + 1);
+//			*(p1 + j + 1) = tmp;
+//			if (strcmp(p1, p2) == 0)//相等时跳出
+//			{
+//				//复原
+//				revrs_arr(p1, len1);
+//				return 1;
+//			}
+//		}
+//	}
+//	//复原
+//	revrs_arr(p1, len1);
+//	//右旋转
+//	for (i = 0; i < len1 - 1; i++)
+//	{
+//		int j = 0; //类似冒泡排序
+//		for (j = len1 - 1 - i; j > 0; j--)//最终：DCBAA
+//		{
+//			char tmp = *(p1 + j);
+//			*(p1 + j) = *(p1 + j - 1);
+//			*(p1 + j - 1) = tmp;
+//			if (strcmp(p1, p2) == 0) //相等时跳出
+//			{
+//				//复原
+//				revrs_arr(p1, len1); 
+//				return 1;
+//			}
+//		}
+//	}
+//	//复原
+//	revrs_arr(p1, len1);
+//	return 0;
+//}
+//
+//int main()
+//{
+//	char arr1[20] = "AABCD";
+//	char arr2[20] = { 0 };
+//	while (~scanf("%s", arr2))
+//	{
+// 		int ret = jud_rot(arr1, arr2);
+//		if (1 == ret)
+//			printf("arr2是由arr1旋转所得\n");
+//		else if (0 == ret)
+//			printf("arr2不是由arr1旋转所得\n");
+//	}
+//	return 0;
+//}
+
+
+
+
+
+//模仿qsort的功能实现一个通用的冒泡排序
+//
+//#include <stdio.h>
+//
+//int cmp_int(const void* e1, const void* e2)//比较int类型的函数
+//{
+//	return *(int*)e1 - *(int*)e2; //返回相减的差
+//}
+//
+//void my_swap(char* p1, char* p2, int width)//交换函数
+//{
+//	int i = 0;
+//	for (i = 0; i < width; i++) //每个char类型进行交换
+//	{
+//		char tmp = *p1;
+//		*p1 = *p2;
+//		*p2 = tmp;
+//		p1++;
+//		p2++;
+//	}
+//}
+//void print(int* base, int sz) //打印
+//{
+//
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", *(base + i));
+//	}
+//}
+//void my_qsort(void* base, int sz, int width, 
+//	         int (*cmp)(const void* e1,const void* e2))
+//{
+//	int i = 0;
+//	for (i = 0; i < sz - 1; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < sz - 1 - i; j++)
+//		{
+//			if (cmp((char*)base + j * width,
+//				  (char*)base + (j + 1) * width) > 0) //返回值 > 0 进行交换
+//			{
+//				//交换
+//				my_swap((char*)base + j * width, 
+//					   (char*)base + (j + 1) * width, width);
+//			}
+//		}
+//	}
+//
+//}
+//
+//int main()
+//{
+//	int arr[] = { 9,8,7,6,5,4,3,2,1,0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	my_qsort(arr, sz, sizeof(arr[0]), cmp_int); //交换
+//	print(arr, sz); //打印
+//	return 0;
+//}
+
+
+
+//练习使用库函数，qsort排序各种类型的数据
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void revrs_arr (char* left, char* right)//恢复原样
+struct Stu
 {
-	while (left < right)
-	{
-		char tmp = *left;
-		*left = *right;
-		*right = tmp;
-		left++;
-		right--;
-	}
+	char name[20];
+	int age;
+	double result;
+};
+
+int cmp_char(const void* e1, const void* e2)//比较char类型的函数
+{
+	// 返回两个字符串对比strcmp函数的返回值
+	return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->name); 
 }
 
-int jud_rot(char* p1, char* p2) //判断检测是否相同
+int cmp_int(const void* e1, const void* e2)//比较int类型的函数
 {
-	int len1 = strlen(p1);
-	int len2 = strlen(p2);
-	char* left= p1;//左坐标
-	char* right = p1 + len1 - 1;//右坐标
-	int i = 0;
-	if (len1 != len2)
-		return 0;
-	//左旋转
-	for (i = 0; i < len1 - 1; i++)
-	{
-		int j = 0; //类似冒泡排序
-		for (j = 0; j < len1 - 1 - i; j++)//最终：DCBAA
-		{
-			char tmp = *(p1 + j);
-			*(p1 + j) = *(p1 + j + 1);
-			*(p1 + j + 1) = tmp;
-			if (strcmp(p1, p2) == 0)
-				return 1;
-		}
-	}
-	//复原
-	revrs_arr(left, right);
-	//右旋转
-	for (i = 0; i < len1 - 1; i++)
-	{
-		int j = 0; //类似冒泡排序
-		for (j = len1 - 1 - i; j > 0; j--)//最终：DCBAA
-		{
-			char tmp = *(p1 + j);
-			*(p1 + j) = *(p1 + j - 1);
-			*(p1 + j - 1) = tmp;
-			if (strcmp(p2, p1) == 0)
-				return 1;
-		}
-	}
-	return 0;
+	// 返回相减的差
+	return ((struct Stu*)e1)->age - ((struct Stu*)e2)->age; 
+}
+
+int cmp_double(const void* e1, const void* e2)//比较double类型的函数
+{
+	//返回相减的差
+	return ((struct Stu*)e1)->result - ((struct Stu*)e2)->result;
+}
+
+void test_struct()
+{
+	struct Stu arr[3] = { {"wang", 22, 68.4},
+				{"cao", 26, 60.0},{"zhang", 23, 77.5} };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	//char
+	qsort(arr, sz, sizeof(arr[0]), cmp_char);
+	printf("%s %s %s\n", arr[0].name, arr[1].name, arr[2].name);
+	//int
+	qsort(arr, sz, sizeof(arr[0]), cmp_int);
+	printf("%d %d %d\n", arr[0].age, arr[1].age, arr[2].age);
+	//double
+	qsort(arr, sz, sizeof(arr[0]), cmp_double);
+	printf("%.2f %.2f %.2f\n", arr[0].result, arr[1].result, arr[2].result);
 }
 
 int main()
 {
-	char arr1[20] = "AABCD";
-	char arr2[20] = { 0 };
-	while (~scanf("%s", arr2))
-	{
-		int ret = jud_rot(arr1, arr2);
-		if (1 == ret)
-			printf("arr2是由arr1旋转所得\n");
-		else if (0 == ret)
-			printf("arr2不是由arr1旋转所得\n");
-	}
+	test_struct();
 	return 0;
-}
+} 
