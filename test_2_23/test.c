@@ -765,17 +765,16 @@
 //{
 //	assert(p);
 //	int len = strlen(p); //元素个数
-//	char* lift = p + k - 1; //左坐标：‘待旋转对象’的最右边
-//	char* right = p + len - 1; //右坐标：数组的最右边
-//	char tmp = 0;
-//	while (k) //旋转k次
+//	int i = 0;
+//	for (i = 0; i < k % len; i++) //k % len 使得很大的数也不会越界
 //	{
-//		tmp = *lift;
-//		*lift = *right;
-//		*right = tmp;
-//		lift--;
-//		right--;
-//		k--;
+//		char tmp = *p;
+//		int j = 0;
+//		for (j = 0; j < len - 1; j++)
+//		{
+//			*(p + j) = *(p + j + 1);
+//		}
+//		*(p + len - 1) = tmp;
 //	}
 //}
 //int main()
@@ -804,7 +803,7 @@
 //#define ROW 3 //数组的行
 //#define CRO 3 //数组的列
 //
-//int Find(int arr[ROW][CRO], int *const row, int* const cro,const int n)
+//void Find(int arr[ROW][CRO], int *const row, int* const cro,const int n)
 //{
 //	assert(row && cro && arr);
 //	int x = 0;   //一行的最左
@@ -819,9 +818,12 @@
 //		{
 //			*row = x;
 //			*cro = y;
-//			return 1;
+//			return;
 //		}
 //	}
+//	//找不到
+//	*row = -1;
+//	*cro = -1;
 //}
 //int main()
 //{
@@ -830,8 +832,8 @@
 //	int x = 0; //左坐标
 //	int y = 0; //右坐标
 //	scanf("%d", &num);
-//	int ret = Find(arr, &x, &y, num);
-//	if (1 == ret)
+//	Find(arr, &x, &y, num);
+//	if (-1 != x)
 //		printf("找到了，下标是（%d,%d）\n", x, y);
 //	else
 //		printf("没找到.\n");
@@ -1200,53 +1202,103 @@
 
 //练习使用库函数，qsort排序各种类型的数据
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//
+//struct Stu
+//{
+//	char name[20];
+//	int age;
+//	double result;
+//};
+//
+//int cmp_char(const void* e1, const void* e2)//比较char类型的函数
+//{
+//	// 返回两个字符串对比strcmp函数的返回值
+//	return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->name); 
+//}
+//
+//int cmp_int(const void* e1, const void* e2)//比较int类型的函数
+//{
+//	// 返回相减的差
+//	return ((struct Stu*)e1)->age - ((struct Stu*)e2)->age; 
+//}
+//
+//int cmp_double(const void* e1, const void* e2)//比较double类型的函数
+//{
+//	//返回相减的差
+//	return ((struct Stu*)e1)->result - ((struct Stu*)e2)->result;
+//}
+//
+//void test_struct()
+//{
+//	struct Stu arr[3] = { {"wang", 22, 68.4},
+//				{"cao", 26, 60.0},{"zhang", 23, 77.5} };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	//char
+//	qsort(arr, sz, sizeof(arr[0]), cmp_char);
+//	printf("%s %s %s\n", arr[0].name, arr[1].name, arr[2].name);
+//	//int
+//	qsort(arr, sz, sizeof(arr[0]), cmp_int);
+//	printf("%d %d %d\n", arr[0].age, arr[1].age, arr[2].age);
+//	//double
+//	qsort(arr, sz, sizeof(arr[0]), cmp_double);
+//	printf("%.2f %.2f %.2f\n", arr[0].result, arr[1].result, arr[2].result);
+//}
+//
+//int main()
+//{
+//	test_struct();
+//	return 0;
+//} 
 
-struct Stu
-{
-	char name[20];
-	int age;
-	double result;
-};
-
-int cmp_char(const void* e1, const void* e2)//比较char类型的函数
-{
-	// 返回两个字符串对比strcmp函数的返回值
-	return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->name); 
-}
-
-int cmp_int(const void* e1, const void* e2)//比较int类型的函数
-{
-	// 返回相减的差
-	return ((struct Stu*)e1)->age - ((struct Stu*)e2)->age; 
-}
-
-int cmp_double(const void* e1, const void* e2)//比较double类型的函数
-{
-	//返回相减的差
-	return ((struct Stu*)e1)->result - ((struct Stu*)e2)->result;
-}
-
-void test_struct()
-{
-	struct Stu arr[3] = { {"wang", 22, 68.4},
-				{"cao", 26, 60.0},{"zhang", 23, 77.5} };
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	//char
-	qsort(arr, sz, sizeof(arr[0]), cmp_char);
-	printf("%s %s %s\n", arr[0].name, arr[1].name, arr[2].name);
-	//int
-	qsort(arr, sz, sizeof(arr[0]), cmp_int);
-	printf("%d %d %d\n", arr[0].age, arr[1].age, arr[2].age);
-	//double
-	qsort(arr, sz, sizeof(arr[0]), cmp_double);
-	printf("%.2f %.2f %.2f\n", arr[0].result, arr[1].result, arr[2].result);
-}
-
-int main()
-{
-	test_struct();
-	return 0;
-} 
+//
+//#include <stdio.h>
+//int main()
+//{
+//    int n = 0;
+//    int m = 0;
+//    int arr1[1000];//C99才可以用
+//    int arr2[1000];
+//    scanf("%d %d", &n, &m);
+//    int i = 0;
+//    int j = 0;
+//    //第一个序列
+//    for (i = 0; i < n; i++)
+//    {
+//        scanf("%d", &arr1[i]);
+//    }
+//    //第二个序列
+//    for (j = 0; j < m; j++)
+//    {
+//        scanf("%d", &arr2[j]);
+//    }
+//    //有序合并打印
+//    i = 0;
+//    j = 0;
+//    while (i < n && j < m)
+//    {
+//        if (arr1[i] < arr2[j]) //谁小就先打印，然后先往后走
+//        {
+//            printf("%d ", arr1[i]);
+//            i++;
+//        }
+//        else
+//        {
+//            printf("%d ", arr2[j]);
+//            j++;
+//        }
+//    }
+//    if (i == n)
+//        for (; j < m; j++)
+//        {
+//            printf("%d ", arr2[j]);
+//        }
+//    else
+//        for (; i < n; i++)
+//        {
+//            printf("%d ", arr1[i]);
+//        }
+//    return 0;
+//}
