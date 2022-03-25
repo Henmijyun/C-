@@ -1302,3 +1302,84 @@
 //        }
 //    return 0;
 //}
+
+//
+//#include <stdio.h>
+//#include <assert.h>
+//char* my_strcpy(char* dest, const char* src)
+//{
+//	assert(dest && src);
+//	char* ret = dest;
+//	while (*dest++ = *src++)
+//	{
+//		;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	char arr1[] = "abcdef";
+//	char arr2[] = "holle";
+//	char* ret = my_strcpy(arr1, arr2);
+//	printf("%s\n", ret);
+//	return 0;
+//}
+
+
+
+
+//#include <stdio.h>
+//#include <assert.h>
+//char* my_strcat(char* dest, const char* src)
+//{
+//	assert(dest && src);
+//	char* ret = dest;
+//	while (*dest) //找\0
+//	{
+//		dest++;
+//	}
+//	while (*dest++ = *src++) //从\0位置开始复制过去
+//	{
+//		;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	char arr1[20] = "abcdef";//空间要够大，要追加后能放得下
+//	char arr2[] = "holle";
+//	char* ret = my_strcat(arr1, arr2);
+//	printf("%s\n", ret);
+//	return 0;
+//}
+
+
+#include <stdio.h>
+#include <assert.h>
+int my_strcmp(const char* str1, const char* str2)
+{
+	assert(str1 && str2);
+	while (*str1 == *str2)
+	{
+		if (*str1 == '\0')
+			return 0; //相等
+		str1++;
+		str2++;
+	}
+	return *str1 - *str2; 
+}
+int main()
+{
+	char arr1[20] = "abcdef";//空间要够大，要追加后能放得下
+	char arr2[] = "abq";
+	int ret = my_strcmp(arr1, arr2);
+	if (ret > 0)
+		printf("arr1 > arr2\n");
+	else if (ret == 0)
+		printf("arr1 == arr2\n");
+	else if (ret < 0)
+		printf("arr1 < arr2\n");
+	return 0;
+}
+
+
