@@ -1626,23 +1626,226 @@
 //	return 0;
 //}
 
+//#include <stdio.h>
+//struct Book
+//{
+//	char name[20];
+//	float price;
+//	char id[12];
+//}s = {"鹏哥C语言", 55.5f, "PGC001"};
+//
+//struct Node
+//{
+//	struct Book b;
+//	struct Node* next;
+//};
+//
+//int main()
+//{
+//	struct Book s2 = { "杭哥数据结构", 66.6f, "HG001" };
+//	struct Node n = { {"汤神Java", 66.8f, "TG001"}, NULL };//嵌套初始化
+//	return 0;
+//}
 
-struct Book
-{
-	char name[20];
-	float price;
-	char id[12];
-}s = {"鹏哥C语言", 55.5f, "PGC001"};
 
-struct Node
-{
-	struct Book b;
-	struct Node* next;
-};
 
-int main()
-{
-	struct Book s2 = { "杭哥数据结构", 66.6f, "HG001" };
-	struct Node n = { {"汤神Java", 66.8f, "TG001"}, NULL };
-	return 0;
-}
+//#include<stdio.h>
+//#include<assert.h>
+//
+//int my_strlen(const char* str)//模拟实现
+//{
+//    assert(str != NULL);
+//    int count = 0;
+//    //计数器的方式最实用
+//    while (*str != '\0') //遇到\0结束循环
+//    {
+//        count++; //计数
+//        str++;
+//    }
+//    return count;
+//}
+//int main()
+//{
+//    char arr[] = "abc";
+//    int len = my_strlen(arr);
+//    printf("%d\n", len);
+//    return 0;
+//}
+
+//#include <stdio.h>
+//#include <assert.h>
+//char* my_strcpy(char* dest, const char* src)//返回值是目标空间的起始地址
+//{
+//    assert(dest && src);
+//    char* ret = dest;
+//    while (*dest++ = *src++) 
+//    {
+//        ;
+//    }
+//    return ret;
+//}
+//int main()
+//{
+//    char arr1[] = "abcdef";
+//    char arr2[] = "holle";
+//    char* ret = my_strcpy(arr1, arr2);
+//    printf("%s\n", ret);
+//    return 0;
+//}
+
+
+//#include <stdio.h>
+//#include <assert.h>
+//char* my_strcat(char* dest, const char* src)
+//{
+//    assert(dest && src);
+//    char* ret = dest;
+//    while (*dest) //找目标空间的\0
+//    {
+//        dest++;
+//    }
+//    while (*dest++ = *src++) //从\0位置开始复制过去
+//    {
+//        ;
+//    }
+//    return ret;
+//}
+//int main()
+//{
+//    char arr1[20] = "abcdef";//空间要够大，要追加后能放得下
+//    char arr2[] = "holle";
+//    char* ret = my_strcat(arr1, arr2);
+//    printf("%s\n", ret);
+//    return 0;
+//}
+
+
+//#include <stdio.h>
+//#include <assert.h>
+//int my_strcmp(const char* str1, const char* str2)
+//{
+//    assert(str1 && str2);
+//    while (*str1 == *str2)
+//    {
+//        if (*str1 == '\0')
+//            return 0; //相等
+//        str1++;
+//        str2++;
+//    }
+//    return *str1 - *str2; //不相等时返回相减的差
+//}
+//int main()
+//{
+//    char arr1[20] = "abcdef";//空间要够大，要追加后能放得下
+//    char arr2[] = "abq";
+//    int ret = my_strcmp(arr1, arr2);
+//    if (ret > 0)
+//        printf("arr1 > arr2\n");
+//    else if (ret == 0)
+//        printf("arr1 == arr2\n");
+//    else if (ret < 0)
+//        printf("arr1 < arr2\n");
+//    return 0;
+//}
+
+//
+//
+//#include <stdio.h>
+//#include <string.h>
+//#include <assert.h>
+//
+//char* my_strstr(const char* str1, const char* str2)
+//{
+//    assert(str1, str2);
+//
+//    const char* s1 = str1; //为了保留起始位置，新建s1,s2
+//    const char* s2 = str2;
+//    const char* cur = str1; //记录每次查找的起始位置
+//    while (*cur)
+//    {
+//        s1 = cur;
+//        s2 = str2;
+//        while (*s1 && *s2 && (*s1 == *s2))
+//        {
+//            s1++;
+//            s2++;
+//        }
+//        if (*s2 == '\0')
+//            return (char*)cur; //找到了  强制类型转换从const中脱离出来
+//        cur++;
+//    }
+//    return NULL; //找不到
+//}
+//int main()
+//{
+//    char arr1[20] = "abbqdeabbbc";
+//    char arr2[] = "bbc";
+//    char* ret = my_strstr(arr1, arr2);//查找子字符串
+//    if (NULL == ret)
+//        printf("找不到\n");
+//    else
+//        printf("找到了\n");
+//    return 0;
+//}
+
+
+//#include <assert.h>
+//
+//void* my_memmove(void* dest, const void* src, size_t count)
+//{
+//    assert(dest && src);
+//    void* ret = dest;
+//    if (dest < src) //根据地址大小进行判断
+//    {
+//        //前->后
+//        while (count--)
+//        {
+//            *(char*)dest = *(char*)src; //进来之后已经--，
+//            dest = (char*)dest + 1;     //所以指向的是最后一个内存单元
+//            src = (char*)src + 1;     //从前面向后面一个个字节进行复制
+//        }
+//    }
+//    else
+//    {
+//        //后->前
+//        while (count--)
+//        {
+//            *((char*)dest + count) = *((char*)src + count);
+//            //从后面向前面一个个字节进行复制
+//        }
+//    }
+//    return ret; //返回起始位置
+//}
+//
+//int main()
+//{
+//    int arr1[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//    my_memmove(arr1 + 2, arr1, 20);
+//    //把arr1 的20个内存单元复制给 arr1+2 的位置 , 单位是字节
+//    return 0;
+//}
+//
+//
+//#include <assert.h>
+//
+//void* my_memcpy(void* dest, const void* src, size_t count)
+//{
+//    assert(dest && src);
+//    void* ret = dest;
+//    while (count--) //次数 ， 先判断再--
+//    {
+//        *(char*)dest = *(char*)src; //进来之后已经--，
+//        dest = (char*)dest + 1;     //所以指向的是最后一个内存单元
+//        src = (char*)src + 1;
+//    }
+//    return ret; //返回起始位置
+//}
+//
+//int main()
+//{
+//    int arr1[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//    int arr2[5] = { 0 };
+//    my_memcpy(arr2, arr1, 20);
+//    //把arr1的20个内存单元复制给arr2 , 单位是字节
+//    return 0;
+//}
