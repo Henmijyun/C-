@@ -1849,3 +1849,163 @@
 //    //把arr1的20个内存单元复制给arr2 , 单位是字节
 //    return 0;
 //}
+//
+//#include <stdio.h>
+//struct S1
+//{
+//	char c1;
+//	int i;
+//	char c2;
+//};
+//struct S2
+//{
+//	char c1;
+//	char c2;
+//	int i;
+//};
+//
+//
+//struct S3
+//{
+//	double d; 
+//	char c; 
+//	int i;
+//};
+//
+////结构体嵌套问题
+//struct S4
+//{
+//	char c1; 
+//	struct S3 s3; 
+//	double d;
+//};
+//int main()
+//{
+//	printf("%d\n", sizeof(struct S4));//32
+//	return 0;
+//}
+
+//
+//#include <stdio.h>
+//#include <stddef.h>
+//struct S2 
+//{
+//	char c1; 
+//	int i; 
+//	char c2;
+//};
+//int main()
+//{
+//	//计算结构体成员相对于起始位置的偏移量
+//	printf("%d\n", offsetof(struct S2, c1)); //0
+//	printf("%d\n", offsetof(struct S2, i)); //4
+//	printf("%d\n", offsetof(struct S2, c2));//8
+//	printf("%d\n", sizeof(struct S2));  //12
+//	return 0;
+//}
+//
+//
+
+
+//#include <stdio.h>
+//struct S 
+//{
+//	int data[1000]; 
+//	int num;
+//};
+//struct S s = { {1,2,3,4}, 1000 }; 
+//
+//void print1(struct S s) //结构体传参
+//{
+//	printf("%d\n", s.num);
+//}
+//
+//void print2(struct S* ps) //结构体地址传参
+//{
+//	printf("%d\n", ps->num);
+//}
+//
+//int main() 
+//{
+//	print1(s); //传结构体
+//	print2(&s); //传地址 
+//	return 0;
+//}
+
+
+
+//#include <stdio.h>
+//struct A 
+//{
+//	int _a : 2;
+//	int _b : 5;
+//	int _c : 10;
+//	int _d : 30;
+//};
+//int main()
+//{
+//	printf("%d\n", sizeof(struct A)); //8
+//	return 0;
+//}
+
+
+//一个例子 
+//struct S 
+//{
+//char a : 3;
+//char b : 4;
+//char c : 5;
+//char d : 4; 
+//};
+//int main()
+//{
+//	struct S s = { 0 };
+//	s.a = 10;
+//	s.b = 12;
+//	s.c = 3;
+//	s.d = 4;
+//}
+
+//#include <stdio.h>
+//enum Color//颜色 
+//{
+//	RED = 1, 
+//	GREEN = 2, 
+//	BLUE = 4
+//};
+//
+//
+//int main()
+//{
+//	enum Color clr1 = GREEN;
+//	int clr2 = BLUE;
+//	//BLUE = 15; //err 常量无法被复赋值
+//	clr1 = 5;
+//	clr2 = 8;
+//	printf("%d\n", clr1);
+//	printf("%d\n", clr2);
+//	return 0;
+//}
+//
+
+#include <stdio.h>
+union Un 
+{
+	int i; 
+	char c;
+};
+union Un un;
+int main()
+{
+	printf("%p\n", &(un.i));
+	printf("%p\n", &(un.c));
+
+	un.i = 0x11223344;
+	un.c = 0x55;
+	printf("%x\n", un.i);
+
+	return 0;
+}
+
+
+
