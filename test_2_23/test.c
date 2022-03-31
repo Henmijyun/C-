@@ -1138,7 +1138,7 @@
 
 
 
-//模仿qsort的功能实现一个通用的冒泡排序
+////模仿qsort的功能实现一个通用的冒泡排序
 //
 //#include <stdio.h>
 //
@@ -1988,24 +1988,79 @@
 //}
 //
 
-#include <stdio.h>
-union Un 
-{
-	int i; 
-	char c;
-};
-union Un un;
+//#include <stdio.h>
+//union Un 
+//{
+//	int i; 
+//	char c;
+//};
+//union Un un;
+//int main()
+//{
+//	printf("%p\n", &(un.i));
+//	printf("%p\n", &(un.c));
+//
+//	un.i = 0x11223344;
+//	un.c = 0x55;
+//	printf("%x\n", un.i);
+//
+//	return 0;
+//}
+//
+
+
+//int check_sys()
+//{
+//	union Un
+//	{
+//		int i;
+//		char c;
+//	}u;
+//	u.i = 1;
+//	return u.c;              //因为共用一块内存，修改int后，返回char的一个字节
+//}
+//
+//int main()
+//{
+//	if (1 == check_sys())
+//		printf("小端\n");
+//	else
+//		printf("大端\n");
+//	return 0;
+//}
+
+//#include <stdio.h>
+//union Un1
+//{
+//	char c[5]; 
+//	int i;
+//};
+//
+//union Un2 
+//{
+//	short c[7]; 
+//	int i;
+//};
+//int main()
+//{
+//	printf("%d\n", sizeof(union Un1));
+//	printf("%d\n", sizeof(union Un2));
+//	return 0;
+//}
+//
+
+#include<stdio.h>
 int main()
 {
-	printf("%p\n", &(un.i));
-	printf("%p\n", &(un.c));
-
-	un.i = 0x11223344;
-	un.c = 0x55;
-	printf("%x\n", un.i);
-
+	union
+	{
+		short k;
+		char i[2];
+	}*s, a;
+	s = &a;
+	s->i[0] = 0x39;
+	s->i[1] = 0x38;
+	printf("%x\n", a.k);
 	return 0;
 }
-
-
 
