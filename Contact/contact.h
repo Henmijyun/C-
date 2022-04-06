@@ -13,6 +13,9 @@
 #define TELE_MAX 12
 #define ADDR_MAX 30
 
+//通讯录初始状态的容量大小
+#define 
+
 enum Option
 {
 	EXIT,
@@ -34,11 +37,21 @@ typedef struct PeoInfo //一个人的信息
 
 } PeoInfo;
 
+//静态版本
+//typedef struct Contact //整个通讯录
+//{
+//	PeoInfo data [MAX]; //创建通讯录
+//	int sz; //保存的信息个数
+//} Contact;
+
+//动态版本
 typedef struct Contact //整个通讯录
 {
-	PeoInfo data [MAX]; //创建通讯录
+	PeoInfo* data; //创建通讯录
 	int sz; //保存的信息个数
+	int capacity;//记录通讯录当前的最大容量
 } Contact;
+
 
 //函数声明
 void InitContact(struct Contact* pc);//初始化通讯录

@@ -2,11 +2,20 @@
 
 #include "contact.h"
 
+//静态版本
+//void InitContact(struct Contact* pc)//初始化通讯录
+//{
+//	assert(pc);
+//	pc->sz = 0;
+//	memset(pc->data, 0, sizeof(pc->data)); //把内存变全0
+//}
+
+//动态版本
 void InitContact(struct Contact* pc)//初始化通讯录
 {
 	assert(pc);
 	pc->sz = 0;
-	memset(pc->data, 0, sizeof(pc->data)); //把内存变全0
+	(PeoInfo*)malloc()
 }
 
 void AddContact(struct Contact* pc) //添加联系人
