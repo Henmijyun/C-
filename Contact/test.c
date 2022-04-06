@@ -52,6 +52,7 @@ void test()
 			Sleep(5000);
 			break;
 		case EXIT:
+			DestroyContact(&con);
 			printf("*** �˳�ͨѶ¼ ***\n");
 			Sleep(1000);
 			break;
@@ -69,3 +70,8 @@ int main()
 	test();
 	return 0;
 }
+
+
+
+
+

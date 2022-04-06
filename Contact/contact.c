@@ -15,17 +15,68 @@ void InitContact(struct Contact* pc)//初始化通讯录
 {
 	assert(pc);
 	pc->sz = 0;
-	(PeoInfo*)malloc()
+	pc->capacity = DEFAULT_SZ;
+	pc->data = (PeoInfo*)malloc(pc->capacity * sizeof(PeoInfo));
+	if (NULL == pc->data)
+	{
+		perror("InitContact::malloc");
+		return;
+	}
+	memset(pc->data, 0, pc->capacity * sizeof(PeoInfo));
+}
+
+void DestroyContact(struct Contact* pc) //销毁通讯录
+{
+	assert(pc);
+
+	free(pc->data);
+	pc->data = NULL;
+	pc->capacity = 0;
+	pc->sz = 0;
+	printf("*** 销毁成功 ***\n");
+}
+
+void CheckCapacity(Contact* pc) //增容
+{
+	if (pc->capacity == pc->sz)
+	{
+		PeoInfo* tmp = (PeoInfo*)realloc(pc->data,
+			(pc->capacity + 2) * sizeof(PeoInfo));
+		if (tmp != NULL)
+		{
+			pc->data = tmp;
+			pc->capacity += 2;
+			printf("*** 增容成功 ***\n");
+		}
+		else
+		{
+			perror("AddContact::realloc");
+			return;
+		}
+	}
 }
 
 void AddContact(struct Contact* pc) //添加联系人
 {
 	assert(pc);
-	if (MAX == pc->sz)
+	
+	//静态版本
+	//if (MAX == pc->sz)
+	//{
+	//	printf("*** 通讯录已满,无法添加 ***\n");
+	//	return;
+	//}
+	 
+	//动态版本
+	CheckCapacity(pc);
+	if (pc->capacity == pc->sz)
 	{
-		printf("*** 通讯录已满,无法添加 ***\n");
+		printf("*** 增容失败 ***\n");
 		return;
 	}
+
+	
+	
 	//录入信息
 	printf("请输入名字:>");
 	scanf("%s", pc->data[pc->sz].name);

@@ -4,17 +4,16 @@
 #include <string.h>
 #include <assert.h>
 #include <stdlib.h>
-#include<windows.h>
+#include <windows.h>
 
 //类型的声明
-#define MAX 1000
 #define NAME_MAX 20
 #define SEX_MAX 5
 #define TELE_MAX 12
 #define ADDR_MAX 30
 
 //通讯录初始状态的容量大小
-#define 
+#define DEFAULT_SZ 3
 
 enum Option
 {
@@ -55,6 +54,8 @@ typedef struct Contact //整个通讯录
 
 //函数声明
 void InitContact(struct Contact* pc);//初始化通讯录
+
+void DestroyContact(struct Contact* pc); //销毁通讯录
 
 void AddContact(struct Contact* pc); //添加联系人
 
