@@ -283,3 +283,60 @@
 //
 //
 
+//
+//
+//#include <stdio.h>
+//struct S
+//{
+//	char name[20];
+//	int age;
+//	double d;
+//};
+//
+//int main()
+//{
+//	struct S s = { "zhangsan", 20, 95.5 };
+//	//写文件 - 二进制的方式写
+//	FILE* pf = fopen("test3.txt", "wb");
+//	if (pf == NULL)
+//	{
+//		perror("fopen");
+//		return 1;
+//	}
+//	//二进制的方式写文件 (输出到文件中)
+//	fwrite(&s, sizeof(struct S), 1, pf);//参数：数据起始地址，大小，个数，目标文件
+//
+//	//关闭文件
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+
+
+
+#include <stdio.h>
+struct S
+{
+	char name[20];
+	int age;
+	double d;
+};
+
+int main()
+{
+	struct S s = { 0 };
+	//写文件 - 二进制的方式写
+	FILE* pf = fopen("test3.txt", "rb");
+	if (pf == NULL)
+	{
+		perror("fopen");
+		return 1;
+	}
+	//二进制的方式读 (把文件中的内容读入到内存数据中)
+	fread(&s, sizeof(struct S), 1, pf);//参数：目标数据的地址，大小，个数，要读的文件
+	printf("%s %d %lf\n", s.name, s.age, s.d);
+	//关闭文件
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}
