@@ -99,7 +99,7 @@
 //
 
 
-//模拟实现strncpy();  //复制指定个数的字符串
+////模拟实现strncpy();  //复制指定个数的字符串
 //#include <stdio.h>
 //#include <assert.h>
 //
@@ -132,7 +132,7 @@
 //    printf("%s\n", ret);
 //    return 0;
 //}
-//
+
 
 
 
@@ -314,29 +314,151 @@
 
 
 
+//#include <stdio.h>
+//struct S
+//{
+//	char name[20];
+//	int age;
+//	double d;
+//};
+//
+//int main()
+//{
+//	struct S s = { 0 };
+//	//写文件 - 二进制的方式写
+//	FILE* pf = fopen("test3.txt", "rb");
+//	if (pf == NULL)
+//	{
+//		perror("fopen");
+//		return 1;
+//	}
+//	//二进制的方式读 (把文件中的内容读入到内存数据中)
+//	fread(&s, sizeof(struct S), 1, pf);//参数：目标数据的地址，大小，个数，要读的文件
+//	printf("%s %d %lf\n", s.name, s.age, s.d);
+//	//关闭文件
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+
+
+////模拟实现strncat
+//#include <stdio.h>
+//#include <assert.h>
+//char* my_strncat(char* dest, const char* src, size_t num)
+//{
+//    assert(dest && src);
+//    char* ret = dest;
+//    while (*dest) //找目标空间的\0
+//    {
+//        dest++;
+//    }
+//    while (num--) //从\0位置开始复制过去
+//    {
+//        *dest++ = *src++;
+//    }
+//    return ret;
+//}
+//int main()
+//{
+//    char arr1[20] = "abcdef";//确定目标空间大小能放下
+//    char arr2[] = "holle";
+//    char* ret = my_strncat(arr1, arr2, 3);//指定追加字符的个数
+//    printf("%s\n", ret);
+//    return 0;
+//}
+
+
+//atoi() 函数用来
+// 将字符串里的数字字符转化为整形数，
+//直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时('/0')才结束转换
+//原型为：int atoi(const char* str);
+
+//#include <stdio.h>
+//#include <assert.h>
+//
+//int my_atoi(const char* str)
+//{
+//	assert(str);
+//	char tmp = 0;
+//	int ret = 0;
+//	while ((*str != '+') && (*str != '-') && (*str < '0') && (*str > '9'))
+//	{
+//		str++; //找起始位置
+//	}
+//	if (*str == '\0')
+//	{
+//		return 0; //找不到
+//	}
+//	if (*str == '+' || *str == '-')
+//	{
+//		tmp = *str; //找到了'+'或者'-' ,记录下来
+//		str++;
+//	}
+//	
+//	//到这里str一定指向数字, 转换
+//	while ((*str >= '0') && (*str <= '9'))
+//	{
+//		ret *= 10;
+//		ret += *str - '0';  //每次循环进位 , 加个位数值
+//		str++;
+//	}
+//	
+//	//最后在返回时, 加符号
+//	if (tmp == '+')
+//		return ret;
+//	else
+//		return 0 - ret;
+//}
+//
+//int main()
+//{
+//	char arr[] = "-1105abc";
+//	int i = 0;
+//	i = my_atoi(arr);
+//	printf("%d\n", i);
+//	return 0;
+//}
+
+
+
+
 #include <stdio.h>
-struct S
-{
-	char name[20];
-	int age;
-	double d;
-};
 
 int main()
 {
-	struct S s = { 0 };
 	//写文件 - 二进制的方式写
-	FILE* pf = fopen("test3.txt", "rb");
+	FILE* pf = fopen("test3.txt", "w");
 	if (pf == NULL)
 	{
 		perror("fopen");
 		return 1;
 	}
-	//二进制的方式读 (把文件中的内容读入到内存数据中)
-	fread(&s, sizeof(struct S), 1, pf);//参数：目标数据的地址，大小，个数，要读的文件
-	printf("%s %d %lf\n", s.name, s.age, s.d);
+	//随机写入
+	fputc('a', pf);
+	fputc('b', pf);
+	fputs("cdefg\n", pf);
+	fputs("hijkl\n", pf);
+
+	fseek(pf, -3, SEEK_CUR); //定位文件指针
+	fputs("XXXX", pf);
+	//SEEK_CUR - 文件指针当前的位置
+	//SEEK_END - 文件末尾的位置
+	//SEEK_SET - 文件开始的位置
+
+
+	long pos = ftell(pf); //返回文件指针相对于起始位置的偏移量
+	printf("%ld\n", pos);
+
+	rewind(pf); //文件指针的位置回到文件的起始位置
+
+	pos = ftell(pf);
+	printf("%ld\n", pos);
+	
 	//关闭文件
 	fclose(pf);
 	pf = NULL;
 	return 0;
 }
+
+
