@@ -10,32 +10,6 @@
 //	memset(pc->data, 0, sizeof(pc->data)); //把内存变全0
 //}
 
-//动态版本
-void InitContact(struct Contact* pc)//初始化通讯录
-{
-	assert(pc);
-	pc->sz = 0;
-	pc->capacity = DEFAULT_SZ;
-	pc->data = (PeoInfo*)malloc(pc->capacity * sizeof(PeoInfo));
-	if (NULL == pc->data)
-	{
-		perror("InitContact::malloc");
-		return;
-	}
-	memset(pc->data, 0, pc->capacity * sizeof(PeoInfo));
-}
-
-void DestroyContact(struct Contact* pc) //销毁通讯录
-{
-	assert(pc);
-
-	free(pc->data);
-	pc->data = NULL;
-	pc->capacity = 0;
-	pc->sz = 0;
-	printf("*** 销毁成功 ***\n");
-}
-
 void CheckCapacity(Contact* pc) //增容
 {
 	if (pc->capacity == pc->sz)
@@ -55,6 +29,62 @@ void CheckCapacity(Contact* pc) //增容
 		}
 	}
 }
+
+
+void LoadContact(struct Contact* pc)//加载文件信息到通讯录中
+{
+	//打开文件
+	FILE* pf = fopen("contact.dat", "rb");
+	if (pf == NULL)
+	{
+		perror("LoadContact::fopen");
+		return;
+	}
+
+	//读文件
+	PeoInfo tmp = { 0 };
+	while (fread(&tmp, sizeof(PeoInfo), 1, pf))//最大读写数为1，读不到返回0
+	{
+		CheckCapacity(pc);
+		pc->data[pc->sz] = tmp;
+		pc->sz++;
+	}
+	
+	//关闭文件
+	fclose(pf);
+	pf = NULL;
+}
+
+//动态版本
+void InitContact(struct Contact* pc)//初始化通讯录
+{
+	assert(pc);
+	pc->sz = 0;
+	pc->capacity = DEFAULT_SZ;
+	pc->data = (PeoInfo*)malloc(pc->capacity * sizeof(PeoInfo));
+	if (NULL == pc->data)
+	{
+		perror("InitContact::malloc");
+		return;
+	}
+	memset(pc->data, 0, pc->capacity * sizeof(PeoInfo));
+
+	//加载文件信息到通讯录中
+	LoadContact(pc);
+
+}
+
+void DestroyContact(struct Contact* pc) //销毁通讯录
+{
+	assert(pc);
+
+	free(pc->data);
+	pc->data = NULL;
+	pc->capacity = 0;
+	pc->sz = 0;
+	printf("*** 销毁成功 ***\n");
+}
+
 
 void AddContact(struct Contact* pc) //添加联系人
 {
@@ -302,3 +332,24 @@ void SortContact(struct Contact* pc) //排序联系人排序
 }
 
 
+void SaveContact(const struct Contact* pc)//保存通讯录信息到文件中
+{
+	//打开文件
+	FILE* pf = fopen("contact.dat", "wb");//二进制形式写入文档
+	if (pf == NULL)
+	{
+		perror("SaveContact::fpoen");
+		return;
+	}
+
+	//写文件
+	int i = 0;
+	for (i = 0; i < pc->sz; i++)
+	{
+		fwrite(pc->data + i, sizeof(PeoInfo), 1, pf);
+	}
+
+	//关闭文件
+	fclose(pf);
+	pf = NULL;
+}

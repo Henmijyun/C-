@@ -51,6 +51,11 @@ typedef struct Contact //整个通讯录
 	int capacity;//记录通讯录当前的最大容量
 } Contact;
 
+//文件的版本
+void SaveContact(const struct Contact* pc);//保存通讯录信息到文件中
+
+void LoadContact(struct Contact* pc);//加载文件信息到通讯录中
+
 
 //函数声明
 void InitContact(struct Contact* pc);//初始化通讯录

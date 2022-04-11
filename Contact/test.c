@@ -52,6 +52,7 @@ void test()
 			Sleep(5000);
 			break;
 		case EXIT:
+			SaveContact(&con);
 			DestroyContact(&con);
 			printf("*** �˳�ͨѶ¼ ***\n");
 			Sleep(1000);
