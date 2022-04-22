@@ -423,42 +423,45 @@
 
 
 
-#include <stdio.h>
-
-int main()
-{
-	//写文件 - 二进制的方式写
-	FILE* pf = fopen("test3.txt", "w");
-	if (pf == NULL)
-	{
-		perror("fopen");
-		return 1;
-	}
-	//随机写入
-	fputc('a', pf);
-	fputc('b', pf);
-	fputs("cdefg\n", pf);
-	fputs("hijkl\n", pf);
-
-	fseek(pf, -3, SEEK_CUR); //定位文件指针
-	fputs("XXXX", pf);
-	//SEEK_CUR - 文件指针当前的位置
-	//SEEK_END - 文件末尾的位置
-	//SEEK_SET - 文件开始的位置
-
-
-	long pos = ftell(pf); //返回文件指针相对于起始位置的偏移量
-	printf("%ld\n", pos);
-
-	rewind(pf); //文件指针的位置回到文件的起始位置
-
-	pos = ftell(pf);
-	printf("%ld\n", pos);
-	
-	//关闭文件
-	fclose(pf);
-	pf = NULL;
-	return 0;
-}
+//#include <stdio.h>
 //
+//int main()
+//{
+//	//写文件 - 二进制的方式写
+//	FILE* pf = fopen("test3.txt", "w");
+//	if (pf == NULL)
+//	{
+//		perror("fopen");
+//		return 1;
+//	}
+//	//随机写入
+//	fputc('a', pf);
+//	fputc('b', pf);
+//	fputs("cdefg\n", pf);
+//	fputs("hijkl\n", pf);
+//
+//	fseek(pf, -3, SEEK_CUR); //定位文件指针
+//	fputs("XXXX", pf);
+//	//SEEK_CUR - 文件指针当前的位置
+//	//SEEK_END - 文件末尾的位置
+//	//SEEK_SET - 文件开始的位置
+//
+//
+//	long pos = ftell(pf); //返回文件指针相对于起始位置的偏移量
+//	printf("%ld\n", pos);
+//
+//	rewind(pf); //文件指针的位置回到文件的起始位置
+//
+//	pos = ftell(pf);
+//	printf("%ld\n", pos);
+//	
+//	//关闭文件
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+////
 
+//写一个宏，可以将一个整数的二进制位的奇数位和偶数位交换。
+
+#define 
