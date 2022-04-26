@@ -464,4 +464,25 @@
 
 //写一个宏，可以将一个整数的二进制位的奇数位和偶数位交换。
 
-#define 
+//#define
+#include <assert.h>
+#include <stdlib.h>
+void SLiistPopBack(SLTNode** pphead) //链表尾删
+{
+	assert(*pphead);
+
+	if ((*pphead)->next == NULL)
+	{
+		free(*pphead);
+		*pphead = NULL;
+		return;
+	}
+
+	SLTNode* tail = *pphead;
+	while (tail->next->next != NULL)
+	{
+		tail = tail->next;
+	}
+	free(tail->next);
+	tail->next = NULL;
+}
