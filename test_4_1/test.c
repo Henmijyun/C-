@@ -465,24 +465,65 @@
 //写一个宏，可以将一个整数的二进制位的奇数位和偶数位交换。
 
 //#define
+//#include <assert.h>
+//#include <stdlib.h>
+//void SLiistPopBack(SLTNode** pphead) //链表尾删
+//{
+//	assert(*pphead);
+//
+//	if ((*pphead)->next == NULL)
+//	{
+//		free(*pphead);
+//		*pphead = NULL;
+//		return;
+//	}
+//
+//	SLTNode* tail = *pphead;
+//	while (tail->next->next != NULL)
+//	{
+//		tail = tail->next;
+//	}
+//	free(tail->next);
+//	tail->next = NULL;
+//}
+
 #include <assert.h>
-#include <stdlib.h>
-void SLiistPopBack(SLTNode** pphead) //链表尾删
+
+int removeElement(int* nums, int numsSize, int val) {
+    //可以用双指针，一个指向头，一个指向尾，互相向中间移动，每次移动进行对比。
+    assert(nums);
+    int* left = nums;
+    int* right = &nums[numsSize - 1];
+    int newSize = 0;
+
+    while (left < right)
+    {
+        while (*right == val)
+        {
+            right--;
+            if (right < left)
+                return 0;
+        }
+
+        if (*left == val)
+        {
+            int tmp = *right;
+            *right = *left;
+            *left = tmp;
+        }
+        left++;
+        newSize += 1;
+    }
+    return newSize;
+}
+
+int main()
 {
-	assert(*pphead);
+    int nums[] = { 3 };
+    int numsSize = sizeof(nums) / sizeof(nums[0]); 
+    int val = 2;
+    int ret = removeElement(nums, numsSize, val);
 
-	if ((*pphead)->next == NULL)
-	{
-		free(*pphead);
-		*pphead = NULL;
-		return;
-	}
+    return 0;
 
-	SLTNode* tail = *pphead;
-	while (tail->next->next != NULL)
-	{
-		tail = tail->next;
-	}
-	free(tail->next);
-	tail->next = NULL;
 }
