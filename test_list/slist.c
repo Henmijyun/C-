@@ -92,4 +92,58 @@ SListNode* SListFind(SListNode* plist, SLTDateType x)
 {
 	assert(plist);
 
+	while (plist != NULL)
+	{
+		if (plist->data == x)
+		{
+			return plist;
+		}
+		plist = plist->next;
+	}
+	return NULL;
 }
+
+// 单链表在pos位置之后插入x
+void SListInsertAfter(SListNode* pos, SLTDateType x)
+{
+	assert(pos);
+	
+	SListNode* newnode = BuySListNode(x); //用x的值去动态申请一个新节点
+	SListNode* next = pos->next;
+
+	pos->next = newnode;
+	newnode->next = next;
+}
+
+// 单链表删除pos位置之后的值
+void SListEraseAfter(SListNode* pos)
+{
+	assert(pos);
+
+	if (pos->next == NULL)
+	{
+		printf("pos后面没有数据\n");
+		return;
+	}
+	else
+	{
+		SListNode* next = pos->next->next;
+		free(pos->next);
+		pos->next = next;
+	}
+}
+
+// 单链表的销毁
+void SListDestory(SListNode* plist)
+{
+	assert(plist);
+
+	while (plist) //plist为NULL时结束
+	{
+		SListNode* next = plist->next; //循环释放全部节点
+		free(plist);
+		plist = next;
+	}
+	printf("销毁成功\n");
+}
+
