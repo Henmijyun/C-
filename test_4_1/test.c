@@ -487,43 +487,100 @@
 //	tail->next = NULL;
 //}
 
-#include <assert.h>
 
-int removeElement(int* nums, int numsSize, int val) {
-    //可以用双指针，一个指向头，一个指向尾，互相向中间移动，每次移动进行对比。
-    assert(nums);
-    int* left = nums;
-    int* right = &nums[numsSize - 1];
-    int newSize = 0;
+//#include <assert.h>
+//
+//int removeElement(int* nums, int numsSize, int val) {
+//    //可以用双指针，一个指向头，一个指向尾，互相向中间移动，每次移动进行对比。
+//    assert(nums);
+//    int* left = nums;
+//    int* right = &nums[numsSize - 1];
+//    int newSize = 0;
+//
+//    while (left < right)
+//    {
+//        while (*right == val)
+//        {
+//            right--;
+//            if (right < left)
+//                return 0;
+//        }
+//
+//        if (*left == val)
+//        {
+//            int tmp = *right;
+//            *right = *left;
+//            *left = tmp;
+//        }
+//        left++;
+//        newSize += 1;
+//    }
+//    return newSize;
+//}
+//
+//int main()
+//{
+//    int nums[] = { 3 };
+//    int numsSize = sizeof(nums) / sizeof(nums[0]); 
+//    int val = 2;
+//    int ret = removeElement(nums, numsSize, val);
+//
+//    return 0;
+//
+//}
 
-    while (left < right)
-    {
-        while (*right == val)
-        {
-            right--;
-            if (right < left)
-                return 0;
-        }
 
-        if (*left == val)
-        {
-            int tmp = *right;
-            *right = *left;
-            *left = tmp;
-        }
-        left++;
-        newSize += 1;
-    }
-    return newSize;
-}
+
+////#define
+////定义常量 和 定义宏
+//
+//#define MALLOC(num ,type)  (type*)malloc(num*sizeof(type))
+////
+//
+////	int*p = (int*)malloc(10 * sizeof(int));
+////	int*p2 = MALLOC(10, int);
+////  p == p2
+
+
+
+////写一个宏，可以将一个整数的二进制位的奇数位和偶数位交换。
+//
+//#include <stdio.h>
+//#define SWAP(num) (num = ((num & 0x55555555)<<1) + ((num & 0xaaaaaaaa)>>1))
+//
+////0x55555555    01010101 01010101 01010101 01010101    分别取得 奇数位和偶数位的 1
+////0xaaaaaaaa    10101010 10101010 10101010 10101010
+//int main()
+//{
+//	int num = 10;
+//	//00000000 00000000 00000000 00001010  交换前
+//	//00000000 00000000 00000000 00000101  交换后
+//	SWAP(num);
+//	printf("%#x\n", num);  //输出0x5  00000101
+//	return 0;
+//}
+
+
+//写一个宏，计算结构体中某变量相对于首地址的偏移，并给出说明
+#include <stdio.h>
+
+struct S
+{
+	int a;
+	char c;
+	double d;
+};
+
+#define  OFFSETOF(st_type, mem_name)  (size_t)&(((st_type*)0)->mem_name)
+
+//假设首地址就是从0开始的,那可以把0强转为st_type*, 指向成员men_name,
+//然后把指向的地址进行& 取地址操作，最后强转为size_t类型，就可以打印出相对应的偏移地址位置
 
 int main()
 {
-    int nums[] = { 3 };
-    int numsSize = sizeof(nums) / sizeof(nums[0]); 
-    int val = 2;
-    int ret = removeElement(nums, numsSize, val);
+	printf("%d\n", OFFSETOF(struct S, a)); //0
+	printf("%d\n", OFFSETOF(struct S, c));  //4
+	printf("%d\n", OFFSETOF(struct S, d));  //8
 
-    return 0;
-
+	return 0;
 }
