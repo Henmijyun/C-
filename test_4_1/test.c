@@ -560,27 +560,119 @@
 //	return 0;
 //}
 
+//
+////写一个宏，计算结构体中某变量相对于首地址的偏移，并给出说明
+//#include <stdio.h>
+//
+//struct S
+//{
+//	int a;
+//	char c;
+//	double d;
+//};
+//
+//#define  OFFSETOF(st_type, mem_name)  (size_t)&(((st_type*)0)->mem_name)
+//
+////假设首地址就是从0开始的,那可以把0强转为st_type*, 指向成员men_name,
+////然后把指向的地址进行& 取地址操作，最后强转为size_t类型，就可以打印出相对应的偏移地址位置
+//
+//int main()
+//{
+//	printf("%d\n", OFFSETOF(struct S, a)); //0
+//	printf("%d\n", OFFSETOF(struct S, c));  //4
+//	printf("%d\n", OFFSETOF(struct S, d));  //8
+//
+//	return 0;
+//}
 
-//写一个宏，计算结构体中某变量相对于首地址的偏移，并给出说明
-#include <stdio.h>
 
-struct S
-{
-	int a;
-	char c;
-	double d;
+//
+//void AdjustDwon(HPDataType* a, int size, int parent)
+//{
+//	assert(a);
+//
+//	while ((parent * 2 + 1) < size && (parent * 2 + 2) < size)
+//	{
+//		if (a[parent * 2 + 1] < a[parent])
+//		{
+//			Swap(&a[parent * 2 + 1], &a[parent]);
+//			parent = parent * 2 + 1;
+//		}
+//		else if (a[parent * 2 + 2] < a[parent])
+//		{
+//			Swap(&a[parent * 2 + 2], &a[parent]);
+//			parent = parent * 2 + 2;
+//		}
+//	}
+//}
+
+
+
+struct ListNode {
+    int val;
+    struct ListNode* next;
+    
 };
 
-#define  OFFSETOF(st_type, mem_name)  (size_t)&(((st_type*)0)->mem_name)
+struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB) {
+    //先计算两个链表的长度
+    //然后，较长的链表先走两个链表长度的差，之后两个链表再一起走
+    //如果两个链表的值相等则相交，走完都不等则不相交
 
-//假设首地址就是从0开始的,那可以把0强转为st_type*, 指向成员men_name,
-//然后把指向的地址进行& 取地址操作，最后强转为size_t类型，就可以打印出相对应的偏移地址位置
+    if (!headA || !headB)  //任意一边为NULL，返回NULL
+        return NULL;
+
+    //计算长度
+    int size1, size2;
+    struct ListNode* cur1, * cur2;
+    cur1 = headA;
+    cur2 = headB;
+    size1 = size2 = 1; //为了cur1和2最后不用指向空，用来判断最后是否相交
+
+    while (cur1->next)
+    {
+        cur1 = cur1->next;
+        ++size1;
+    }
+    while (cur2->next)
+    {
+        cur2 = cur2->next;
+        ++size2;
+    }
+    if (cur1 != cur2) //判断最后是否相交
+        return NULL;
+
+    //找较长的链表
+    struct ListNode* longList, * shortList;
+    if (size1 < size2)
+    {
+        longList = headB;
+        shortList = headA;
+    }
+
+    int gep = abs(size1 - size2); //abs()函数使结果为正数 
+
+
+
+    while (gep--)
+
+    {
+        longList = longList->next; //让长的先走gep步，长度的差值
+
+    }
+
+    //一起走
+    while (longList != shortList)
+
+        longList = longList->next;
+    shortList = shortList->next;
+}
+return longList;
+}
+
 
 int main()
 {
-	printf("%d\n", OFFSETOF(struct S, a)); //0
-	printf("%d\n", OFFSETOF(struct S, c));  //4
-	printf("%d\n", OFFSETOF(struct S, d));  //8
 
-	return 0;
+    return 0;
 }
