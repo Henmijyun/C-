@@ -608,71 +608,82 @@
 
 
 
-struct ListNode {
-    int val;
-    struct ListNode* next;
-    
-};
+//struct ListNode {
+//    int val;
+//    struct ListNode* next;
+//    
+//};
+//
+//struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB) {
+//    //先计算两个链表的长度
+//    //然后，较长的链表先走两个链表长度的差，之后两个链表再一起走
+//    //如果两个链表的值相等则相交，走完都不等则不相交
+//
+//    if (!headA || !headB)  //任意一边为NULL，返回NULL
+//        return NULL;
+//
+//    //计算长度
+//    int size1, size2;
+//    struct ListNode* cur1, * cur2;
+//    cur1 = headA;
+//    cur2 = headB;
+//    size1 = size2 = 1; //为了cur1和2最后不用指向空，用来判断最后是否相交
+//
+//    while (cur1->next)
+//    {
+//        cur1 = cur1->next;
+//        ++size1;
+//    }
+//    while (cur2->next)
+//    {
+//        cur2 = cur2->next;
+//        ++size2;
+//    }
+//    if (cur1 != cur2) //判断最后是否相交
+//        return NULL;
+//
+//    //找较长的链表
+//    struct ListNode* longList, * shortList;
+//    if (size1 < size2)
+//    {
+//        longList = headB;
+//        shortList = headA;
+//    }
+//
+//    int gep = abs(size1 - size2); //abs()函数使结果为正数 
+//
+//
+//
+//    while (gep--)
+//
+//    {
+//        longList = longList->next; //让长的先走gep步，长度的差值
+//
+//    }
+//
+//    //一起走
+//    while (longList != shortList)
+//
+//        longList = longList->next;
+//    shortList = shortList->next;
+//}
+//return longList;
+//}
+//
+//
+//int main()
+//{
+//
+//    return 0;
+//}
 
-struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB) {
-    //先计算两个链表的长度
-    //然后，较长的链表先走两个链表长度的差，之后两个链表再一起走
-    //如果两个链表的值相等则相交，走完都不等则不相交
 
-    if (!headA || !headB)  //任意一边为NULL，返回NULL
-        return NULL;
-
-    //计算长度
-    int size1, size2;
-    struct ListNode* cur1, * cur2;
-    cur1 = headA;
-    cur2 = headB;
-    size1 = size2 = 1; //为了cur1和2最后不用指向空，用来判断最后是否相交
-
-    while (cur1->next)
-    {
-        cur1 = cur1->next;
-        ++size1;
-    }
-    while (cur2->next)
-    {
-        cur2 = cur2->next;
-        ++size2;
-    }
-    if (cur1 != cur2) //判断最后是否相交
-        return NULL;
-
-    //找较长的链表
-    struct ListNode* longList, * shortList;
-    if (size1 < size2)
-    {
-        longList = headB;
-        shortList = headA;
-    }
-
-    int gep = abs(size1 - size2); //abs()函数使结果为正数 
-
-
-
-    while (gep--)
-
-    {
-        longList = longList->next; //让长的先走gep步，长度的差值
-
-    }
-
-    //一起走
-    while (longList != shortList)
-
-        longList = longList->next;
-    shortList = shortList->next;
-}
-return longList;
-}
-
-
-int main()
+//树的常用表示方法：孩子兄弟表示法
+//左孩子右兄弟
+typedef int DataType;
+struct TreeNode
 {
-
-    return 0;
-}
+	struct TreeNode* firstChild1; //第一个孩子节点
+	struct TreeNode* pNextBrother; //指向其下一个兄弟节点
+	DataType data;               //节点中的数据域
+};
