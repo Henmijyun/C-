@@ -7,9 +7,9 @@
 typedef int SLDateType;
 typedef struct SeqList
 {
-	SLDateType* a;   //指向动态开辟的数组
-	size_t size;      //有效元素个数
-	size_t capacity;  //数组容量空间
+	SLDateType* _a;   //指向动态开辟的数组
+	size_t _size;      //有效元素个数
+	size_t _capacity;  //数组容量空间
 }SeqList;
 
 // 对数据的管理:增删查改 
