@@ -2,6 +2,8 @@
 
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 //打印
 void PrintArray(int* a, int size);
@@ -32,6 +34,15 @@ void MergeSort(int* a, int n);
 
 //声明
 extern int callCount;
+
+//基数排序
+
+
+//计数排序
+//统计每个数据出现的次数
+void CountSort(int* a, int n);
+
+
 
 
 

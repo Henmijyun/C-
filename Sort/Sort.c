@@ -16,19 +16,19 @@ void Swap(int* left, int* right)
 
 
 //插入排序
-void InsertSort(int* a, int n)
-{
-	for (int i = 0; i < n; ++i)
-	{
-		//[0,end]有序，把end+1位置的值插入，保持有序
-		int end = i;
-		int tmp = a[end + 1];
-		while (end >= 0)
-		{
-			if ()
-		}
-	}
-}
+//void InsertSort(int* a, int n)
+//{
+//	for (int i = 0; i < n; ++i)
+//	{
+//		//[0,end]有序，把end+1位置的值插入，保持有序
+//		int end = i;
+//		int tmp = a[end + 1];
+//		while (end >= 0)
+//		{
+//			if ()
+//		}
+//	}
+//}
 
 //希尔排序
 void ShellSort(int* a, int n);
@@ -183,6 +183,52 @@ void PrintArray(int* a, int size)
 	}
 	printf("\n");
 
+}
+
+//计数排序
+//统计每个数据出现的次数 (只适用于正负整数)
+//时间复杂度 O(max(range, N))
+//空间复杂度 O(range)
+void CountSort(int* a, int n)
+{
+	int min = a[0], max = a[0];
+
+	//计数出最大和最小
+	for (int i = 1; i < n; ++i)
+	{
+		if (a[i] > max)
+			max = a[i];
+		if (a[i] < min)
+			min = a[i];
+	}
+
+	//统计次数的数组
+	int range = max - min + 1;
+	int* count = (int*)malloc(sizeof(int*) * range);
+	if (count == NULL)
+	{
+		printf("malloc fail\n");
+		exit(-1);
+	}
+	memset(count, 0, sizeof(int) * range);
+
+	//统计次数
+	for (int i = 0; i < n; ++i)
+	{
+		count[a[i] - min]++;
+	}
+
+	//回写 - 排序
+	int j = 0;
+	for (int i = 0; i < range; ++i)
+	{
+		//出现几次就回写几个i+min
+		while (count[i]--)
+		{
+			a[j++] = i + min;
+		}
+	}
+	free(count);
 }
 
 
