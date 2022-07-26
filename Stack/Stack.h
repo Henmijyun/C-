@@ -9,9 +9,9 @@
 typedef int STDataType;
 typedef struct Stack
 {
-	STDataType* a;
-	int top;      //’ª∂•
-	int capacity;   //ø’º‰
+	STDataType* _a;
+	int _top;      //’ª∂•
+	int _capacity;   //ø’º‰
 }ST;
 
 void StackInit(ST* ps);  //≥ı ºªØ
