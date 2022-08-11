@@ -221,56 +221,213 @@
 //}
 
 
-//1、做参数 —— a、输出型参数
-void Swap(int& r1, int& r2)
-{
-	//不用引用的话，r1和r2是a和b的局部临时拷贝，不影响a和b
-	//用了引用的话，r1和r2的修改会直接影响a和b
-	int tmp = r1;
-	r1 = r2;
-	r2 = tmp;
-}
+////1、做参数 —— a、输出型参数
+//void Swap(int& r1, int& r2)
+//{
+//	//不用引用的话，r1和r2是a和b的局部临时拷贝，不影响a和b
+//	//用了引用的话，r1和r2的修改会直接影响a和b
+//	int tmp = r1;
+//	r1 = r2;
+//	r2 = tmp;
+//}
+//
+//typedef struct SeqList
+//{
+//	//...
+//}SL;
+//
+//
+//void SLPushBack(SL& s, int x) 
+//{}//相当于用引用代替指针，让函数内部改变也可以改变外面的值
+//
+//
+//typedef struct SListNode //单链表
+//{
+//	//..
+//}SLTNode,*PSLTNode; //对单链表的指针改名，再在后面的参数中使用&引用，使其不用二级指针（但理解更复杂）
+//
+//typedef struct SListNode* PSLTNode;
+//
+////void SListPushBack(SLTNode*& phead, int x)
+//void SListPushBack(PSLTNode& phead, int x)
+//{
+//	if (phead == NULL)
+//	{
+//		phead = (SLTNode*)malloc(sizeof(SLTNode));
+//		//...
+//	}
+//}
+//int main()
+//{
+//	int a = 0, b = 2;
+//	Swap(a, b);
+//
+//	SL sl;
+//	SLPushBack(sl, 1);//这样的话就可以 不用传地址 &sl
+//	SLPushBack(sl, 2);
+//	SLPushBack(sl, 3);
+//
+//	SLTNode* list = NULL;
+//	SListPushBack(list, 1);//为了单链表可以不传二级指针（更难理解）
+//	SListPushBack(list, 2);
+//	SListPushBack(list, 3);
+//
+//	return 0;
+//}
 
-typedef struct SeqList
-{
-	//...
-}SL;
+
+//#include <time.h>
+//struct A { int a[10000]; };
+//void TestFunc1(A aa) {}
+//void TestFunc2(A& aa) {}
+//
+//void TestRefAndValue()
+//{
+//	A a;
+//	// 以值作为函数参数
+//	size_t begin1 = clock(); //记录运算前的时间
+//	for (size_t i = 0; i < 10000; ++i)
+//		TestFunc1(a);
+//	size_t end1 = clock(); //记录运算后的时间
+//
+//	// 以引用作为函数参数
+//	size_t begin2 = clock();
+//	for (size_t i = 0; i < 10000; ++i)
+//		TestFunc2(a);
+//	size_t end2 = clock();
+//
+//	// 分别计算两个函数运行结束后的时间
+//	cout << "TestFunc1(A)-time:" << end1 - begin1 << endl; //前后时间相减，得到运算用时
+//	cout << "TestFunc2(A&)-time:" << end2 - begin2 << endl;
+//}
+//int main()
+//{
+//	TestRefAndValue();
+//	return 0;
+//}
 
 
-void SLPushBack(SL& s, int x) 
-{}//相当于用引用代替指针，让函数内部改变也可以改变外面的值
 
 
-typedef struct SListNode //单链表
-{
-	//..
-}SLTNode,*PSLTNode; //对单链表的指针改名，再在后面的参数中使用&引用，使其不用二级指针（但理解更复杂）
+//int Count1() //不带&引用的话，传值返回
+//{
+//	static int n = 0;
+//	n++;
+//	//...
+//	return n; //返回值是n的临时拷贝，不是n本身
+//}
+//
+//int& Count2()
+//{
+//	static int n = 0; //这里的n是建立在栈的静态区里的，所以不会销毁
+//	n++;
+//	//...
+//	return n; //返回用引用的方式，省去了拷贝的过程，增加了效率
+//}
+//
+//int main()
+//{
+//	int ret1 = Count1();
+//	int& ret2 = Count2(); //ret2也是n的引用别名，直接访问静态区中的n
+//
+//	return 0;
+//}
+//
 
-typedef struct SListNode* PSLTNode;
 
-//void SListPushBack(SLTNode*& phead, int x)
-void SListPushBack(PSLTNode& phead, int x)
-{
-	if (phead == NULL)
-	{
-		phead = (SLTNode*)malloc(sizeof(SLTNode));
-		//...
-	}
-}
+//int main()
+//{
+//	SL sl;
+//	SLInit(sl);
+//	SLPushBack(sl, 1);
+//	SLPushBack(sl, 2);
+//	SLPushBack(sl, 3);
+//	SLPushBack(sl, 4);
+//
+//	for (int i = 0; i < sl._size; ++i)
+//	{
+//		cout << SLAt(sl, i) << " ";
+//	}
+//	cout << endl;
+//
+//	SLAt(sl, 3)++;
+//	SLAt(sl, 0) = 10;
+//
+//	for (int i = 0; i < sl._size; ++i)
+//	{
+//		cout << SLAt(sl, i) << " ";
+//	}
+//	cout << endl;
+//
+//	return 0;
+//}
+
+
+//
+//int main()
+//{
+//	int a = 10;
+//	int& b = a; //权限的平移
+//	
+//	cout << typeid(a).name() << endl;
+//	cout << typeid(b).name() << endl;
+//
+//	
+//	const int c = 100;
+//	//int& d = c;  //err//权限不能放大
+//	const int& d = c; //权限的平移
+//
+//	int e = 30;//可读可写
+//	const int& f = e; //只读， 权限可以缩小
+//
+//	int ii = 1;
+//	double dd = ii;//会发生隐式类型转换
+//	//double& rdd = ii;//err
+//	const double& rdd = ii;
+//
+//	const int& x = 10; //引用也可以用于常量
+//	//所以引用的接收度很大，用了引用以后，尽量用const
+//	return 0;
+//}
+
+
+//void func1(int n)
+//{}
+//
+////void func2(int& n)
+//// 如果使用引用传参，函数内如果不改变n，那么建议尽量用const引用传参。
+//void func2(const int& n)
+//{}
+//int main()
+//{
+//	int a = 10;
+//	const int b = 20;
+//	func1(a);
+//	func1(b); //因为函数中的数据是拷贝过去的，所以不影响b
+//	func1(30); //同上
+//
+//	func2(a);
+//	func2(b);          //函数参数不加const的话，权限放大,就会err
+//	func2(30);           //同上
+//	func2(1.11);
+//	double d = 2.22;
+//	func2(d);
+//
+//	return 0;
+//}
+
+
+
 int main()
 {
-	int a = 0, b = 2;
-	Swap(a, b);
+	//语法的角度，ra没有开空间
+	int a = 10;
+	int& ra = a;
+	ra = 20;
 
-	SL sl;
-	SLPushBack(sl, 1);//这样的话就可以 不用传地址 &sl
-	SLPushBack(sl, 2);
-	SLPushBack(sl, 3);
-
-	SLTNode* list = NULL;
-	SListPushBack(list, 1);//为了单链表可以不传二级指针（更难理解）
-	SListPushBack(list, 2);
-	SListPushBack(list, 3);
+	//语法的角度，pa开了 4 或 8 byte空间
+	int* pa = &a;
+	*pa = 20;
 
 	return 0;
 }

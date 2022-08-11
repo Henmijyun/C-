@@ -2,6 +2,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <assert.h>
 
 #include <iostream>
 using namespace std;
@@ -17,3 +18,19 @@ struct Stack
 };
 
 void StackInit(struct Stack* ps, int capacity = 4);
+
+
+typedef struct SeqList
+{
+	int* _a;
+	int _size;
+	int _capacity;
+}SL;
+
+void SLInit(SL& s, int capacity = 4);
+
+void SLPushBack(SL& s, int x);
+
+//修改顺序表数据的函数
+//void SLModity(SL& s, int pos, int x); //以前修改数据，需要先查找，再修改
+int& SLAt(SL& s, int pos);  //利用引用返回值
