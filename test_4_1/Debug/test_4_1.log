@@ -1,5 +1,0 @@
-﻿  test.c
-E:\1_C\repos\lianxiyong\test_4_1\test.c(590,27): error C2143: 语法错误: 缺少“)”(在“*”的前面)
-E:\1_C\repos\lianxiyong\test_4_1\test.c(590,27): error C2143: 语法错误: 缺少“{”(在“*”的前面)
-E:\1_C\repos\lianxiyong\test_4_1\test.c(590,36): error C2059: 语法错误:“类型”
-E:\1_C\repos\lianxiyong\test_4_1\test.c(590,52): error C2059: 语法错误:“)”
