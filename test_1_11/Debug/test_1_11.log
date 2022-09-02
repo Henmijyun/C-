@@ -1,6 +1,0 @@
-﻿  game.c
-E:\1_C\repos\lianxiyong\test_1_11\game.c(1,1): warning C4819: 该文件包含不能在当前代码页(932)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  test.c
-E:\1_C\repos\lianxiyong\test_1_11\test.c(1,1): warning C4819: 该文件包含不能在当前代码页(932)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  正在生成代码...
-E:\1_C\repos\lianxiyong\test_1_11\game.c : fatal error C1090: PDB API 调用失败，错误代码“3”: E:\1_C\repos\lianxiyong\test_1_11\Debug\vc142.pdb
