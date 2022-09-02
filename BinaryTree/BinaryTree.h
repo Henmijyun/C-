@@ -23,3 +23,4 @@ int TreeLeafSize(BTNode* root); //叶子节点的数量
 int TreeKLevel(BTNode* root, int k); //第k层 节点的个数(k >= 1)
 BTNode* TreeFind(BTNode* root, BTDataType x); //二叉树查找值为x的节点
 int TreeDepth(BTNode* root); //求树的高度
+

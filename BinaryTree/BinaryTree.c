@@ -108,3 +108,4 @@ int TreeDepth(BTNode* root) //求树的高度
 	return leftDepth > rightDepth ? leftDepth + 1 : rightDepth + 1;
 }
 
+
