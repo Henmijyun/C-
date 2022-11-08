@@ -2,6 +2,149 @@
 
 #include "Sort.h"
 
+//打印
+void PrintArray(int* a, int size)
+{
+	assert(a && size != 0);
+
+	for (int i = 0; i < size; ++i)
+	{
+		printf("%d ", a[i]);
+	}
+	printf("\n");
+
+}
+
+
+
+
+//直接插入排序 时间O(N^2) 空间(1) 稳定
+void InsertSort(int* a, int n)
+{
+	for (int i = 0; i < n - 1; ++i)
+	{
+		//[0,end]有序，把end+1位置的值插入，保持有序
+		int end = i;
+		int tmp = a[end + 1];
+		while (end >= 0)
+		{
+			if (tmp < a[end])
+			{
+				a[end + 1] = a[end];
+				--end;
+			}
+			else
+			{
+				break;
+			}
+		}
+		a[end + 1] = tmp;
+	}
+}
+
+//希尔排序  时间平均：O(N^1.3）空间(1) 不稳定
+// 
+// void ShellSort(int* a, int n) // 基础版本
+//{
+//   // 1、预处理 -- 让整个结构变得更接近有序
+//	/*int gap = 3;*/
+//
+//	/*for (int j = 0; j < gap; ++j) // 有gap组数据
+//	{
+//		for (int i = j; i < n - gap; i += gap) // 每一组之间的切换
+//		{
+//			int end = i;
+//			int tmp = a[end + gap];
+//			while (end >= 0) // 等价于单趟直接插入
+//			{
+//				if (tmp < a[end])
+//				{
+//					a[end + gap] = a[end]; // 注意跨度为gap
+//					end -= gap;
+//				}
+//				else
+//				{
+//					break;
+//				}
+//			}
+//			a[end + gap] = tmp;
+//		}
+//	}*/    (上面版本有漏洞，但是可以参考数据挪动的思想)
+//
+//	// gap > 1时是预排序
+//	// gap 最后一次等于1，是直接插入排序
+//	//PrintArray(a, n);
+//
+// // 优化后的版本
+//	int gap = n;
+//	while (gap > 1)
+//	{
+//		gap = gap / 3 + 1;
+//		//gap = gap / 2;
+//
+//		for (int i = 0; i < n - gap; ++i)
+//		{
+//			int end = i;
+//			int tmp = a[end + gap];
+//			while (end >= 0)
+//			{
+//				if (tmp < a[end])
+//				{
+//					a[end + gap] = a[end];
+//					end -= gap;
+//				}
+//				else
+//				{
+//					break;
+//				}
+//			}
+//			a[end + gap] = tmp;
+//		}
+//
+//		//printf("gap:%d->", gap);
+//		//PrintArray(a, n);
+//	}
+//}
+
+
+// 希尔排序 简化版  gap组数据交替插入排序
+void ShellSort(int* a, int n)
+{
+	int gap = n;
+	while (gap > 1)
+	{
+		gap = gap / 3 + 1;  // 控制gap最后一次除法能为1
+		//gap = gap / 2;
+
+		for (int i = 0; i < n - gap; ++i)
+		{
+			int end = i;
+			int tmp = a[end + gap];
+			while (end >= 0)
+			{
+				if (tmp < a[end])
+				{
+					a[end + gap] = a[end];
+					end -= gap;
+				}
+				else
+				{
+					break;
+				}
+			}
+			a[end + gap] = tmp;
+		}
+	}
+}
+
+
+//选择排序
+void SelectSort(int* a, int n)
+{
+
+}
+
+
 
 //交换
 void Swap(int* left, int* right)
@@ -14,33 +157,79 @@ void Swap(int* left, int* right)
 	*right = tmp;
 }
 
+// 堆排序
+// 升序 -- 建大堆 (再把堆顶数据向下调整，形成升序)
+// 降序 -- 建小堆 （同理）
+// 建堆
+void AdjustDwon(int* a, int size, int parent)
+{
+	int child = parent * 2 + 1;
+	while (child < size)
+	{
+		// 选出左右孩子中 小/大 的那个
+		if (child + 1 < size && a[child + 1] > a[child])
+		{
+			++child;
+		}
 
-//插入排序
-//void InsertSort(int* a, int n)
-//{
-//	for (int i = 0; i < n; ++i)
-//	{
-//		//[0,end]有序，把end+1位置的值插入，保持有序
-//		int end = i;
-//		int tmp = a[end + 1];
-//		while (end >= 0)
-//		{
-//			if ()
-//		}
-//	}
-//}
+		// 孩子跟父亲比较
+		if (a[child] > a[parent])
+		{
+			Swap(&a[child], &a[parent]);
+			parent = child;
+			child = parent * 2 + 1;
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+// 排序
+void HeapSort(int* a, int n)
+{
+	// 建堆 O(N)
+	for (int i = (n - 1 - 1) / 2; i >= 0; --i)  // i = 最后一个数据的父亲下标
+	{
+		AdjustDwon(a, n, i);
+	}
 
-//希尔排序
-void ShellSort(int* a, int n);
-
-//选择排序
-void SelectSort(int* a, int n);
-
-//堆排序
-void HeapSort(int* a, int n);
+	// O(N*logN)
+	int end = n - 1;
+	while (end > 0)
+	{
+		Swap(&a[0], &a[end]);
+		AdjustDwon(a, end, 0);  
+		--end;
+	}
+}
 
 //冒泡排序
-void BubbleSort(int* a, int n);
+// 时间复杂度:O（N^2）  最好的情况：O(N)
+// 冒泡 对比 插入排序， 插入更好
+void BubbleSort(int* a, int n)
+{
+	assert(a);
+
+	for (int j = 0; j < n - 1; ++j)
+	{
+		int exchange = 0;
+		for (int i = 1; i < n - j; ++i)
+		{
+			if (a[i - 1] > a[i])
+			{
+				Swap(&a[i - 1], &a[i]);
+				exchange = 1;
+			}
+		}
+
+		if (0 == exchange)
+		{
+			break;  // 检查第一次就已经有序
+		}
+
+	}
+}
 
 
 //快速排序1 hoare版本
@@ -172,18 +361,12 @@ void QuickSort(int* a, int begin, int end)
 	QuickSort(a, keyi + 1, end);
 }
 
-//打印
-void PrintArray(int* a, int size)
-{
-	assert(a && size != 0);
 
-	for (int i = 0; i < size; ++i)
-	{
-		printf("%d ", a[i]);
-	}
-	printf("\n");
+//快速排序（非递归）
+void QuickSortNonR(int* a, int begin, int end)
+{}
 
-}
+
 
 //计数排序
 //统计每个数据出现的次数 (只适用于正负整数)
