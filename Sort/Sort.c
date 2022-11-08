@@ -15,6 +15,16 @@ void PrintArray(int* a, int size)
 
 }
 
+//交换
+void Swap(int* left, int* right)
+{
+	assert(left && right);
+
+	int tmp = 0;
+	tmp = *left;
+	*left = *right;
+	*right = tmp;
+}
 
 
 
@@ -138,30 +148,47 @@ void ShellSort(int* a, int n)
 }
 
 
-//选择排序
+// 选择排序
+// 时间复杂度：O（N^2） 最好的情况：O(N^2)
+// 选择排序 对比 插入排序， 插入更好
 void SelectSort(int* a, int n)
 {
+	assert(a);
+	int begin = 0, end = n - 1;
 
+	while (begin < end)
+	{
+		int mini = begin, maxi = begin;
+		for (int i = begin + 1; i <= end; ++i)
+		{
+			if (a[i] < a[mini]) // 找最小
+				mini = i;
+
+			if (a[i] > a[maxi]) // 找最大
+				maxi = i;
+		}
+		Swap(&a[begin], &a[mini]);  // 交换
+
+		// 如果begin和maxi重叠，那么要修正一下maxi的位置
+		if (begin == maxi)
+		{
+			maxi = mini; // 第一次查就查到最大的
+		}
+
+		Swap(&a[end], &a[maxi]); // 那就把它放到最后
+		++begin; // 最小放头，最大放尾，往中间靠拢
+		--end;
+	}
 }
 
 
 
-//交换
-void Swap(int* left, int* right)
-{
-	assert(left && right);
 
-	int tmp = 0;
-	tmp = *left;
-	*left = *right;
-	*right = tmp;
-}
 
-// 堆排序
+// 堆排序 时间O(N*logN)
 // 升序 -- 建大堆 (再把堆顶数据向下调整，形成升序)
 // 降序 -- 建小堆 （同理）
-// 建堆
-void AdjustDwon(int* a, int size, int parent)
+void AdjustDwon(int* a, int size, int parent) // 建堆
 {
 	int child = parent * 2 + 1;
 	while (child < size)
@@ -185,8 +212,7 @@ void AdjustDwon(int* a, int size, int parent)
 		}
 	}
 }
-// 排序
-void HeapSort(int* a, int n)
+void HeapSort(int* a, int n) // 建完堆，开始排序
 {
 	// 建堆 O(N)
 	for (int i = (n - 1 - 1) / 2; i >= 0; --i)  // i = 最后一个数据的父亲下标
@@ -203,6 +229,7 @@ void HeapSort(int* a, int n)
 		--end;
 	}
 }
+
 
 //冒泡排序
 // 时间复杂度:O（N^2）  最好的情况：O(N)
@@ -232,7 +259,7 @@ void BubbleSort(int* a, int n)
 }
 
 
-//快速排序1 hoare版本
+// 快速排序1 hoare版本
 int PartSort1(int* a, int begin, int end)
 {
 	int left = begin;
@@ -264,7 +291,7 @@ int PartSort1(int* a, int begin, int end)
 	return keyi;
 }
 
-//挖坑法
+// 快速排序：挖坑法
 int PartSort2(int* a, int begin, int end)
 {
 	int key = a[begin];
@@ -296,7 +323,7 @@ int PartSort2(int* a, int begin, int end)
 	return piti;
 }
 
-//前后指针 + 三数取中法
+// 快速排序： 前后指针 + 三数取中法
 int GetMidIndex(int* a, int begin, int end)
 {
 	int mid = (begin + end) >> 1;
@@ -319,7 +346,7 @@ int GetMidIndex(int* a, int begin, int end)
 			return end;
 	}
 }
-//快排 - 前后指针法
+// 快速排序： 前后指针法
 int PartSort3(int* a, int begin, int end)
 {
 	int prev = begin;
@@ -345,7 +372,7 @@ int PartSort3(int* a, int begin, int end)
 	return keyi;
 }
 
-//快速排序
+// 快速排序： 递归
 void QuickSort(int* a, int begin, int end)
 {
 	//区间不存在，或者只有一个值，都不需要处理
@@ -362,11 +389,13 @@ void QuickSort(int* a, int begin, int end)
 }
 
 
-//快速排序（非递归）
+// 快速排序（非递归）
 void QuickSortNonR(int* a, int begin, int end)
 {}
 
-
+//归并排序
+void MergeSort(int* a, int n)
+{}
 
 //计数排序
 //统计每个数据出现的次数 (只适用于正负整数)
@@ -415,4 +444,4 @@ void CountSort(int* a, int n)
 }
 
 
-
+//基数排序

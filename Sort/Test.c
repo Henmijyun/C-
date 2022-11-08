@@ -10,6 +10,7 @@ int main()
 
 	// InsertSort(arr, size); // ≤Â»Î
 	// ShellSort(arr, size);  // œ£∂˚
+	// SelectSort(arr, size);  // —°‘Ò 
 	// HeapSort(arr, size);  // ∂—
 	// BubbleSort(arr, size);  // √∞≈›
 	// QuickSort(arr, 0, size - 1);  // øÏ≈≈
