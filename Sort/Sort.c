@@ -1,6 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
 #include "Sort.h"
+#include "Stack.h"
+
+int callCount = 0;  // 计数递归次数 
 
 //打印
 void PrintArray(int* a, int size)
@@ -148,8 +151,7 @@ void ShellSort(int* a, int n)
 }
 
 
-// 选择排序
-// 时间复杂度：O（N^2） 最好的情况：O(N^2)
+// 选择排序    时间O(N^2) 最好的情况：O(N^2)
 // 选择排序 对比 插入排序， 插入更好
 void SelectSort(int* a, int n)
 {
@@ -185,7 +187,7 @@ void SelectSort(int* a, int n)
 
 
 
-// 堆排序 时间O(N*logN)
+// 堆排序  时间O(N*logN)
 // 升序 -- 建大堆 (再把堆顶数据向下调整，形成升序)
 // 降序 -- 建小堆 （同理）
 void AdjustDwon(int* a, int size, int parent) // 建堆
@@ -231,8 +233,7 @@ void HeapSort(int* a, int n) // 建完堆，开始排序
 }
 
 
-//冒泡排序
-// 时间复杂度:O（N^2）  最好的情况：O(N)
+//冒泡排序    时间O(N^2)  最好的情况：O(N)
 // 冒泡 对比 插入排序， 插入更好
 void BubbleSort(int* a, int n)
 {
@@ -259,7 +260,7 @@ void BubbleSort(int* a, int n)
 }
 
 
-// 快速排序1 hoare版本
+// 快速单趟排序： hoare版本
 int PartSort1(int* a, int begin, int end)
 {
 	int left = begin;
@@ -291,7 +292,7 @@ int PartSort1(int* a, int begin, int end)
 	return keyi;
 }
 
-// 快速排序：挖坑法
+// 快速单趟排序：挖坑法
 int PartSort2(int* a, int begin, int end)
 {
 	int key = a[begin];
@@ -323,7 +324,7 @@ int PartSort2(int* a, int begin, int end)
 	return piti;
 }
 
-// 快速排序： 前后指针 + 三数取中法
+// 快速单趟排序： 前后指针法: 三数取中法 (优化)
 int GetMidIndex(int* a, int begin, int end)
 {
 	int mid = (begin + end) >> 1;
@@ -346,7 +347,7 @@ int GetMidIndex(int* a, int begin, int end)
 			return end;
 	}
 }
-// 快速排序： 前后指针法
+// 快速单趟排序： 前后指针法
 int PartSort3(int* a, int begin, int end)
 {
 	int prev = begin;
@@ -375,13 +376,16 @@ int PartSort3(int* a, int begin, int end)
 // 快速排序： 递归
 void QuickSort(int* a, int begin, int end)
 {
+	//callCount++;
+	//printf("%p\n", &callCount);  // 计数递归次数
+	
 	//区间不存在，或者只有一个值，都不需要处理
 	if (begin >= end)
 	{
 		return;
 	}
 
-	int keyi = PartSort3(a, begin, end);//单趟排序
+	int keyi = PartSort3(a, begin, end); // 单趟排序
 
 	// [begin, keyi-1]  keyi  [keyi+1, end]
 	QuickSort(a, begin, keyi - 1);
@@ -390,17 +394,291 @@ void QuickSort(int* a, int begin, int end)
 
 
 // 快速排序（非递归）
+// 要求掌握，递归改非递归
+// 递归大问题，极端场景下面，如果深度太深，会出现栈溢出
+// 1、直接改循环 -- 比如斐波那契数列、归并排序
+// 2、用数据结构栈模拟递归过程
 void QuickSortNonR(int* a, int begin, int end)
-{}
+{
+	ST st;
+	StackInit(&st);
+	StackPush(&st, end);
+	StackPush(&st, begin);
 
-//归并排序
+	while (!StackEmpty(&st))
+	{
+		int left = StackTop(&st);  // 取头为左 
+		StackPop(&st);
+
+		int right = StackTop(&st); // 取尾为右
+		StackPop(&st);
+
+		int keyi = PartSort3(a, left, right); // 单趟排序
+		// [left, keyi-1] keyi [keyi+1, right] 
+
+		if (keyi + 1 < right)
+		{
+			StackPush(&st, right);
+			StackPush(&st, keyi + 1);
+		}
+
+		if (left < keyi - 1)
+		{
+			StackPush(&st, keyi - 1);
+			StackPush(&st, left);
+		}
+	}
+	StackDestory(&st);
+}
+
+
+
+
+
+//归并排序  时间O(N*logN)  空间O(N)
+void _MergeSort(int* a, int begin, int end, int* tmp)
+{
+	if (begin >= end)
+		return;
+
+	int mid = (begin + end) / 2;
+
+	// [begin, mid]  [mid+1, end] 分治递归，让子区间有序
+	_MergeSort(a, begin, mid, tmp);
+	_MergeSort(a, mid + 1, end, tmp);
+
+	// 归并 [begin, mid] [mid+1, end]
+	int begin1 = begin, end1 = mid;
+	int begin2 = mid + 1, end2 = end;
+	int i = begin1;
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] < a[begin2])
+		{
+			tmp[i++] = a[begin1++];
+		}
+		else
+		{
+			tmp[i++] = a[begin2++];
+		}
+	}
+
+	// 其中有一方结束，就把另一方全加进去
+	while (begin1 <= end1)
+	{
+		tmp[i++] = a[begin1++];
+	}
+	while (begin2 <= end2)
+	{
+		tmp[i++] = a[begin2++];
+	}
+
+	// 把归并数据拷贝回原数组
+	memcpy(a + begin, tmp + begin, (end - begin + 1) * sizeof(int));
+}
 void MergeSort(int* a, int n)
-{}
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	if (tmp == NULL)
+	{
+		printf("malloc fail\n");
+		exit(-1);
+	}
 
-//计数排序
+	_MergeSort(a, 0, n - 1, tmp);
+
+	free(tmp);
+}
+
+// 归并：非递归
+void MergeSortNonR(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	if (tmp == NULL)
+	{
+		printf("malloc fail\n");
+		exit(-1);
+	}
+
+	int gap = 1;
+	while (gap < n)
+	{
+		//printf("gap=%d->", gap);
+		for (int i = 0; i < n; i += 2 * gap)
+		{
+			// [i, i+gap-1] [i+gap, i+2*gap-1]
+			int begin1 = i, end1 = i + gap - 1;
+			int begin2 = i + gap, end2 = i + 2 * gap - 1;
+
+			// end1越界或者begin2越界,则可以不归并了
+			if (end1 >= n || begin2 >= n)
+			{
+				break;
+			}
+			else if (end2 >= n)
+			{
+				end2 = n - 1;
+			}
+			//printf("[%d,%d] [%d, %d]--", begin1, end1, begin2, end2);
+
+			int m = end2 - begin1 + 1;
+			int j = begin1;
+			while (begin1 <= end1 && begin2 <= end2)
+			{
+				if (a[begin1] < a[begin2])
+				{
+					tmp[j++] = a[begin1++];
+				}
+				else
+				{
+					tmp[j++] = a[begin2++];
+				}
+			}
+
+			// 其中有一方结束，就把另一方全加进去
+			while (begin1 <= end1)
+			{
+				tmp[j++] = a[begin1++];
+			}
+			while (begin2 <= end2)
+			{
+				tmp[j++] = a[begin2++];
+			}
+
+			memcpy(a + i, tmp + i, sizeof(int) * m);
+		}
+		gap *= 2;
+	}
+	free(tmp);
+}
+
+//文件归并排序  
+// 从文件中提取要排序的数据，然后保存到新建文件中，再对
+void _MergeFile(const char* file1, const char* file2, const char* mfile)
+{
+	FILE* fout1 = fopen(file1, "r"); // 打开指定的文件, 返回关联该文件的流
+	if (fout1 == NULL)
+	{
+		printf("打开文件失败\n");
+		exit(-1);
+	}
+
+	FILE* fout2 = fopen(file2, "r");
+	if (fout2 == NULL)
+	{
+		printf("打开文件失败\n");
+		exit(-1);
+	}
+
+	FILE* fin = fopen(mfile, "w");
+	if (fin == NULL)
+	{
+		printf("打开文件失败\n");
+		exit(-1);
+	}
+
+	int num1, num2;
+	int ret1 = fscanf(fout1, "%d\n", &num1); // 从文件流中读取数据.
+	int ret2 = fscanf(fout2, "%d\n", &num2);
+	while (ret1 != EOF && ret2 != EOF)
+	{
+		if (num1 < num2)
+		{
+			fprintf(fin, "%d\n", num1); // 指定的格式，发送信息到指定的文件
+			ret1 = fscanf(fout1, "%d\n", &num1);
+		}
+		else
+		{
+			fprintf(fin, "%d\n", num2);
+			ret2 = fscanf(fout2, "%d\n", &num2);
+		}
+	}
+
+	while (ret1 != EOF)
+	{
+		fprintf(fin, "%d\n", num1);
+		ret1 = fscanf(fout1, "%d\n", &num1);
+	}
+
+	while (ret2 != EOF)
+	{
+		fprintf(fin, "%d\n", num2);
+		ret2 = fscanf(fout2, "%d\n", &num2);
+	}
+
+	fclose(fout1); // 关闭给出的文件流
+	fclose(fout2);
+	fclose(fin);
+}
+void MergeSortFile(const char* file)
+{
+	FILE* fout = fopen(file, "r");
+	if (fout == NULL)
+	{
+		printf("打开文件失败\n");
+		exit(-1);
+	}
+
+	// 分割成一段一段的数据，内存排序后写到，小文件
+	int n = 10;
+	int a[10];
+	int i = 0, num = 0;
+	char subfile[20];
+	int filei = 1;
+
+	memset(a, 0, sizeof(int) * n);  // a[]的数据，全部改0
+	while (fscanf(fout, "%d\n", &num) != EOF)
+	{
+		if (i < n - 1)
+		{
+			a[i++] = num;
+		}
+		else
+		{
+			a[i] = num;
+			QuickSort(a, 0, n - 1);  // 快排
+			sprintf(subfile, "%d", filei++); // 把输出发送到buffer(缓冲区)中
+			FILE* fin = fopen(subfile, "w");
+			if (fin == NULL)
+			{
+				printf("打开文件失败\n");
+				exit(-1);
+			}
+			
+			for (int j = 0; j < n; ++j)
+			{
+				fprintf(fin, "%d\n", a[j]);
+			}
+			fclose(fin);
+
+			i = 0;
+			memset(a, 0, sizeof(int) * n);
+		}
+	}
+
+	// 利用互相归并到文件，实现整体有序
+	char mfile[100] = "12";
+	char file1[100] = "1";
+	char file2[100] = "2";
+	for (int i = 2; i <= n; ++i)
+	{
+		//读取file1和file2，进行归并出mfile
+		_MergeFile(file1, file2, mfile);
+
+		strcpy(file1, mfile);
+		sprintf(file2, "%d", i + 1);
+		sprintf(mfile, "%s%d", mfile, i + 1);
+	}
+
+	printf("%s文件排序成功\n", file);
+	fclose(fout);
+}
+
+
+
+
+//计数排序   时间O(max(range, N))    空间O(range)
 //统计每个数据出现的次数 (只适用于正负整数)
-//时间复杂度 O(max(range, N))
-//空间复杂度 O(range)
 void CountSort(int* a, int n)
 {
 	int min = a[0], max = a[0];

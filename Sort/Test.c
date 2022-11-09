@@ -10,10 +10,18 @@ int main()
 
 	// InsertSort(arr, size); // 插入
 	// ShellSort(arr, size);  // 希尔
+	
 	// SelectSort(arr, size);  // 选择 
 	// HeapSort(arr, size);  // 堆
 	// BubbleSort(arr, size);  // 冒泡
-	// QuickSort(arr, 0, size - 1);  // 快排
+	 
+	// QuickSort(arr, 0, size - 1);  // 快排 递归
+	// QuickSortNonR(arr, 0, size - 1); // 快排 非递归
+	 
+	// MergeSort(arr, size);     // 归并 递归
+	// MergeSortNonR(arr, size);  //归并 非递归
+	// MergeSortFile("SortData.txt"); // 文件归并
+	
 	// CountSort(arr, size);  // 计数排序
 	
  	PrintArray(arr, size);

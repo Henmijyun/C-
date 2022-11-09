@@ -5,8 +5,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+
+
+//声明 (用于计数递归次数)
+extern int callCount;
+
 //打印
-void PrintArray(int* a, int size);
+void PrintArray(int* a, int size); 
+
 
 //插入排序
 void InsertSort(int* a, int n);
@@ -37,20 +44,21 @@ void QuickSort(int* a, int begin, int end);
 //快速排序（非递归）
 void QuickSortNonR(int* a, int begin, int end);
 
-//归并排序
+//归并排序:递归
 void MergeSort(int* a, int n);
-
-//声明
-extern int callCount;
-
-//基数排序
+//归并排序：非递归
+void MergeSortNonR(int* a, int n);
+//文件归并排序
+void MergeSortFile(const char* file); // 参数为文件名
 
 
 //计数排序
-//统计每个数据出现的次数
+//统计每个数据出现的次数(只适用于正负整数)
 void CountSort(int* a, int n);
 
+//基数排序
 
+//...
 
 
 
