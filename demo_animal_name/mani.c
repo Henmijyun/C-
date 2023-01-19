@@ -1,11 +1,11 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+//#define _CRT_SECURE_NO_WARNINGS 1
 
-/*#include<stdio.h>
-int main(void)
+#include<stdio.h>
+int main()
 {
 	printf("hello,world\n");
 	return 0;
-}*/
+}
 
 //#include<stdio.h>
 /*int main()
@@ -58,14 +58,14 @@ int main(void)
 
 
 //常量，变量（局部，全局）
-/*int num1 = 20;//全局变量-定义在代码块{}之外的变量
-int main()
-{
-	int num1 = 10;//局部变量-定义在代码块{}内部的变量 ;名字相同的话，把这行去掉就直接显示全局
-	printf("%d\n", num1);//局部和全局变量的名字尽量不要相同，容易误会出bug；
-	                 //当局部和全局变量名字相同时，局部优先显示。
-	return 0;
-}*/
+//int num1 = 20;//全局变量-定义在代码块{}之外的变量
+//int main()
+//{
+//	int num1 = 10;//局部变量-定义在代码块{}内部的变量 ;名字相同的话，把这行去掉就直接显示全局
+//	printf("%d\n", num1);//局部和全局变量的名字尽量不要相同，容易误会出bug；
+//	                 //当局部和全局变量名字相同时，局部优先显示。
+//	return 0;
+//}
 
 //计算两个数值的和
 //#define _CRT_SECURE_NO_WARNINGS 1
